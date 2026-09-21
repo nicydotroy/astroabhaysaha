@@ -38,6 +38,7 @@ function App() {
   const [path, setPath] = useState(window.location.pathname)
   const [bookingOpen, setBookingOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handlePopState = () => setPath(window.location.pathname)
@@ -47,6 +48,8 @@ function App() {
 
   const goTo = (nextPath) => {
     navigate(nextPath)
+    setMobileMenuOpen(false)
+    setServicesOpen(false)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
@@ -68,8 +71,15 @@ function App() {
           </div>
           <button className={currentLabel === 'Stories' ? 'active' : ''} onClick={() => goTo('/stories')}>Stories</button>
         </nav>
-        <div className="header-actions"><button className="outline-button header-cta" onClick={() => setBookingOpen(true)}><span>Book a reading</span><b>↗</b></button></div>
+        <div className="header-actions"><button className="outline-button header-cta" onClick={() => setBookingOpen(true)}><span>Book a reading</span><b>↗</b></button><button className={`mobile-menu-toggle ${mobileMenuOpen ? 'open' : ''}`} aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={mobileMenuOpen} onClick={() => setMobileMenuOpen((open) => !open)}><i /><i /><i /></button></div>
       </header>
+      <nav className={`mobile-nav ${mobileMenuOpen ? 'open' : ''}`} aria-label="Mobile navigation">
+        {navItems.slice(0, 2).map((item) => <button key={item.path} className={currentLabel === item.label ? 'active' : ''} onClick={() => goTo(item.path)}>{item.label}</button>)}
+        <button className={`mobile-services-trigger ${currentLabel === 'Services' ? 'active' : ''}`} aria-expanded={servicesOpen} onClick={() => setServicesOpen((open) => !open)}>Services <span className="menu-chevron">⌄</span></button>
+        <div className={`mobile-services-list ${servicesOpen ? 'open' : ''}`}>{serviceMenuItems.map((service) => <button key={service} onClick={() => goTo('/services')}>{service}</button>)}</div>
+        <button className={currentLabel === 'Stories' ? 'active' : ''} onClick={() => goTo('/stories')}>Stories</button>
+        <button className="mobile-book-button" onClick={() => { setMobileMenuOpen(false); setBookingOpen(true) }}>Book a reading <span>↗</span></button>
+      </nav>
       <main>
         {path === '/about' && <AboutPage goTo={goTo} />}
         {path === '/services' && <ServicesPage onBook={() => setBookingOpen(true)} />}
