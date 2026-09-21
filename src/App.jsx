@@ -86,7 +86,16 @@ function App() {
         {path === '/stories' && <StoriesPage />}
         {path === '/' && <HomePage goTo={goTo} onBook={() => setBookingOpen(true)} />}
       </main>
-      <footer className="site-footer"><div className="footer-brand"><span className="wordmark-mark">✧</span><span>Astro Abhay Saha</span></div><span>© 2025 Astro Abhay Saha</span><span>Made for the curious soul</span></footer>
+      <footer className="site-footer">
+        <div className="footer-invitation"><p className="eyebrow">The conversation can begin anywhere</p><h2>Come back to<br /><em>your own sky.</em></h2><button className="gold-button" onClick={() => setBookingOpen(true)}>Book a private reading <span>↗</span></button></div>
+        <div className="footer-grid">
+          <div className="footer-about"><div className="footer-brand"><span className="wordmark-mark">✧</span><span>Astro Abhay Saha</span></div><p>A grounded approach to Vedic astrology for the curious, the searching, and the ready.</p></div>
+          <div className="footer-column"><span className="footer-heading">Explore</span><button onClick={() => goTo('/')}>Home</button><button onClick={() => goTo('/about')}>About Abhay</button><button onClick={() => goTo('/services')}>Services</button><button onClick={() => goTo('/stories')}>Stories</button></div>
+          <div className="footer-column"><span className="footer-heading">Readings</span>{serviceMenuItems.slice(0, 4).map((service) => <button key={service} onClick={() => goTo('/services')}>{service}</button>)}</div>
+          <div className="footer-column footer-contact"><span className="footer-heading">Say hello</span><a href="mailto:hello@astroabhaysaha.com">hello@astroabhaysaha.com</a><span>New Delhi · India</span><span className="footer-socials"><a href="#instagram">Instagram</a><a href="#whatsapp">WhatsApp</a></span></div>
+        </div>
+        <div className="footer-bottom"><span>© 2025 Astro Abhay Saha</span><span>Made for the curious soul</span><span>Privacy · Terms</span></div>
+      </footer>
       {bookingOpen && <BookingModal onClose={() => setBookingOpen(false)} />}
     </div>
   )
