@@ -4,8 +4,16 @@ import './App.css'
 const navItems = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
-  { label: 'Readings', path: '/services' },
   { label: 'Stories', path: '/stories' },
+]
+
+const serviceMenuItems = [
+  'Horoscope',
+  'Kundali Matching',
+  'Get Love Back',
+  'Black Magic',
+  'Birth Chart',
+  'Mangal Dosh',
 ]
 
 const serviceCards = [
@@ -29,6 +37,7 @@ function navigate(path) {
 function App() {
   const [path, setPath] = useState(window.location.pathname)
   const [bookingOpen, setBookingOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
 
   useEffect(() => {
     const handlePopState = () => setPath(window.location.pathname)
@@ -41,13 +50,22 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const currentLabel = navItems.find((item) => item.path === path)?.label || 'Home'
+  const currentLabel = navItems.find((item) => item.path === path)?.label || (path === '/services' ? 'Services' : 'Home')
 
   return (
     <div className="site-shell">
       <header className="site-header">
         <button className="wordmark" onClick={() => goTo('/')} aria-label="Astro Abhay Saha home"><span className="wordmark-mark">✧</span><span>Astro<br /><b>Abhay Saha</b></span></button>
-        <nav className="desktop-nav" aria-label="Main navigation">{navItems.map((item) => <button key={item.path} className={currentLabel === item.label ? 'active' : ''} onClick={() => goTo(item.path)}>{item.label}</button>)}</nav>
+        <nav className="desktop-nav" aria-label="Main navigation">
+          {navItems.slice(0, 2).map((item) => <button key={item.path} className={currentLabel === item.label ? 'active' : ''} onClick={() => goTo(item.path)}>{item.label}</button>)}
+          <div className={`services-menu ${servicesOpen ? 'open' : ''}`} onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
+            <button className={currentLabel === 'Services' ? 'active services-trigger' : 'services-trigger'} aria-haspopup="true" aria-expanded={servicesOpen} onClick={() => setServicesOpen((open) => !open)}>Services <span className="menu-chevron">⌄</span></button>
+            <div className="services-dropdown" role="menu">
+              {serviceMenuItems.map((service) => <button key={service} role="menuitem" onClick={() => { setServicesOpen(false); goTo('/services') }}>{service}</button>)}
+            </div>
+          </div>
+          <button className={currentLabel === 'Stories' ? 'active' : ''} onClick={() => goTo('/stories')}>Stories</button>
+        </nav>
         <button className="outline-button header-cta" onClick={() => setBookingOpen(true)}>Book a reading <span>↗</span></button>
       </header>
       <main>
