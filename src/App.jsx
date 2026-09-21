@@ -55,7 +55,9 @@ function App() {
   return (
     <div className="site-shell">
       <header className="site-header">
-        <button className="wordmark" onClick={() => goTo('/')} aria-label="Astro Abhay Saha home"><span className="wordmark-mark">✧</span><span>Astro<br /><b>Abhay Saha</b></span></button>
+        <div className="header-identity">
+          <button className="wordmark" onClick={() => goTo('/')} aria-label="Astro Abhay Saha home"><span className="wordmark-mark"><i>✦</i></span><span>Astro<br /><b>Abhay Saha</b></span></button>
+        </div>
         <nav className="desktop-nav" aria-label="Main navigation">
           {navItems.slice(0, 2).map((item) => <button key={item.path} className={currentLabel === item.label ? 'active' : ''} onClick={() => goTo(item.path)}>{item.label}</button>)}
           <div className={`services-menu ${servicesOpen ? 'open' : ''}`} onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
@@ -66,7 +68,7 @@ function App() {
           </div>
           <button className={currentLabel === 'Stories' ? 'active' : ''} onClick={() => goTo('/stories')}>Stories</button>
         </nav>
-        <button className="outline-button header-cta" onClick={() => setBookingOpen(true)}>Book a reading <span>↗</span></button>
+        <div className="header-actions"><button className="outline-button header-cta" onClick={() => setBookingOpen(true)}><span>Book a reading</span><b>↗</b></button></div>
       </header>
       <main>
         {path === '/about' && <AboutPage goTo={goTo} />}
