@@ -106,6 +106,27 @@ function App() {
       document.head.appendChild(descriptionTag)
     }
     descriptionTag.content = description
+    const canonicalPath = isKundaliPage ? '/kundali-matching-in-kolkata' : currentLocation ? `/astrologer-in-${locationPages.find((item) => item.name === location).slug}` : path === '/' ? '/' : path
+    const canonicalUrl = `https://astroabhaysaha.vercel.app${canonicalPath}`
+    let canonicalTag = document.querySelector('link[rel="canonical"]')
+    if (!canonicalTag) {
+      canonicalTag = document.createElement('link')
+      canonicalTag.rel = 'canonical'
+      document.head.appendChild(canonicalTag)
+    }
+    canonicalTag.href = canonicalUrl
+    const setMeta = (property, content) => {
+      let tag = document.querySelector(`meta[property="${property}"]`)
+      if (!tag) {
+        tag = document.createElement('meta')
+        tag.setAttribute('property', property)
+        document.head.appendChild(tag)
+      }
+      tag.content = content
+    }
+    setMeta('og:title', title)
+    setMeta('og:description', description)
+    setMeta('og:url', canonicalUrl)
   }, [currentLocation?.name, path])
 
   return (
