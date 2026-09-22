@@ -88,6 +88,20 @@ function App() {
   const currentLabel = navItems.find((item) => item.path === path)?.label || (path.startsWith('/services') ? 'Services' : 'Home')
   const currentLocation = locationPages.find((location) => path === `/astrologer-in-${location.slug}`)
 
+  useEffect(() => {
+    const location = currentLocation?.name || 'Kolkata'
+    const title = `Best Astrologer in ${location} | Avisek Sastri`
+    const description = `Find the best astrologer in ${location} for personalized Kundli, marriage, career and relationship guidance. Book an astrology consultation with an experienced astrologer.`
+    document.title = title
+    let descriptionTag = document.querySelector('meta[name="description"]')
+    if (!descriptionTag) {
+      descriptionTag = document.createElement('meta')
+      descriptionTag.name = 'description'
+      document.head.appendChild(descriptionTag)
+    }
+    descriptionTag.content = description
+  }, [currentLocation?.name, path])
+
   return (
     <div className="site-shell">
       <header className="site-header">
@@ -121,7 +135,7 @@ function App() {
         {path === '/' && <HomePage goTo={goTo} onBook={() => setBookingOpen(true)} />}
       </main>
       <FaqSection location={currentLocation?.name || 'Kolkata'} />
-      {path === '/' && <ServiceAreasSection goTo={goTo} />}
+      {(path === '/' || currentLocation) && <ServiceAreasSection goTo={goTo} />}
       <footer className="site-footer">
         <div className="footer-invitation"><p className="eyebrow">The conversation can begin anywhere</p><h2>Come back to<br /><em>your own sky.</em></h2><button className="gold-button" onClick={() => setBookingOpen(true)}>Book a private reading <span>↗</span></button></div>
         <div className="footer-grid">
