@@ -31,7 +31,7 @@ const locations = [
 const pages = [
   ...locations.map(([slug, location]) => ({
     route: `/astrologer-in-${slug}`,
-    title: `Best Astrologer in ${location} | Avisek Sastri`,
+    title: `Best Astrologer in ${location} | Avishek Sastri`,
     description: `Find the best astrologer in ${location} for personalized Kundli, marriage, career and relationship guidance. Book an astrology consultation with an experienced astrologer.`,
   })),
   {
@@ -41,7 +41,7 @@ const pages = [
   },
   {
     route: '/black-magic-in-kolkata',
-    title: 'Black Magic in Kolkata | Astro Avisek Sastri',
+    title: 'Black Magic in Kolkata | Astro Avishek Sastri',
     description: 'Looking for black magic guidance in Kolkata? Consult an experienced astrologer for spiritual guidance, Vedic astrology insights and personalized solutions.',
   },
 ]
