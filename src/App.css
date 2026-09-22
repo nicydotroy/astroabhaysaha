@@ -43,6 +43,7 @@
 }
 @media (max-width: 470px) { .header-cta { display: none; } .wordmark { font-size: 11px; } .wordmark-mark { width: 36px; height: 36px; font-size: 17px; } }
 @media (max-width: 800px) { .local-seo-main { display: block; margin-top: 40px; }.local-seo-image { width: min(100%, 360px); margin: 0 auto; }.local-seo-content { margin-top: 40px; }.local-seo-faq { grid-template-columns: 1fr; gap: 36px; margin-top: 55px; }.local-seo-faq article { padding-right: 0; }.local-seo-faq article + article { border-left: 0; border-top: 1px solid rgba(192,163,119,.25); padding: 28px 0 0; }.why-choose-section { display: block; }.why-choose-heading { margin-bottom: 45px; }.why-choose-grid { grid-template-columns: 1fr 1fr; }.why-choose-grid article { min-height: 230px; padding: 22px 17px; }.why-choose-grid h3 { font-size: 17px; }.site-footer { padding: 76px 7vw 25px; }.footer-invitation { display: block; padding-bottom: 62px; }.footer-invitation h2 { margin: 18px 0 28px; }.footer-grid { grid-template-columns: 1fr 1fr; gap: 45px 25px; padding: 48px 0 55px; }.footer-about { grid-column: 1 / -1; }.footer-about p { max-width: 310px; }.footer-bottom { gap: 12px; flex-wrap: wrap; line-height: 1.6; } }
+@media (max-width: 800px) { .faq-grid { grid-template-columns: 1fr; } }
 
 .planet-large { animation: planet-breathe 9s ease-in-out infinite; }
 .planet-small { animation: planet-float 7s ease-in-out infinite; }
