@@ -173,7 +173,7 @@ function App() {
           <div className="footer-about"><div className="footer-brand"><span className="wordmark-mark">✧</span><span>Avisek Sastri</span></div><p>A grounded approach to Vedic astrology for the curious, the searching, and the ready.</p></div>
           <div className="footer-column"><span className="footer-heading">Explore</span><button onClick={() => goTo('/')}>Home</button><button onClick={() => goTo('/about')}>About Avisek</button><button onClick={() => goTo('/services')}>Services</button><button onClick={() => goTo('/contact')}>Contact</button></div>
           <div className="footer-column"><span className="footer-heading">Readings</span>{serviceMenuItems.slice(0, 4).map((service) => <button key={service.slug} onClick={() => goTo(servicePath(service))}>{service.label}</button>)}</div>
-           <div className="footer-column footer-contact"><span className="footer-heading">Say hello</span><a href="mailto:hello@aviseksastri.com">hello@aviseksastri.com</a><span>Kolkata · West Bengal</span><span className="footer-socials"><a href="#instagram">Instagram</a><a href="#whatsapp">WhatsApp</a></span></div>
+           <div className="footer-column footer-contact"><span className="footer-heading">Say hello</span><a href="mailto:hello@aviseksastri.com">hello@aviseksastri.com</a><a href="tel:+919163653093">+91 91635 3093</a><span>Kolkata · West Bengal</span><span className="footer-socials"><a href="#instagram">Instagram</a><a href="#whatsapp">WhatsApp</a></span></div>
         </div>
         <div className="footer-bottom"><span>© 2025 Avisek Sastri</span><span>Made for the curious soul</span><span>Privacy · Terms</span></div>
       </footer>
