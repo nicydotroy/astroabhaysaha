@@ -95,6 +95,7 @@ function App() {
         {path === '/stories' && <StoriesPage />}
         {path === '/' && <HomePage goTo={goTo} onBook={() => setBookingOpen(true)} />}
       </main>
+      <FaqSection />
       <footer className="site-footer">
         <div className="footer-invitation"><p className="eyebrow">The conversation can begin anywhere</p><h2>Come back to<br /><em>your own sky.</em></h2><button className="gold-button" onClick={() => setBookingOpen(true)}>Book a private reading <span>↗</span></button></div>
         <div className="footer-grid">
@@ -120,6 +121,47 @@ function StoriesPage() { return <PageIntro eyebrow="Words from the other side" t
 function PageIntro({ eyebrow, title, children }) { return <section className="page-intro section-pad"><div className="page-heading"><p className="eyebrow">{eyebrow}</p><h1>{title}</h1></div>{children}</section> }
 function Testimonials() { return <section className="testimonials-section section-pad"><div className="section-grid"><div className="section-label">02 / In their own words</div><div className="testimonial-heading"><p className="eyebrow">Real stories, real shifts</p><h2>It starts with<br /><em>being seen.</em></h2></div></div><div className="testimonial-grid">{testimonials.map((item) => <article className="testimonial-card" key={item.name}><span className="quote-mark">“</span><p>{item.quote}</p><footer><b>{item.name}</b><span>{item.role}</span></footer></article>)}</div></section> }
 function CtaBand({ onBook }) { return <section className="cta-band section-pad"><div className="cta-stars">✦　·　✧　·　✦</div><p className="eyebrow">Your next chapter is already unfolding</p><h2>Ready to read<br /><em>between the lines?</em></h2><button className="gold-button" onClick={onBook}>Book your private reading <span>↗</span></button></section> }
+
+const faqItems = [
+  { q: 'Who is Astro Avisek Sastri?', a: 'Astro Avisek Sastri is an experienced astrologer offering personalized astrology consultations in Kolkata. With 5 years of experience in astrology, he provides guidance based on individual birth details and traditional astrological principles.' },
+  { q: 'How can Astro Avisek Sastri help me with my life problems?', a: 'Astro Avisek Sastri provides personalized astrology guidance for common concerns related to career, marriage, relationships, business, education, family matters, and important life decisions. The consultation focuses on understanding your specific situation through astrological analysis.' },
+  { q: 'What information is required for an astrology consultation?', a: 'For a detailed astrology consultation, you generally need to provide your date of birth, exact or available birth time, and place of birth. These details are used to prepare and analyse your birth chart or Kundli. Accurate birth information can be important for detailed chart interpretation and timing-related questions.' },
+  { q: 'Can I consult Astro Avisek Sastri for marriage and relationship matters?', a: 'Yes. Marriage and relationship questions are among the common reasons people consult astrologers. Astro Avisek Sastri can provide personalized astrological guidance regarding marriage timing, relationship concerns, compatibility, and other marriage-related questions based on the available birth details.' },
+  { q: 'Can an astrologer in Kolkata help with career and job-related questions?', a: 'Astrology consultations can include questions related to career direction, job opportunities, professional changes, business, and career-related challenges. Astro Avisek Sastri can analyse your birth chart and provide an astrological perspective based on your individual circumstances.' },
+  { q: 'Does Astro Avisek Sastri provide Kundli analysis?', a: 'Yes. Kundli analysis can be used to understand different aspects of an individual\'s life through their birth chart. Astro Avisek Sastri can provide personalized Kundli-based guidance according to the questions and concerns discussed during the consultation.' },
+  { q: 'Can I ask about business and financial matters during an astrology consultation?', a: 'Yes. Business owners and professionals may consult an astrologer regarding business decisions, partnerships, career changes, financial planning, and suitable periods for important professional activities. Astro Avisek Sastri provides an astrological perspective based on the individual\'s birth details.' },
+  { q: 'Can astrology help with education and studies?', a: 'Education is another area that people commonly discuss during astrology consultations. Astro Avisek Sastri can analyse relevant astrological factors in a student\'s birth chart and provide guidance related to education, academic direction, higher studies, and other study-related concerns.' },
+  { q: 'Can I consult Astro Avisek Sastri online?', a: 'If online consultation is available, clients can discuss their concerns remotely without visiting an astrologer\'s office in Kolkata. Online astrology consultations can be convenient for people living outside Kolkata or in other cities. Please contact Astro Avisek Sastri to confirm the available consultation mode and appointment process.' },
+  { q: 'Can I consult Astro Avisek Sastri for marriage Kundli matching?', a: 'Yes. Kundli matching is commonly used by individuals and families who want to explore astrological compatibility before marriage. Astro Avisek Sastri can analyse the available birth details of both individuals and provide a personalized interpretation of their Kundlis.' },
+  { q: 'Does astrology provide guaranteed predictions about the future?', a: 'Astrology is generally used as a traditional system for interpreting planetary positions and birth charts. An astrology consultation should not be treated as a guarantee of future events. Astro Avisek Sastri focuses on providing personalized astrological insights that can help clients understand their questions and consider different perspectives.' },
+  { q: 'Why choose Astro Avisek Sastri as an astrologer in Kolkata?', a: 'Astro Avisek Sastri has 5 years of experience in astrology and focuses on personalized consultations based on individual concerns and birth details. His approach is intended to make astrological guidance understandable, relevant, and respectful of each client\'s personal circumstances.' },
+]
+
+function FaqSection() {
+  const [openIndex, setOpenIndex] = useState(0)
+  const leftFaq = faqItems.slice(0, 6)
+  const rightFaq = faqItems.slice(6)
+
+  const toggleFaq = (index) => {
+    setOpenIndex((current) => current === index ? -1 : index)
+  }
+
+  const renderColumn = (items) => items.map((item, index) => {
+    const globalIndex = faqItems.findIndex((faq) => faq.q === item.q)
+    const isOpen = openIndex === globalIndex
+
+    return <article className={`faq-item ${isOpen ? 'open' : ''}`} key={item.q}>
+      <button className="faq-question" onClick={() => toggleFaq(globalIndex)} aria-expanded={isOpen}>
+        <span>{item.q}</span>
+        <span className="faq-toggle">{isOpen ? '−' : '+'}</span>
+      </button>
+      {isOpen && <div className="faq-answer"><p>{item.a}</p></div>}
+    </article>
+  })
+
+  return <section className="faq-section section-pad"><div className="faq-header"><p className="eyebrow">Frequently asked questions</p><h2>Astrology questions</h2></div><div className="faq-grid"><div className="faq-column">{renderColumn(leftFaq)}</div><div className="faq-column">{renderColumn(rightFaq)}</div></div></section>
+}
+
 function BookingModal({ onClose }) { return <div className="modal-backdrop" onClick={onClose}><div className="booking-modal" onClick={(event) => event.stopPropagation()}><button className="modal-close" onClick={onClose}>×</button><p className="eyebrow">Begin the conversation</p><h2>Let’s find the<br /><em>right reading.</em></h2><p className="modal-copy">Leave your details and Avisek will be in touch within 24 hours.</p><form onSubmit={(event) => { event.preventDefault(); onClose(); }}><label>Name<input required placeholder="Your name" /></label><label>Email<input required type="email" placeholder="you@example.com" /></label><label>What would you like to explore?<select defaultValue=""><option value="" disabled>Select a reading</option><option>Birth chart</option><option>Love & partnership</option><option>Career & purpose</option></select></label><button className="gold-button" type="submit">Send enquiry <span>↗</span></button></form></div></div> }
 
 export default App
