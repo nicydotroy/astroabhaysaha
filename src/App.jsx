@@ -17,7 +17,7 @@ const serviceMenuItems = [
   { label: 'Mangal Dosh', slug: 'mangal-dosh' },
 ]
 
-const servicePath = (service) => service.slug === 'kundali-matching' ? '/kundali-matching-in-kolkata' : service.slug === 'black-magic' ? '/black-magic-in-kolkata' : `/services/${service.slug}`
+const servicePath = (service) => service.slug === 'kundali-matching' ? '/kundali-matching-in-kolkata' : service.slug === 'black-magic' ? '/black-magic-in-kolkata' : service.slug === 'horoscope' ? '/horoscope-consultaion-in-kolkata' : `/services/${service.slug}`
 
 const locationPages = [
   { name: 'Salt Lake City (Bidhannagar)', slug: 'salt-lake-city-bidhannagar' },
@@ -88,18 +88,21 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const currentLabel = navItems.find((item) => item.path === path)?.label || (path.startsWith('/services') ? 'Services' : 'Home')
+  const currentLabel = navItems.find((item) => item.path === path)?.label || (path.startsWith('/services') || path === '/horoscope-consultaion-in-kolkata' ? 'Services' : 'Home')
   const currentLocation = locationPages.find((location) => path === `/astrologer-in-${location.slug}`)
 
   useEffect(() => {
     const location = currentLocation?.name || 'Kolkata'
     const isKundaliPage = path === '/kundali-matching-in-kolkata'
     const isBlackMagicPage = path === '/black-magic-in-kolkata'
-    const title = isKundaliPage ? 'Kundali Matching in Kolkata' : isBlackMagicPage ? 'Black Magic in Kolkata | Astro Avishek Sastri' : `Best Astrologer in ${location} | Avishek Sastri`
+    const isHoroscopePage = path === '/horoscope-consultaion-in-kolkata' || path === '/services/horoscope'
+    const title = isHoroscopePage ? 'Horoscope Consultation in Kolkata | Avishek Sastri' : isKundaliPage ? 'Kundali Matching in Kolkata' : isBlackMagicPage ? 'Black Magic in Kolkata | Astro Avishek Sastri' : `Best Astrologer in ${location} | Avishek Sastri`
     const description = isKundaliPage
       ? 'Get accurate Kundali Matching in Kolkata for marriage compatibility, Guna Milan and horoscope analysis. Consult an experienced astrologer for personalized guidance.'
       : isBlackMagicPage
         ? 'Looking for black magic guidance in Kolkata? Consult an experienced astrologer for spiritual guidance, Vedic astrology insights and personalized solutions.'
+      : isHoroscopePage
+        ? 'Get trusted horoscope consultation in Kolkata for personalized guidance on career, love, marriage, finance, and important life decisions based on your horoscope.'
       : `Find the best astrologer in ${location} for personalized Kundli, marriage, career and relationship guidance. Book an astrology consultation with an experienced astrologer.`
     document.title = title
     let descriptionTag = document.querySelector('meta[name="description"]')
@@ -109,7 +112,7 @@ function App() {
       document.head.appendChild(descriptionTag)
     }
     descriptionTag.content = description
-    const canonicalPath = isKundaliPage ? '/kundali-matching-in-kolkata' : isBlackMagicPage ? '/black-magic-in-kolkata' : currentLocation ? `/astrologer-in-${locationPages.find((item) => item.name === location).slug}` : path === '/' ? '/' : path
+    const canonicalPath = isHoroscopePage ? '/horoscope-consultaion-in-kolkata' : isKundaliPage ? '/kundali-matching-in-kolkata' : isBlackMagicPage ? '/black-magic-in-kolkata' : currentLocation ? `/astrologer-in-${locationPages.find((item) => item.name === location).slug}` : path === '/' ? '/' : path
     const canonicalUrl = `https://astroabhaysaha.vercel.app${canonicalPath}`
     let canonicalTag = document.querySelector('link[rel="canonical"]')
     if (!canonicalTag) {
@@ -130,7 +133,7 @@ function App() {
     setMeta('og:title', title)
     setMeta('og:description', description)
     setMeta('og:url', canonicalUrl)
-  }, [currentLocation?.name, path])
+  }, [currentLocation, path])
 
   return (
     <div className="site-shell">
@@ -159,7 +162,7 @@ function App() {
       </nav>
       <main>
         {path === '/about' && <><AboutPage goTo={goTo} /><AboutServicesSection goTo={goTo} /></>}
-        {(path.startsWith('/services') || path === '/kundali-matching-in-kolkata' || path === '/black-magic-in-kolkata') && <ServicesPage path={path} onBook={() => setBookingOpen(true)} />}
+        {(path.startsWith('/services') || path === '/horoscope-consultaion-in-kolkata' || path === '/kundali-matching-in-kolkata' || path === '/black-magic-in-kolkata') && <ServicesPage path={path} onBook={() => setBookingOpen(true)} />}
         {path === '/contact' && <ContactPage />}
         {currentLocation && <LocationPage location={currentLocation.name} goTo={goTo} onBook={() => setBookingOpen(true)} />}
         {path === '/' && <><HomePage goTo={goTo} onBook={() => setBookingOpen(true)} /><WhyChooseUs /></>}
@@ -196,7 +199,38 @@ function LocationSeoSection({ location, onBook }) { return <section className="l
 function WhyChooseUs() { return <section className="why-choose-section section-pad"><div className="why-choose-heading"><p className="eyebrow">Why choose Astro Avishek Sastri?</p><h2>Why Choose Astro Avishek Sastri</h2></div><div className="why-choose-grid"><article><span>01</span><h3>5 Years of Astrology Experience</h3><p>With <strong>5 years of experience in astrology</strong>, Avishek Sastri has developed practical experience in studying birth charts and understanding different astrological combinations. Every consultation is approached with attention to the individual's birth details, questions, and circumstances rather than relying on generic predictions.</p></article><article><span>02</span><h3>Personalized Astrology Guidance</h3><p>Every person's birth chart is different, which is why astrology consultations should be personalized. Astro Avishek Sastri takes the time to understand your concerns before providing guidance. Whether you are seeking insights about <strong>career, marriage, relationships, education, business, family, or personal decisions</strong>, the consultation is tailored to your specific questions and astrological chart.</p></article><article><span>03</span><h3>Traditional Astrology Knowledge</h3><p>Astro Avishek Sastri follows established principles of astrology while interpreting planetary positions, houses, signs, and other relevant chart factors. The focus is on explaining astrological observations in a clear and understandable way so that clients can better understand the factors being discussed during their consultation.</p></article><article><span>04</span><h3>Clear and Practical Explanations</h3><p>Astrology can involve complex terminology and concepts. Avishek Sastri aims to explain astrological observations in simple language, making consultations easier to understand. Instead of presenting complicated information without context, the focus is on connecting chart observations with the questions and circumstances shared during the consultation.</p></article><article><span>05</span><h3>Guidance for Different Life Areas</h3><p>People consult an astrologer for different reasons and at different stages of life. Astro Avishek Sastri provides personalized astrology guidance for areas such as <strong>career and professional life, marriage and relationships, business, education, family matters, and general life guidance</strong>. Each consultation is based on the individual's birth details and the specific area they want to discuss.</p></article><article><span>06</span><h3>Ethical and Responsible Approach</h3><p>Astrology consultations should be approached responsibly. Astro Avishek Sastri focuses on providing guidance based on astrological interpretation rather than presenting astrology as a guaranteed solution to life's challenges. Important personal, financial, medical, or legal decisions should always be considered carefully and, where appropriate, discussed with qualified professionals.</p></article><article><span>07</span><h3>Client-Focused Consultations</h3><p>A good astrology consultation should provide an opportunity for clients to ask questions and understand the interpretation of their chart. Astro Avishek Sastri follows a client-focused approach, giving attention to the individual's concerns and explaining relevant astrological factors during the consultation.</p></article><article><span>08</span><h3>Why People Choose Astro Avishek Sastri</h3><p>With <strong>5 years of experience in astrology</strong>, a personalized consultation approach, knowledge of traditional astrological principles, and a focus on clear communication, Astro Avishek Sastri provides astrology consultations designed around individual needs. If you are looking for an <strong>astrologer for personalized guidance</strong>, understanding your birth chart and discussing your specific concerns can help make the consultation more relevant and meaningful.</p></article></div></section> }
 function LocalSeoSection({ onBook }) { return <section className="local-seo-section section-pad"><div className="local-seo-heading"><p className="eyebrow">Astrology guidance in the city of joy</p><h2>Best astrologer in Kolkata for your future</h2></div><div className="local-seo-main"><div className="local-seo-image" role="img" aria-label="Avishek Sastri astrologer photo placeholder"><span><b>Astrologer image slot</b><br />Add your photo at<br /><strong>/public/astrologer-avisek-sastri.jpg</strong></span></div><div className="local-seo-content"><p>Finding the right astrologer can help you understand your birth chart, planetary influences, and important phases of life with greater clarity. If you are looking for the <strong>best astrologer in Kolkata</strong>, choose an astrology professional who takes time to understand your concerns and provides a personalized interpretation based on your birth details. Whether you need guidance about marriage, relationships, career, business, finances, or personal decisions, a detailed astrology consultation can provide a structured perspective.</p><p>An experienced <strong>astrologer in Kolkata</strong> can analyze your date, time, and place of birth to prepare and interpret your Kundli. Vedic astrology considers planetary positions, houses, zodiac signs, and other astrological factors to understand different areas of life. A consultation should focus on your individual chart rather than providing generic predictions.</p><button className="line-button" onClick={onBook}>Speak with Avishek <span>↗</span></button></div></div><div className="local-seo-faq"><article><h3>Online Astrology Consultation</h3><p>You do not always need to visit an astrologer's office for guidance. An <strong>online astrologer in Kolkata</strong> can provide consultations through phone calls, video consultations, or other online communication methods. Online sessions can be convenient for people with busy schedules or those living outside central Kolkata.</p><p>If you have searched for an <strong>astrologer near me</strong>, you can consider both local and online consultation options based on your requirements. A <strong>Kolkata astrologer</strong> offering online services can also connect with clients from different parts of the city and beyond.</p></article><article><h3>Personalized Astrology Guidance in Kolkata</h3><p>Many people search for a <strong>famous astrologer in Kolkata</strong> or a <strong>top astrologer in Kolkata</strong> when they want personalized guidance for important life questions. Similarly, those looking for a <strong>renowned astrologer in Kolkata</strong> often want someone with knowledge of traditional astrology and experience in interpreting different types of Kundli.</p><p>A <strong>professional astrologer in Kolkata</strong> can offer consultations for a range of concerns, including marriage compatibility, love and relationships, career growth, business decisions, financial planning, family matters, and future trends. The purpose of an astrology consultation is to help you understand the astrological factors connected with your questions and make decisions with greater awareness.</p></article></div></section> }
 function AboutPage({ goTo }) { return <PageIntro eyebrow="The person behind the chart" title={<>A quiet space for<br /><em>big questions.</em></>}><div className="about-layout"><div className="portrait-card portrait-large"><div className="portrait-image" /><div className="portrait-glow" /></div><div className="about-copy"><p>Hi, I’m Avishek. I believe astrology is most powerful when it brings you back to yourself.</p><p>My work blends the depth of Vedic tradition with a warm, practical approach. Every reading is a conversation, not a performance. We look at what is happening, why it may be happening now, and what you can do with the clarity you find.</p><div className="signature">Avishek <span>✦</span></div><button className="line-button" onClick={() => goTo('/services')}>See how we can work together <span>→</span></button></div></div></PageIntro> }
-function ServicesPage({ path, onBook }) { const selectedService = serviceMenuItems.find((service) => path === servicePath(service) || path.endsWith(`/${service.slug}`)); const pageTitle = path === '/kundali-matching-in-kolkata' ? 'Kundali Matching in Kolkata' : path === '/black-magic-in-kolkata' ? 'Black Magic in Kolkata' : selectedService?.label; return <PageIntro eyebrow={selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'} title={selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}><div className="full-services-grid">{serviceCards.map((service, index) => <article className="service-card service-card-large" key={service.title}><span className="service-number">0{index + 1}</span><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><button className="line-button" onClick={onBook}>Book this reading <span>↗</span></button></article>)}</div></PageIntro> }
+function ServicesPage({ path, onBook }) {
+  const selectedService = serviceMenuItems.find((service) => path === servicePath(service) || path.endsWith(`/${service.slug}`))
+  const isHoroscopePage = path === '/horoscope-consultaion-in-kolkata' || path === '/services/horoscope'
+  const pageTitle = isHoroscopePage ? 'Horoscope Consultation in Kolkata' : path === '/kundali-matching-in-kolkata' ? 'Kundali Matching in Kolkata' : path === '/black-magic-in-kolkata' ? 'Black Magic in Kolkata' : selectedService?.label
+
+  return <PageIntro eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'} title={isHoroscopePage ? <>Horoscope consultation<br /><em>with clarity.</em></> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}>
+    {isHoroscopePage && <HoroscopeConsultationContent onBook={onBook} />}
+    {!isHoroscopePage && <div className="full-services-grid">{serviceCards.map((service, index) => <article className="service-card service-card-large" key={service.title}><span className="service-number">0{index + 1}</span><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><button className="line-button" onClick={onBook}>Book this reading <span>↗</span></button></article>)}</div>}
+  </PageIntro>
+}
+
+function HoroscopeConsultationContent({ onBook }) {
+  const topics = [
+    { title: 'Career and work', text: 'Explore professional strengths, periods of change, work patterns, and questions about your next career step through a personalized horoscope reading.' },
+    { title: 'Love and relationships', text: 'Discuss relationship patterns, emotional needs, communication, and the questions that matter to you with context from your birth chart.' },
+    { title: 'Marriage and compatibility', text: 'Understand marriage-related questions through a careful reading of relevant horoscope factors, with space to discuss timing, expectations, and compatibility.' },
+    { title: 'Finance and business', text: 'Use your horoscope as one perspective when thinking about business choices, financial patterns, professional partnerships, and periods that need thoughtful planning.' },
+  ]
+
+  return <div className="horoscope-content">
+    <div className="horoscope-introduction">
+      <p>Looking for a <strong>horoscope consultation in Kolkata</strong>? Astro Avishek Sastri offers trusted, personalized guidance based on your birth details and the questions you bring to the consultation. A horoscope reading can help you reflect on career, love, marriage, finance, and important life decisions with greater structure and clarity.</p>
+      <p>Each session is approached as a conversation rather than a generic prediction. Your date, time, and place of birth are considered alongside your present circumstances, so the discussion stays relevant to your real concerns.</p>
+      <button className="gold-button" onClick={onBook}>Book a horoscope consultation <span>↗</span></button>
+    </div>
+    <div className="horoscope-topic-grid">{topics.map((topic, index) => <article key={topic.title}><span>0{index + 1}</span><h2>{topic.title}</h2><p>{topic.text}</p></article>)}</div>
+    <div className="horoscope-details">
+      <div><p className="eyebrow">What to bring</p><h2>Prepare for a useful reading.</h2></div>
+      <div><p>Share your date of birth, available birth time, and place of birth. It also helps to bring two or three clear questions, such as a career decision, relationship concern, marriage question, business choice, or financial planning issue. More accurate birth information can support a more detailed chart interpretation.</p><p>Astrology offers a traditional interpretive perspective, not a guarantee of future events. The goal is to explain the chart clearly and help you consider your choices with awareness.</p></div>
+    </div>
+  </div>
+}
 function ContactPage() { return <PageIntro eyebrow="Begin the conversation" title={<>Let’s find the<br /><em>right direction.</em></>}><div className="contact-layout"><div className="contact-copy"><h2>A thoughtful reading starts with a thoughtful question.</h2><p>Share what is on your mind and Astro Avishek Sastri will help you understand the right next step. Consultations are available for career, relationships, marriage, business, education, and personal decisions.</p><div className="contact-details"><div><span>Email</span><a href="mailto:hello@aviseksastri.com">hello@aviseksastri.com</a></div><div><span>Location</span><p>Kolkata · West Bengal</p></div><div><span>Response time</span><p>Within 24 hours</p></div></div></div><form className="contact-form" onSubmit={(event) => event.preventDefault()}><label>Name<input required placeholder="Your name" /></label><label>Email<input required type="email" placeholder="you@example.com" /></label><label>What would you like to explore?<select defaultValue=""><option value="" disabled>Select a reading</option><option>Birth chart</option><option>Love & partnership</option><option>Career & purpose</option><option>Marriage & Kundli matching</option></select></label><label>Your question<textarea required rows="5" placeholder="Tell us a little about what you would like guidance on" /></label><button className="gold-button" type="submit">Send enquiry <span>↗</span></button></form></div></PageIntro> }
 function PageIntro({ eyebrow, title, children }) { return <section className="page-intro section-pad"><div className="page-heading"><p className="eyebrow">{eyebrow}</p><h1>{title}</h1></div>{children}</section> }
 function Testimonials() { return <section className="testimonials-section section-pad"><div className="section-grid"><div className="section-label">02 / In their own words</div><div className="testimonial-heading"><p className="eyebrow">Real stories, real shifts</p><h2>It starts with<br /><em>being seen.</em></h2></div></div><div className="testimonial-grid">{testimonials.map((item) => <article className="testimonial-card" key={item.name}><span className="quote-mark">“</span><p>{item.quote}</p><footer><b>{item.name}</b><span>{item.role}</span></footer></article>)}</div></section> }
@@ -227,7 +261,7 @@ function FaqSection({ location = 'Kolkata' }) {
     setOpenIndex((current) => current === index ? -1 : index)
   }
 
-  const renderColumn = (items) => items.map((item, index) => {
+  const renderColumn = (items) => items.map((item) => {
     const globalIndex = localizedFaqItems.findIndex((faq) => faq.q === item.q)
     const isOpen = openIndex === globalIndex
 

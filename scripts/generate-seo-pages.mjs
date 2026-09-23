@@ -40,6 +40,11 @@ const pages = [
     description: 'Get accurate Kundali Matching in Kolkata for marriage compatibility, Guna Milan and horoscope analysis. Consult an experienced astrologer for personalized guidance.',
   },
   {
+    route: '/horoscope-consultaion-in-kolkata',
+    title: 'Horoscope Consultation in Kolkata | Avishek Sastri',
+    description: 'Get trusted horoscope consultation in Kolkata for personalized guidance on career, love, marriage, finance, and important life decisions based on your horoscope.',
+  },
+  {
     route: '/black-magic-in-kolkata',
     title: 'Black Magic in Kolkata | Astro Avishek Sastri',
     description: 'Looking for black magic guidance in Kolkata? Consult an experienced astrologer for spiritual guidance, Vedic astrology insights and personalized solutions.',
