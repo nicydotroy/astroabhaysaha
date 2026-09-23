@@ -178,8 +178,8 @@ function App() {
         <div className="footer-bottom"><span>© 2025 Avishek Sastri</span><span>Made for the curious soul</span><span>Privacy · Terms</span></div>
       </footer>
       <div className="floating-contact-actions" aria-label="Contact Avishek Sastri">
-        <a className="floating-contact-button floating-call-button" href="tel:+919163653093" aria-label="Call Avishek Sastri"><FaPhone className="contact-icon" aria-hidden="true" /><span>Call</span></a>
-        <a className="floating-contact-button floating-whatsapp-button" href="https://wa.me/919163653093" target="_blank" rel="noreferrer" aria-label="Message Avishek Sastri on WhatsApp"><FaWhatsapp className="contact-icon" aria-hidden="true" /><span>WhatsApp</span></a>
+        <a className="floating-contact-button floating-call-button" href="tel:+919163653093" aria-label="Call Avishek Sastri"><FaPhone className="contact-icon" aria-hidden="true" /></a>
+        <a className="floating-contact-button floating-whatsapp-button" href="https://wa.me/919163653093" target="_blank" rel="noreferrer" aria-label="Message Avishek Sastri on WhatsApp"><FaWhatsapp className="contact-icon" aria-hidden="true" /></a>
       </div>
       {bookingOpen && <BookingModal onClose={() => setBookingOpen(false)} />}
     </div>
