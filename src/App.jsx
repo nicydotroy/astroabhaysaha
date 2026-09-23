@@ -204,7 +204,7 @@ function ServicesPage({ path, onBook }) {
   const isHoroscopePage = path === '/horoscope-consultaion-in-kolkata' || path === '/services/horoscope'
   const pageTitle = isHoroscopePage ? 'Horoscope Consultation in Kolkata' : path === '/kundali-matching-in-kolkata' ? 'Kundali Matching in Kolkata' : path === '/black-magic-in-kolkata' ? 'Black Magic in Kolkata' : selectedService?.label
 
-  return <PageIntro eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'} title={isHoroscopePage ? <>Horoscope Consultation in Kolkata<br /><em>with clarity.</em></> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}> 
+  return <PageIntro eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'} title={isHoroscopePage ? <>Horoscope Consultation in Kolkata</> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}> 
     {isHoroscopePage && <HoroscopeConsultationContent onBook={onBook} />}
     {!isHoroscopePage && <div className="full-services-grid">{serviceCards.map((service, index) => <article className="service-card service-card-large" key={service.title}><span className="service-number">0{index + 1}</span><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><button className="line-button" onClick={onBook}>Book this reading <span>↗</span></button></article>)}</div>}
   </PageIntro>
