@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { FaPhone, FaWhatsapp } from 'react-icons/fa'
-import bestAstrologerInKolkata from './assets/image/best-astrologer-in-kolkata.jpg'
+import bestAstrologerInKolkata from './assets/image/best-astrologer-in-kolkata.png'
 import './App.css'
 
 const navItems = [
