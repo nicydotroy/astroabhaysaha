@@ -358,8 +358,15 @@ function ServicesPage({ path, goTo, onBook }) {
     {isPalmReaderPage && <div className="service-intro-copy"><p>Looking for the <strong>best palm reader in Kolkata</strong>? Astro Avishek Sastri offers personalized palm reading to discuss the major lines and features of your hand, and what traditional palmistry may suggest about your strengths, relationships, career, and life direction.</p><p>A palm reading consultation is shaped around your questions and personal circumstances. It offers a thoughtful perspective for reflection, not a guaranteed prediction of future events.</p></div>}
     {isServicesOverview && <div className="service-intro-copy"><p>Explore trusted <strong>astrology services in Kolkata</strong> for love, marriage, career, business, spiritual guidance, and personal growth.</p><p>Whether you need an astrologer, numerologist, palmist, horoscope consultation, or Kundali matching, every session is designed to offer clarity and practical direction.</p></div>}
     {isHoroscopePage && <HoroscopeConsultationContent onBook={onBook} />}
-    {isPalmReaderPage && <><div className="center-heading"><p className="eyebrow">Our astrology services</p><h2>Services<br /><em>we provide.</em></h2></div><div className="services-grid services-grid-complete">{homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}</div></>}
-    {!isHoroscopePage && !isPalmReaderPage && <div className="full-services-grid">{serviceCards.map((service, index) => <article className="service-card service-card-large" key={service.title}><span className="service-number">0{index + 1}</span><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><button className="line-button" onClick={onBook}>Book this reading <span>↗</span></button></article>)}</div>}
+    {(isPalmReaderPage || isNumerologistPage) && (
+      <>
+        <div className="center-heading"><p className="eyebrow">Our astrology services</p><h2>Services<br /><em>we provide.</em></h2></div>
+        <div className="services-grid services-grid-complete">
+          {homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}
+        </div>
+      </>
+    )}
+    {!isHoroscopePage && !isPalmReaderPage && !isNumerologistPage && <div className="full-services-grid">{serviceCards.map((service, index) => <article className="service-card service-card-large" key={service.title}><span className="service-number">0{index + 1}</span><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><button className="line-button" onClick={onBook}>Book this reading <span>↗</span></button></article>)}</div>}
   </PageIntro>
 }
 
