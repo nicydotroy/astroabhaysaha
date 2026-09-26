@@ -102,17 +102,34 @@ function App() {
 
   useEffect(() => {
     const location = currentLocation?.name || 'Kolkata'
+    const selectedService = serviceMenuItems.find((service) => path === servicePath(service) || path.endsWith(`/${service.slug}`))
     const isKundaliPage = path === '/kundali-matching-in-kolkata'
     const isBlackMagicPage = path === '/black-magic-in-kolkata'
     const isHoroscopePage = path === '/horoscope-consultaion-in-kolkata' || path === '/services/horoscope'
-    const title = isHoroscopePage ? 'Horoscope Consultation in Kolkata | Avishek Sastri' : isKundaliPage ? 'Kundali Matching in Kolkata' : isBlackMagicPage ? 'Black Magic in Kolkata | Astro Avishek Sastri' : `Best Astrologer in ${location} | Avishek Sastri`
+    const isServicesPage = path === '/services' || path.startsWith('/services/')
+    const isNumerologistPage = selectedService?.slug === 'numerologist'
+    const title = isHoroscopePage
+      ? 'Horoscope Consultation in Kolkata | Avishek Sastri'
+      : isKundaliPage
+        ? 'Kundali Matching in Kolkata | Best Kundli Matching Astrologer'
+        : isBlackMagicPage
+          ? 'Black Magic in Kolkata | Astro Avishek Sastri'
+          : isNumerologistPage
+            ? 'Numerologist in Kolkata | Best Numerology Consultation'
+            : isServicesPage
+              ? 'Astrology Services in Kolkata | Astrologer, Numerologist & Palmist'
+              : `Best Astrologer in ${location} | Avishek Sastri`
     const description = isKundaliPage
       ? 'Get accurate Kundali Matching in Kolkata for marriage compatibility, Guna Milan and horoscope analysis. Consult an experienced astrologer for personalized guidance.'
       : isBlackMagicPage
         ? 'Looking for black magic guidance in Kolkata? Consult an experienced astrologer for spiritual guidance, Vedic astrology insights and personalized solutions.'
       : isHoroscopePage
         ? 'Get trusted horoscope consultation in Kolkata for personalized guidance on career, love, marriage, finance, and important life decisions based on your horoscope.'
-      : `Find the best astrologer in ${location} for personalized Kundli, marriage, career and relationship guidance. Book an astrology consultation with an experienced astrologer.`
+        : isNumerologistPage
+          ? 'Consult the best numerologist in Kolkata for name number analysis, life path guidance, destiny patterns, relationship insights, and practical numerology solutions.'
+          : isServicesPage
+            ? 'Explore trusted astrology services in Kolkata including astrologer, numerologist, palmist, horoscope consultation, Kundali matching and spiritual guidance services.'
+            : `Find the best astrologer in ${location} for personalized Kundli, marriage, career and relationship guidance. Book an astrology consultation with an experienced astrologer.`
     document.title = title
     let descriptionTag = document.querySelector('meta[name="description"]')
     if (!descriptionTag) {
@@ -121,7 +138,17 @@ function App() {
       document.head.appendChild(descriptionTag)
     }
     descriptionTag.content = description
-    const canonicalPath = isHoroscopePage ? '/horoscope-consultaion-in-kolkata' : isKundaliPage ? '/kundali-matching-in-kolkata' : isBlackMagicPage ? '/black-magic-in-kolkata' : currentLocation ? `/astrologer-in-${locationPages.find((item) => item.name === location).slug}` : path === '/' ? '/' : path
+    const canonicalPath = isHoroscopePage
+      ? '/horoscope-consultaion-in-kolkata'
+      : isKundaliPage
+        ? '/kundali-matching-in-kolkata'
+        : isBlackMagicPage
+          ? '/black-magic-in-kolkata'
+          : isNumerologistPage
+            ? '/services/numerologist'
+            : isServicesPage
+              ? '/services'
+              : currentLocation ? `/astrologer-in-${locationPages.find((item) => item.name === location).slug}` : path === '/' ? '/' : path
     const canonicalUrl = `https://astroabhaysaha.vercel.app${canonicalPath}`
     let canonicalTag = document.querySelector('link[rel="canonical"]')
     if (!canonicalTag) {
@@ -211,9 +238,23 @@ function AboutPage({ goTo }) { return <PageIntro eyebrow="The person behind the 
 function ServicesPage({ path, onBook }) {
   const selectedService = serviceMenuItems.find((service) => path === servicePath(service) || path.endsWith(`/${service.slug}`))
   const isHoroscopePage = path === '/horoscope-consultaion-in-kolkata' || path === '/services/horoscope'
-  const pageTitle = isHoroscopePage ? 'Horoscope Consultation in Kolkata' : path === '/kundali-matching-in-kolkata' ? 'Kundali Matching in Kolkata' : path === '/black-magic-in-kolkata' ? 'Black Magic in Kolkata' : selectedService?.label
+  const isServicesOverview = path === '/services'
+  const isNumerologistPage = selectedService?.slug === 'numerologist'
+  const pageTitle = isHoroscopePage
+    ? 'Horoscope Consultation in Kolkata'
+    : isNumerologistPage
+      ? 'Numerologist in Kolkata'
+      : path === '/kundali-matching-in-kolkata'
+        ? 'Kundali Matching in Kolkata'
+        : path === '/black-magic-in-kolkata'
+          ? 'Black Magic in Kolkata'
+          : isServicesOverview
+            ? 'Astrology Services in Kolkata'
+            : selectedService?.label
 
-  return <PageIntro eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'} title={isHoroscopePage ? <>Horoscope Consultation in Kolkata</> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}> 
+  return <PageIntro eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : isNumerologistPage ? 'Numerology guidance in Kolkata' : isServicesOverview ? 'Astrology services in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'} title={isHoroscopePage ? <>Horoscope Consultation in Kolkata</> : isNumerologistPage ? <>Numerologist in Kolkata<br /><em>for life clarity.</em></> : isServicesOverview ? <>Astrology Services in Kolkata<br /><em>for every life question.</em></> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}> 
+    {isNumerologistPage && <div className="service-intro-copy"><p>Looking for a <strong>numerologist in Kolkata</strong>? Astro Avishek Sastri offers personalized numerology guidance for life path numbers, destiny patterns, relationship questions, and decision-making support.</p><p>Each consultation is tailored to your name, birth details, and the questions you bring, helping you understand your strengths, timing, and the patterns shaping your journey.</p></div>}
+    {isServicesOverview && <div className="service-intro-copy"><p>Explore trusted <strong>astrology services in Kolkata</strong> for love, marriage, career, business, spiritual guidance, and personal growth.</p><p>Whether you need an astrologer, numerologist, palmist, horoscope consultation, or Kundali matching, every session is designed to offer clarity and practical direction.</p></div>}
     {isHoroscopePage && <HoroscopeConsultationContent onBook={onBook} />}
     {!isHoroscopePage && <div className="full-services-grid">{serviceCards.map((service, index) => <article className="service-card service-card-large" key={service.title}><span className="service-number">0{index + 1}</span><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><button className="line-button" onClick={onBook}>Book this reading <span>↗</span></button></article>)}</div>}
   </PageIntro>
