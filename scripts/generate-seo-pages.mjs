@@ -31,8 +31,8 @@ const locations = [
 const pages = [
   {
     route: '/numerologist-in-kolkata',
-    title: 'Numerologist in Kolkata | Numerology Consultation',
-    description: 'Consult the best numerologist in Kolkata for name number analysis, life path guidance, destiny patterns, relationship insights, and practical numerology solutions.',
+    title: 'Numerologist in Kolkata | Personalized Numerology Consultation',
+    description: 'Looking for a numerologist in Kolkata? Get personalized numerology guidance based on your name, date of birth and specific life concerns.',
   },
   {
     route: '/palm-reader-in-kolkata',

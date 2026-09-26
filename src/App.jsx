@@ -116,7 +116,7 @@ function App() {
         : isBlackMagicPage
           ? 'Black Magic in Kolkata | Astro Avishek Sastri'
           : isNumerologistPage
-            ? 'Numerologist in Kolkata | Numerology Consultation'
+            ? 'Numerologist in Kolkata | Personalized Numerology Consultation'
             : isPalmReaderPage
               ? 'Best Palm Reader in Kolkata | Palm Reading Consultation'
               : isServicesPage
@@ -129,7 +129,7 @@ function App() {
       : isHoroscopePage
         ? 'Get trusted horoscope consultation in Kolkata for personalized guidance on career, love, marriage, finance, and important life decisions based on your horoscope.'
         : isNumerologistPage
-          ? 'Consult the best numerologist in Kolkata for name number analysis, life path guidance, destiny patterns, relationship insights, and practical numerology solutions.'
+          ? 'Looking for a numerologist in Kolkata? Get personalized numerology guidance based on your name, date of birth and specific life concerns.'
           : isPalmReaderPage
             ? 'Looking for the best palm reader in Kolkata? Get a personalized palm reading to understand palm lines, strengths, relationships, career questions, and life direction.'
             : isServicesPage
