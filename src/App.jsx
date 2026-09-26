@@ -240,7 +240,7 @@ function HomePage({ goTo, onBook, location = 'Kolkata' }) {
       <section className="hero-section section-pad">
         <div className="hero-copy reveal-up">
           <p className="eyebrow"><span className="eyebrow-line" /> Vedic astrology · Modern perspective</p>
-          <h1>{isKolkataHome ? <>Best Astrologer in Kolkata<br /><em>for Personalized Guidance</em></> : <>Find the best<br /><em>astrologer in {location}.</em></>}</h1>
+          <h1>{isKolkataHome ? <>Best Astrologer in Kolkata for<br /><em>Personalized Guidance</em></> : <>Find the best<br /><em>astrologer in {location}.</em></>}</h1>
           {isKolkataHome ? <p className="hero-description">Get personalized guidance through Vedic astrology, birth chart analysis and horoscope consultation based on your individual birth details and concerns.</p> : <p className="hero-description">A grounded approach to astrology for the moments when you are ready to understand yourself more deeply and move forward with intention.</p>}
           <div className="hero-actions">
             <button className="gold-button" onClick={onBook}>Book a Consultation <span>↗</span></button>
