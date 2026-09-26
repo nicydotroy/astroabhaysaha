@@ -208,9 +208,9 @@ function App() {
         {(path.startsWith('/services') || path === '/horoscope-consultaion-in-kolkata' || path === '/kundali-matching-in-kolkata' || path === '/black-magic-in-kolkata' || path === '/numerologist-in-kolkata' || path === '/palm-reader-in-kolkata') && <ServicesPage path={path} goTo={goTo} onBook={() => setBookingOpen(true)} />}
         {path === '/contact' && <ContactPage />}
         {currentLocation && <LocationPage location={currentLocation.name} goTo={goTo} onBook={() => setBookingOpen(true)} />}
-        {path === '/' && <><HomePage goTo={goTo} onBook={() => setBookingOpen(true)} /><WhyChooseUs /></>}
+        {path === '/' && <><HomePage goTo={goTo} onBook={() => setBookingOpen(true)} /><MeetYourAstrologer /></>}
       </main>
-      {path !== '/' && <WhyChooseUs />}
+      {path !== '/' && <MeetYourAstrologer />}
       <FaqSection location={currentLocation?.name || 'Kolkata'} />
       {(path === '/' || currentLocation) && <ServiceAreasSection goTo={goTo} />}
       <footer className="site-footer">
@@ -262,19 +262,24 @@ function HomePage({ goTo, onBook, location = 'Kolkata' }) {
         <div className="services-grid services-grid-complete">{homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}</div>
         <button className="gold-button centered-button" onClick={() => goTo('/services')}>Explore all services <span>↗</span></button>
       </section>
-      {isKolkataHome && <TrustedAstrologySection />}
+      {isKolkataHome && <MeetYourAstrologer />}
       <Testimonials />
       <CtaBand onBook={onBook} />
     </>
   )
 }
 
-function TrustedAstrologySection() {
+function LocationPage({ location, goTo, onBook }) { return <HomePage location={location} goTo={goTo} onBook={onBook} /> }
+
+function ServiceAreasSection({ goTo }) { return <section className="service-areas-section section-pad"><div className="center-heading"><p className="eyebrow">Astrology guidance across the city</p><h2>Our service areas<br /><em>in Kolkata.</em></h2></div><div className="service-areas-grid">{locationPages.map((location) => <button key={location.slug} onClick={() => goTo(`/astrologer-in-${location.slug}`)}>Astrologer in {location.name}<span>↗</span></button>)}</div></section> }
+function AboutServicesSection({ goTo }) { return <section className="services-section section-pad"><div className="center-heading"><p className="eyebrow">Our astrology services</p><h2>Services<br /><em>we provide.</em></h2></div><div className="services-grid services-grid-complete">{homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}</div><button className="gold-button centered-button" onClick={() => goTo('/services')}>Explore all services <span>↗</span></button></section> }
+function LocationSeoSection({ location, onBook }) { return <section className="local-seo-section section-pad"><div className="local-seo-heading"><p className="eyebrow">Astrology guidance near you</p><h2>Best astrologer in {location} for your future</h2></div><div className="local-seo-content location-seo-copy"><p>Looking for an <strong>astrologer in {location}</strong>? Astro Avishek Sastri offers personalized astrology consultations based on your birth details, questions, and life circumstances. Get thoughtful guidance for marriage, relationships, career, business, education, and important personal decisions.</p><p>An experienced <strong>astrologer in {location}</strong> can interpret your Kundli and explain planetary influences in a clear, practical way. Consult online or arrange a reading from anywhere in Kolkata.</p><button className="line-button" onClick={onBook}>Speak with Avishek <span>↗</span></button></div></section> }
+function MeetYourAstrologer() {
   return <section className="local-seo-section trusted-astrology-section section-pad">
     <div className="trusted-astrology-heading">
       <div>
-        <p className="eyebrow">Personalized guidance grounded in your chart</p>
-        <h2>Trusted Astrology Consultation <em>in Kolkata</em></h2>
+        <p className="eyebrow">Personalized guidance, grounded in your chart</p>
+        <h2>Meet Your Astrologer <em>in Kolkata</em></h2>
       </div>
       <div className="trusted-astrology-years">
         <span className="trusted-astrology-years-number">05</span>
@@ -283,52 +288,49 @@ function TrustedAstrologySection() {
     </div>
     <div className="trusted-astrology-content">
       <div className="trusted-astrology-intro">
-        <p>Finding the right astrologer in Kolkata is about more than reading a general horoscope. A meaningful astrology consultation should be based on your individual birth details, concerns and life circumstances. <strong>Avishek Sastri</strong> is an experienced astrologer offering personalized astrology consultations for individuals seeking guidance on relationships, marriage, career, business and other important areas of life.</p>
-        <p>With <strong>5 years of experience in astrology</strong>, Avishek Sastri follows a personalized approach to understand each individual's birth chart and provide clear, thoughtful interpretations. His consultations focus on understanding relevant planetary positions, houses and other astrological factors according to the nature of the question or concern.</p>
+        <p><strong>Avishek Sastri</strong> is an experienced astrologer offering personalized astrology consultations for individuals seeking greater clarity about important areas of life. With <strong>5 years of experience in astrology</strong>, he takes an individual-focused approach to understanding birth charts and discussing the astrological factors relevant to each person's concerns.</p>
+        <p>As a <strong>professional astrologer in Kolkata</strong>, Avishek Sastri believes that an astrology consultation should go beyond generalized horoscope predictions. Every person's birth chart is unique, and the interpretation of planetary positions, houses and other relevant factors can vary according to the individual's birth details and the question being considered.</p>
       </div>
       <div className="trusted-astrology-grid">
         <article>
-          <span className="trusted-astrology-index">01 / THE APPROACH</span>
-          <h3>Personalized Astrology Approach</h3>
-          <p>Every birth chart is different, which is why astrology consultation should not be based on generic predictions alone. During a consultation, relevant birth details are considered to understand the individual's horoscope and provide guidance specific to their situation. The aim is to explain astrological observations in a simple and understandable manner so that clients can make more informed decisions.</p>
+          <span className="trusted-astrology-index">01 / PERSONALIZED GUIDANCE</span>
+          <h3>An Individual Approach to Astrology</h3>
+          <p>Avishek Sastri follows a personalized approach during consultations. Rather than providing the same interpretation to everyone, the consultation begins with understanding the individual's birth details and the specific area where guidance is being sought. Relevant aspects of the horoscope are then examined to provide a clearer understanding of the astrological perspective.</p>
+          <p>This approach can be particularly useful for people seeking guidance related to <strong>marriage, relationships, love life, career, business, Kundali matching, horoscope analysis and other personal concerns</strong>.</p>
         </article>
         <article>
-          <span className="trusted-astrology-index">02 / KOLKATA</span>
-          <h3>Astrology Consultation in Kolkata</h3>
-          <p>Serving people seeking astrology guidance in <strong>Kolkata</strong>, Avishek Sastri provides consultations for a range of personal and professional concerns. Depending on the individual's requirements, consultations may cover <strong>marriage and relationships, love life, career, business, horoscope analysis, Kundali matching and birth chart interpretation</strong>.</p>
-          <p>Consultations can be conducted in a convenient format, including online consultation where available, allowing clients to discuss their concerns without necessarily needing to travel.</p>
-        </article>
-        <article>
-          <span className="trusted-astrology-index">03 / AREAS OF GUIDANCE</span>
-          <h3>Areas of Astrology Guidance</h3>
-          <p>The consultation approach can be useful for people looking for guidance related to:</p>
+          <span className="trusted-astrology-index">02 / WHAT WE CAN DISCUSS</span>
+          <h3>What Can You Discuss During a Consultation?</h3>
+          <p>People consult an astrologer for different reasons and at different stages of life. Depending on the individual's requirements, a consultation with Avishek Sastri may cover questions related to:</p>
           <ul>
-            <li>Marriage and relationship concerns</li>
-            <li>Kundali matching and compatibility</li>
+            <li>Marriage and relationship compatibility</li>
             <li>Love and personal relationships</li>
+            <li>Kundali matching</li>
             <li>Career and professional decisions</li>
-            <li>Business-related concerns</li>
-            <li>Horoscope and birth chart analysis</li>
-            <li>General life-related questions</li>
+            <li>Business and financial concerns</li>
+            <li>Horoscope and birth chart interpretation</li>
+            <li>Important personal decisions</li>
+            <li>General questions about life and future possibilities</li>
           </ul>
+          <p>The purpose of the consultation is to help you understand the relevant astrological factors and their interpretation rather than relying solely on generalized predictions.</p>
         </article>
         <article>
-          <span className="trusted-astrology-index">04 / EXPERIENCE</span>
-          <h3>Experience You Can Understand and Trust</h3>
-          <p>A professional astrology consultation should be transparent about the astrologer's experience, approach and areas of practice. Avishek Sastri focuses on personalized chart interpretation rather than one-size-fits-all predictions. Each consultation provides an opportunity to discuss specific questions and understand the astrological factors relevant to the individual's circumstances.</p>
-          <p>If you are looking for a <strong>professional astrologer in Kolkata</strong> for a personalized consultation, you can discuss your concerns with Avishek Sastri and understand your horoscope through an individualized astrology reading.</p>
+          <span className="trusted-astrology-index">03 / VEDIC ASTROLOGY</span>
+          <h3>Vedic Astrology Consultation in Kolkata</h3>
+          <p>For individuals looking for a <strong>Vedic astrologer in Kolkata</strong>, the consultation can involve examining the individual's birth chart and relevant planetary influences according to the principles of Vedic astrology. Birth date, exact birth time and place of birth can be important for preparing and interpreting a horoscope accurately.</p>
+          <p>The specific factors considered during a consultation depend on the individual's question and the type of astrology service being requested.</p>
+        </article>
+        <article>
+          <span className="trusted-astrology-index">04 / THE CONSULTATION</span>
+          <h3>How an Astrology Consultation Works</h3>
+          <p>The consultation process is designed to keep the discussion focused on your individual concerns. You provide the necessary birth details and explain what you would like to understand. The relevant aspects of your horoscope are then examined, followed by an explanation of the astrological observations in clear and understandable language.</p>
+          <p>Whether you are searching for an <strong>astrologer in Kolkata</strong> for a specific question or looking for a more detailed birth chart consultation, Avishek Sastri provides an opportunity to discuss your concerns through a personalized astrology session.</p>
+          <p>If you are looking for a <strong>renowned astrologer in Kolkata</strong>, focus on the astrologer's actual experience, approach and transparency when choosing a consultation. Avishek Sastri aims to provide personalized astrology guidance based on individual birth details and the specific concerns discussed during the session.</p>
         </article>
       </div>
     </div>
   </section>
 }
-
-function LocationPage({ location, goTo, onBook }) { return <HomePage location={location} goTo={goTo} onBook={onBook} /> }
-
-function ServiceAreasSection({ goTo }) { return <section className="service-areas-section section-pad"><div className="center-heading"><p className="eyebrow">Astrology guidance across the city</p><h2>Our service areas<br /><em>in Kolkata.</em></h2></div><div className="service-areas-grid">{locationPages.map((location) => <button key={location.slug} onClick={() => goTo(`/astrologer-in-${location.slug}`)}>Astrologer in {location.name}<span>↗</span></button>)}</div></section> }
-function AboutServicesSection({ goTo }) { return <section className="services-section section-pad"><div className="center-heading"><p className="eyebrow">Our astrology services</p><h2>Services<br /><em>we provide.</em></h2></div><div className="services-grid services-grid-complete">{homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}</div><button className="gold-button centered-button" onClick={() => goTo('/services')}>Explore all services <span>↗</span></button></section> }
-function LocationSeoSection({ location, onBook }) { return <section className="local-seo-section section-pad"><div className="local-seo-heading"><p className="eyebrow">Astrology guidance near you</p><h2>Best astrologer in {location} for your future</h2></div><div className="local-seo-content location-seo-copy"><p>Looking for an <strong>astrologer in {location}</strong>? Astro Avishek Sastri offers personalized astrology consultations based on your birth details, questions, and life circumstances. Get thoughtful guidance for marriage, relationships, career, business, education, and important personal decisions.</p><p>An experienced <strong>astrologer in {location}</strong> can interpret your Kundli and explain planetary influences in a clear, practical way. Consult online or arrange a reading from anywhere in Kolkata.</p><button className="line-button" onClick={onBook}>Speak with Avishek <span>↗</span></button></div></section> }
-function WhyChooseUs() { return <section className="why-choose-section section-pad"><div className="why-choose-heading"><p className="eyebrow">Why choose Astro Avishek Sastri?</p><h2>Why Choose Astro Avishek Sastri</h2></div><div className="why-choose-grid"><article><span>01</span><h3>5 Years of Astrology Experience</h3><p>With <strong>5 years of experience in astrology</strong>, Avishek Sastri has developed practical experience in studying birth charts and understanding different astrological combinations. Every consultation is approached with attention to the individual's birth details, questions, and circumstances rather than relying on generic predictions.</p></article><article><span>02</span><h3>Personalized Astrology Guidance</h3><p>Every person's birth chart is different, which is why astrology consultations should be personalized. Astro Avishek Sastri takes the time to understand your concerns before providing guidance. Whether you are seeking insights about <strong>career, marriage, relationships, education, business, family, or personal decisions</strong>, the consultation is tailored to your specific questions and astrological chart.</p></article><article><span>03</span><h3>Traditional Astrology Knowledge</h3><p>Astro Avishek Sastri follows established principles of astrology while interpreting planetary positions, houses, signs, and other relevant chart factors. The focus is on explaining astrological observations in a clear and understandable way so that clients can better understand the factors being discussed during their consultation.</p></article><article><span>04</span><h3>Clear and Practical Explanations</h3><p>Astrology can involve complex terminology and concepts. Avishek Sastri aims to explain astrological observations in simple language, making consultations easier to understand. Instead of presenting complicated information without context, the focus is on connecting chart observations with the questions and circumstances shared during the consultation.</p></article><article><span>05</span><h3>Guidance for Different Life Areas</h3><p>People consult an astrologer for different reasons and at different stages of life. Astro Avishek Sastri provides personalized astrology guidance for areas such as <strong>career and professional life, marriage and relationships, business, education, family matters, and general life guidance</strong>. Each consultation is based on the individual's birth details and the specific area they want to discuss.</p></article><article><span>06</span><h3>Ethical and Responsible Approach</h3><p>Astrology consultations should be approached responsibly. Astro Avishek Sastri focuses on providing guidance based on astrological interpretation rather than presenting astrology as a guaranteed solution to life's challenges. Important personal, financial, medical, or legal decisions should always be considered carefully and, where appropriate, discussed with qualified professionals.</p></article><article><span>07</span><h3>Client-Focused Consultations</h3><p>A good astrology consultation should provide an opportunity for clients to ask questions and understand the interpretation of their chart. Astro Avishek Sastri follows a client-focused approach, giving attention to the individual's concerns and explaining relevant astrological factors during the consultation.</p></article><article><span>08</span><h3>Why People Choose Astro Avishek Sastri</h3><p>With <strong>5 years of experience in astrology</strong>, a personalized consultation approach, knowledge of traditional astrological principles, and a focus on clear communication, Astro Avishek Sastri provides astrology consultations designed around individual needs. If you are looking for an <strong>astrologer for personalized guidance</strong>, understanding your birth chart and discussing your specific concerns can help make the consultation more relevant and meaningful.</p></article></div></section> }
 function LocalSeoSection({ onBook }) { return <section className="local-seo-section section-pad"><div className="local-seo-heading"><p className="eyebrow">Astrology guidance in the city of joy</p><h2>Best astrologer in Kolkata for your future</h2></div><div className="local-seo-main"><div className="local-seo-image" role="img" aria-label="Avishek Sastri astrologer photo"><img src={bestAstrologerInKolkata} alt="Best astrologer in Kolkata" /></div><div className="local-seo-content"><p>Finding the right astrologer can help you understand your birth chart, planetary influences, and important phases of life with greater clarity. If you are looking for the <strong>best astrologer in Kolkata</strong>, choose an astrology professional who takes time to understand your concerns and provides a personalized interpretation based on your birth details. Whether you need guidance about marriage, relationships, career, business, finances, or personal decisions, a detailed astrology consultation can provide a structured perspective.</p><p>An experienced <strong>astrologer in Kolkata</strong> can analyze your date, time, and place of birth to prepare and interpret your Kundli. Vedic astrology considers planetary positions, houses, zodiac signs, and other astrological factors to understand different areas of life. A consultation should focus on your individual chart rather than providing generic predictions.</p><button className="line-button" onClick={onBook}>Speak with Avishek <span>↗</span></button></div></div><div className="local-seo-faq"><article><h3>Online Astrology Consultation</h3><p>You do not always need to visit an astrologer's office for guidance. An <strong>online astrologer in Kolkata</strong> can provide consultations through phone calls, video consultations, or other online communication methods. Online sessions can be convenient for people with busy schedules or those living outside central Kolkata.</p><p>If you have searched for an <strong>astrologer near me</strong>, you can consider both local and online consultation options based on your requirements. A <strong>Kolkata astrologer</strong> offering online services can also connect with clients from different parts of the city and beyond.</p></article><article><h3>Personalized Astrology Guidance in Kolkata</h3><p>Many people search for a <strong>famous astrologer in Kolkata</strong> or a <strong>top astrologer in Kolkata</strong> when they want personalized guidance for important life questions. Similarly, those looking for a <strong>renowned astrologer in Kolkata</strong> often want someone with knowledge of traditional astrology and experience in interpreting different types of Kundli.</p><p>A <strong>professional astrologer in Kolkata</strong> can offer consultations for a range of concerns, including marriage compatibility, love and relationships, career growth, business decisions, financial planning, family matters, and future trends. The purpose of an astrology consultation is to help you understand the astrological factors connected with your questions and make decisions with greater awareness.</p></article></div></section> }
 function AboutPage({ goTo }) { return <PageIntro eyebrow="The person behind the chart" title={<>A quiet space for<br /><em>big questions.</em></>}><div className="about-layout"><div className="portrait-card portrait-large"><div className="portrait-image"><img src={bestAstrologerInKolkata} alt="Avishek Sastri" /></div><div className="portrait-glow" /></div><div className="about-copy"><p>Hi, I’m Avishek. I believe astrology is most powerful when it brings you back to yourself.</p><p>My work blends the depth of Vedic tradition with a warm, practical approach. Every reading is a conversation, not a performance. We look at what is happening, why it may be happening now, and what you can do with the clarity you find.</p><div className="signature">Avishek <span>✦</span></div><button className="line-button" onClick={() => goTo('/services')}>See how we can work together <span>→</span></button></div></div></PageIntro> }
 function ServicesPage({ path, goTo, onBook }) {
