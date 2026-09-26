@@ -29,6 +29,16 @@ const locations = [
 ]
 
 const pages = [
+  {
+    route: '/numerologist-in-kolkata',
+    title: 'Numerologist in Kolkata | Numerology Consultation',
+    description: 'Consult the best numerologist in Kolkata for name number analysis, life path guidance, destiny patterns, relationship insights, and practical numerology solutions.',
+  },
+  {
+    route: '/palm-reader-in-kolkata',
+    title: 'Best Palm Reader in Kolkata | Palm Reading Consultation',
+    description: 'Looking for the best palm reader in Kolkata? Get a personalized palm reading to understand palm lines, strengths, relationships, career questions, and life direction.',
+  },
   ...locations.map(([slug, location]) => ({
     route: `/astrologer-in-${slug}`,
     title: `Best Astrologer in ${location} | Avishek Sastri`,

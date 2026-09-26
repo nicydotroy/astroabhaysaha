@@ -21,7 +21,7 @@ const serviceMenuItems = [
   { label: 'Mangal Dosh', slug: 'mangal-dosh' },
 ]
 
-const servicePath = (service) => service.slug === 'kundali-matching' ? '/kundali-matching-in-kolkata' : service.slug === 'black-magic' ? '/black-magic-in-kolkata' : service.slug === 'horoscope' ? '/horoscope-consultaion-in-kolkata' : `/services/${service.slug}`
+const servicePath = (service) => service.slug === 'numerologist' ? '/numerologist-in-kolkata' : service.slug === 'palmist' ? '/palm-reader-in-kolkata' : service.slug === 'kundali-matching' ? '/kundali-matching-in-kolkata' : service.slug === 'black-magic' ? '/black-magic-in-kolkata' : service.slug === 'horoscope' ? '/horoscope-consultaion-in-kolkata' : `/services/${service.slug}`
 
 const locationPages = [
   { name: 'Salt Lake City (Bidhannagar)', slug: 'salt-lake-city-bidhannagar' },
@@ -49,7 +49,7 @@ const locationPages = [
 const serviceCards = [
   { icon: '☉', title: 'Astrologer', text: 'Get personalized astrological guidance for life, love, career, and important decisions.' },
   { icon: '✧', title: 'Numerologist', text: 'Explore life numbers, destiny patterns, and practical guidance for your future path.' },
-  { icon: '◌', title: 'Palmist', text: 'Understand your personality, strengths, and life direction through detailed palm reading.' },
+  { icon: '◌', title: 'Palmist', text: 'Consult a palm reader in Kolkata to explore your palm lines, strengths, and life direction.' },
   { icon: '☽', title: 'Birth Chart Reading', text: 'Understand the map of your soul, your gifts, and the cycles shaping your life.' },
   { icon: '♡', title: 'Love & Partnership', text: 'Discover the patterns that bring you closer to the people who matter most.' },
   { icon: '◈', title: 'Career & Purpose', text: 'Find clarity in your next chapter and make choices aligned with your real calling.' },
@@ -58,7 +58,7 @@ const serviceCards = [
 const homepageServices = [
   { icon: '☉', title: 'Astrologer', slug: 'astrologer', text: 'Receive personalized guidance on life decisions, relationships, and your path ahead.' },
   { icon: '✧', title: 'Numerologist', slug: 'numerologist', text: 'Discover the meaning behind your numbers and how they shape your personal journey.' },
-  { icon: '◌', title: 'Palmist', slug: 'palmist', text: 'Understand your inner traits, tendencies, and future direction through palm analysis.' },
+  { icon: '◌', title: 'Palmist', slug: 'palmist', text: 'Explore your palm lines, strengths, and life direction with a palm reading in Kolkata.' },
   { icon: '♡', title: 'Horoscope', slug: 'horoscope', text: 'Receive thoughtful guidance for the opportunities, patterns, and timing shaping your days.' },
   { icon: '◈', title: 'Kundali Matching', slug: 'kundali-matching', text: 'Explore compatibility, shared strengths, and the foundations of a meaningful partnership.' },
   { icon: '✦', title: 'Get Love Back', slug: 'get-love-back', text: 'Find a calm, respectful path through relationship questions, distance, and emotional uncertainty.' },
@@ -97,7 +97,7 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const currentLabel = navItems.find((item) => item.path === path)?.label || (path.startsWith('/services') || path === '/horoscope-consultaion-in-kolkata' ? 'Services' : 'Home')
+  const currentLabel = navItems.find((item) => item.path === path)?.label || (path.startsWith('/services') || path === '/horoscope-consultaion-in-kolkata' || path === '/numerologist-in-kolkata' || path === '/palm-reader-in-kolkata' ? 'Services' : 'Home')
   const currentLocation = locationPages.find((location) => path === `/astrologer-in-${location.slug}`)
 
   useEffect(() => {
@@ -108,6 +108,7 @@ function App() {
     const isHoroscopePage = path === '/horoscope-consultaion-in-kolkata' || path === '/services/horoscope'
     const isServicesPage = path === '/services' || path.startsWith('/services/')
     const isNumerologistPage = selectedService?.slug === 'numerologist'
+    const isPalmReaderPage = selectedService?.slug === 'palmist'
     const title = isHoroscopePage
       ? 'Horoscope Consultation in Kolkata | Avishek Sastri'
       : isKundaliPage
@@ -115,10 +116,12 @@ function App() {
         : isBlackMagicPage
           ? 'Black Magic in Kolkata | Astro Avishek Sastri'
           : isNumerologistPage
-            ? 'Numerologist in Kolkata | Best Numerology Consultation'
-            : isServicesPage
-              ? 'Astrology Services in Kolkata | Astrologer, Numerologist & Palmist'
-              : `Best Astrologer in ${location} | Avishek Sastri`
+            ? 'Numerologist in Kolkata | Numerology Consultation'
+            : isPalmReaderPage
+              ? 'Best Palm Reader in Kolkata | Palm Reading Consultation'
+              : isServicesPage
+                ? 'Astrology Services in Kolkata | Astrologer, Numerologist & Palmist'
+                : `Best Astrologer in ${location} | Avishek Sastri`
     const description = isKundaliPage
       ? 'Get accurate Kundali Matching in Kolkata for marriage compatibility, Guna Milan and horoscope analysis. Consult an experienced astrologer for personalized guidance.'
       : isBlackMagicPage
@@ -127,9 +130,11 @@ function App() {
         ? 'Get trusted horoscope consultation in Kolkata for personalized guidance on career, love, marriage, finance, and important life decisions based on your horoscope.'
         : isNumerologistPage
           ? 'Consult the best numerologist in Kolkata for name number analysis, life path guidance, destiny patterns, relationship insights, and practical numerology solutions.'
-          : isServicesPage
-            ? 'Explore trusted astrology services in Kolkata including astrologer, numerologist, palmist, horoscope consultation, Kundali matching and spiritual guidance services.'
-            : `Find the best astrologer in ${location} for personalized Kundli, marriage, career and relationship guidance. Book an astrology consultation with an experienced astrologer.`
+          : isPalmReaderPage
+            ? 'Looking for the best palm reader in Kolkata? Get a personalized palm reading to understand palm lines, strengths, relationships, career questions, and life direction.'
+            : isServicesPage
+              ? 'Explore trusted astrology services in Kolkata including astrologer, numerologist, palmist, horoscope consultation, Kundali matching and spiritual guidance services.'
+              : `Find the best astrologer in ${location} for personalized Kundli, marriage, career and relationship guidance. Book an astrology consultation with an experienced astrologer.`
     document.title = title
     let descriptionTag = document.querySelector('meta[name="description"]')
     if (!descriptionTag) {
@@ -145,10 +150,12 @@ function App() {
         : isBlackMagicPage
           ? '/black-magic-in-kolkata'
           : isNumerologistPage
-            ? '/services/numerologist'
-            : isServicesPage
-              ? '/services'
-              : currentLocation ? `/astrologer-in-${locationPages.find((item) => item.name === location).slug}` : path === '/' ? '/' : path
+              ? '/numerologist-in-kolkata'
+              : isPalmReaderPage
+                ? '/palm-reader-in-kolkata'
+                : isServicesPage
+                  ? '/services'
+                  : currentLocation ? `/astrologer-in-${locationPages.find((item) => item.name === location).slug}` : path === '/' ? '/' : path
     const canonicalUrl = `https://astroabhaysaha.vercel.app${canonicalPath}`
     let canonicalTag = document.querySelector('link[rel="canonical"]')
     if (!canonicalTag) {
@@ -198,7 +205,7 @@ function App() {
       </nav>
       <main>
         {path === '/about' && <><AboutPage goTo={goTo} /><AboutServicesSection goTo={goTo} /></>}
-        {(path.startsWith('/services') || path === '/horoscope-consultaion-in-kolkata' || path === '/kundali-matching-in-kolkata' || path === '/black-magic-in-kolkata') && <ServicesPage path={path} onBook={() => setBookingOpen(true)} />}
+        {(path.startsWith('/services') || path === '/horoscope-consultaion-in-kolkata' || path === '/kundali-matching-in-kolkata' || path === '/black-magic-in-kolkata' || path === '/numerologist-in-kolkata' || path === '/palm-reader-in-kolkata') && <ServicesPage path={path} onBook={() => setBookingOpen(true)} />}
         {path === '/contact' && <ContactPage />}
         {currentLocation && <LocationPage location={currentLocation.name} goTo={goTo} onBook={() => setBookingOpen(true)} />}
         {path === '/' && <><HomePage goTo={goTo} onBook={() => setBookingOpen(true)} /><WhyChooseUs /></>}
@@ -240,10 +247,13 @@ function ServicesPage({ path, onBook }) {
   const isHoroscopePage = path === '/horoscope-consultaion-in-kolkata' || path === '/services/horoscope'
   const isServicesOverview = path === '/services'
   const isNumerologistPage = selectedService?.slug === 'numerologist'
+  const isPalmReaderPage = selectedService?.slug === 'palmist'
   const pageTitle = isHoroscopePage
     ? 'Horoscope Consultation in Kolkata'
     : isNumerologistPage
       ? 'Numerologist in Kolkata'
+      : isPalmReaderPage
+        ? 'Best Palm Reader in Kolkata'
       : path === '/kundali-matching-in-kolkata'
         ? 'Kundali Matching in Kolkata'
         : path === '/black-magic-in-kolkata'
@@ -252,8 +262,9 @@ function ServicesPage({ path, onBook }) {
             ? 'Astrology Services in Kolkata'
             : selectedService?.label
 
-  return <PageIntro eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : isNumerologistPage ? 'Numerology guidance in Kolkata' : isServicesOverview ? 'Astrology services in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'} title={isHoroscopePage ? <>Horoscope Consultation in Kolkata</> : isNumerologistPage ? <>Numerologist in Kolkata<br /><em>for life clarity.</em></> : isServicesOverview ? <>Astrology Services in Kolkata<br /><em>for every life question.</em></> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}> 
+  return <PageIntro eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : isNumerologistPage ? 'Numerology guidance in Kolkata' : isPalmReaderPage ? 'Personalized palm reading in Kolkata' : isServicesOverview ? 'Astrology services in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'} title={isHoroscopePage ? <>Horoscope Consultation in Kolkata</> : isNumerologistPage ? <>Numerologist in Kolkata<br /><em>for life clarity.</em></> : isPalmReaderPage ? <>Best Palm Reader in Kolkata<br /><em>for a personal reading.</em></> : isServicesOverview ? <>Astrology Services in Kolkata<br /><em>for every life question.</em></> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}>
     {isNumerologistPage && <div className="service-intro-copy"><p>Looking for a <strong>numerologist in Kolkata</strong>? Astro Avishek Sastri offers personalized numerology guidance for life path numbers, destiny patterns, relationship questions, and decision-making support.</p><p>Each consultation is tailored to your name, birth details, and the questions you bring, helping you understand your strengths, timing, and the patterns shaping your journey.</p></div>}
+    {isPalmReaderPage && <div className="service-intro-copy"><p>Looking for the <strong>best palm reader in Kolkata</strong>? Astro Avishek Sastri offers personalized palm reading to discuss the major lines and features of your hand, and what traditional palmistry may suggest about your strengths, relationships, career, and life direction.</p><p>A palm reading consultation is shaped around your questions and personal circumstances. It offers a thoughtful perspective for reflection, not a guaranteed prediction of future events.</p></div>}
     {isServicesOverview && <div className="service-intro-copy"><p>Explore trusted <strong>astrology services in Kolkata</strong> for love, marriage, career, business, spiritual guidance, and personal growth.</p><p>Whether you need an astrologer, numerologist, palmist, horoscope consultation, or Kundali matching, every session is designed to offer clarity and practical direction.</p></div>}
     {isHoroscopePage && <HoroscopeConsultationContent onBook={onBook} />}
     {!isHoroscopePage && <div className="full-services-grid">{serviceCards.map((service, index) => <article className="service-card service-card-large" key={service.title}><span className="service-number">0{index + 1}</span><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><button className="line-button" onClick={onBook}>Book this reading <span>↗</span></button></article>)}</div>}
