@@ -9,6 +9,9 @@ const navItems = [
 ]
 
 const serviceMenuItems = [
+  { label: 'Astrologer', slug: 'astrologer' },
+  { label: 'Numerologist', slug: 'numerologist' },
+  { label: 'Palmist', slug: 'palmist' },
   { label: 'Horoscope', slug: 'horoscope' },
   { label: 'Kundali Matching', slug: 'kundali-matching' },
   { label: 'Get Love Back', slug: 'get-love-back' },
@@ -43,19 +46,24 @@ const locationPages = [
 ]
 
 const serviceCards = [
-  { icon: '☉', title: 'Birth Chart Reading', text: 'Understand the map of your soul, your gifts, and the cycles shaping your life.' },
-  { icon: '✧', title: 'Love & Partnership', text: 'Discover the patterns that bring you closer to the people who matter most.' },
-  { icon: '◌', title: 'Career & Purpose', text: 'Find clarity in your next chapter and make choices aligned with your real calling.' },
-  { icon: '☽', title: 'Inner Healing', text: 'A gentle space to meet old patterns with awareness, compassion, and direction.' },
+  { icon: '☉', title: 'Astrologer', text: 'Get personalized astrological guidance for life, love, career, and important decisions.' },
+  { icon: '✧', title: 'Numerologist', text: 'Explore life numbers, destiny patterns, and practical guidance for your future path.' },
+  { icon: '◌', title: 'Palmist', text: 'Understand your personality, strengths, and life direction through detailed palm reading.' },
+  { icon: '☽', title: 'Birth Chart Reading', text: 'Understand the map of your soul, your gifts, and the cycles shaping your life.' },
+  { icon: '♡', title: 'Love & Partnership', text: 'Discover the patterns that bring you closer to the people who matter most.' },
+  { icon: '◈', title: 'Career & Purpose', text: 'Find clarity in your next chapter and make choices aligned with your real calling.' },
 ]
 
 const homepageServices = [
-  { icon: '☉', title: 'Horoscope', slug: 'horoscope', text: 'Receive thoughtful guidance for the opportunities, patterns, and timing shaping your days.' },
-  { icon: '✧', title: 'Kundali Matching', slug: 'kundali-matching', text: 'Explore compatibility, shared strengths, and the foundations of a meaningful partnership.' },
-  { icon: '♡', title: 'Get Love Back', slug: 'get-love-back', text: 'Find a calm, respectful path through relationship questions, distance, and emotional uncertainty.' },
-  { icon: '◈', title: 'Black Magic', slug: 'black-magic', text: 'Understand difficult energy with a grounded consultation focused on clarity and protection.' },
-  { icon: '◌', title: 'Birth Chart', slug: 'birth-chart', text: 'Read the unique map of your personality, potential, purpose, and life cycles.' },
-  { icon: '☽', title: 'Mangal Dosh', slug: 'mangal-dosh', text: 'Explore traditional Mangal Dosh guidance with context, care, and practical perspective.' },
+  { icon: '☉', title: 'Astrologer', slug: 'astrologer', text: 'Receive personalized guidance on life decisions, relationships, and your path ahead.' },
+  { icon: '✧', title: 'Numerologist', slug: 'numerologist', text: 'Discover the meaning behind your numbers and how they shape your personal journey.' },
+  { icon: '◌', title: 'Palmist', slug: 'palmist', text: 'Understand your inner traits, tendencies, and future direction through palm analysis.' },
+  { icon: '♡', title: 'Horoscope', slug: 'horoscope', text: 'Receive thoughtful guidance for the opportunities, patterns, and timing shaping your days.' },
+  { icon: '◈', title: 'Kundali Matching', slug: 'kundali-matching', text: 'Explore compatibility, shared strengths, and the foundations of a meaningful partnership.' },
+  { icon: '✦', title: 'Get Love Back', slug: 'get-love-back', text: 'Find a calm, respectful path through relationship questions, distance, and emotional uncertainty.' },
+  { icon: '☽', title: 'Black Magic', slug: 'black-magic', text: 'Understand difficult energy with a grounded consultation focused on clarity and protection.' },
+  { icon: '☼', title: 'Birth Chart', slug: 'birth-chart', text: 'Read the unique map of your personality, potential, purpose, and life cycles.' },
+  { icon: '✧', title: 'Mangal Dosh', slug: 'mangal-dosh', text: 'Explore traditional Mangal Dosh guidance with context, care, and practical perspective.' },
 ]
 
 const testimonials = [
