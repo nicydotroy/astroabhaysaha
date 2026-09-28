@@ -95,3 +95,15 @@
 @media (max-width: 800px) { .mobile-nav > button { font-size: 13px; }.wordmark { font-size: 14px; }.wordmark-mark { width: 40px; height: 40px; font-size: 19px; } }
 @media (max-width: 470px) { .wordmark { font-size: 13px; }.wordmark-mark { width: 38px; height: 38px; font-size: 18px; } }
 
+.trusted-astrology-heading h2 { animation: astrologerReveal .7s ease both; }
+.trusted-astrology-years { transition: transform .25s ease, border-color .25s ease; }
+.trusted-astrology-years:hover { transform: translateY(-4px); border-color: rgba(236,214,150,.8); }
+.trusted-astrology-years-number { text-shadow: 0 0 18px rgba(236,214,150,.22); }
+.trusted-astrology-grid article { position: relative; overflow: hidden; background: linear-gradient(180deg, rgba(20,10,4,.35), transparent); transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease; }
+.trusted-astrology-grid article::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(236,214,150,.08), transparent 48%, rgba(210,127,20,.06)); opacity: 0; transition: opacity .28s ease; pointer-events: none; }
+.trusted-astrology-grid article:hover { transform: translateY(-7px); border-color: rgba(236,214,150,.45); box-shadow: 0 22px 38px rgba(0,0,0,.18); }
+.trusted-astrology-grid article:hover::before { opacity: 1; }
+.trusted-astrology-grid article > * { position: relative; z-index: 1; }
+@keyframes astrologerReveal { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .trusted-astrology-heading h2 { animation: none; }.trusted-astrology-years, .trusted-astrology-grid article, .trusted-astrology-grid article::before { transition: none; }.trusted-astrology-grid article:hover, .trusted-astrology-years:hover { transform: none; } }
+
