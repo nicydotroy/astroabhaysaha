@@ -69,7 +69,23 @@
 .floating-contact-actions { position: fixed; z-index: 8; inset: auto 0 28px; display: flex; justify-content: space-between; padding: 0 24px; pointer-events: none; }.floating-contact-button { display: inline-flex; align-items: center; justify-content: center; width: 58px; height: 58px; border: 1px solid var(--gold); border-radius: 50%; color: var(--black); background: var(--gold); box-shadow: 0 8px 24px rgba(0,0,0,.4); text-decoration: none; pointer-events: auto; transition: transform .2s ease, background .2s ease; }.floating-contact-button:hover { transform: translateY(-3px); background: var(--amber); border-color: var(--amber); }.contact-icon { display: inline-grid; place-items: center; width: 22px; height: 22px; font-size: 20px; line-height: 1; font-weight: 700; }.contact-call-icon { transform: rotate(-12deg); }.contact-whatsapp-icon { font-size: 22px; }.floating-call-button { order: 1; }.floating-whatsapp-button { order: 2; background: #b7d68a; border-color: #b7d68a; }.floating-whatsapp-button:hover { background: #9fc56a; border-color: #9fc56a; }
 @media (max-width: 470px) { .floating-contact-actions { bottom: 16px; padding: 0 12px; }.floating-contact-button { width: 50px; height: 50px; } }
 .service-areas-section { border-top: 1px solid var(--border); background: var(--brown); }.service-areas-section .center-heading { max-width: 620px; }.service-areas-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(192,163,119,.25); border-left: 1px solid rgba(192,163,119,.25); }.service-areas-grid button { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 20px; border: 0; border-right: 1px solid rgba(192,163,119,.25); border-bottom: 1px solid rgba(192,163,119,.25); background: transparent; color: var(--beige); text-align: left; font: 400 15px/1.35 'Playfair Display', serif; cursor: pointer; }.service-areas-grid button span { color: var(--amber); font: 18px 'DM Sans', sans-serif; }.service-areas-grid button:hover { color: var(--gold); background: rgba(126,62,41,.25); }.location-seo-copy { max-width: 760px; margin: 58px auto 0; }.location-seo-copy p { margin: 0 0 20px; }
-@media (max-width: 800px) { .service-areas-grid { grid-template-columns: 1fr 1fr; }.service-areas-grid button { min-height: 84px; padding: 16px 14px; font-size: 14px; } }
+
+.trusted-consultation-section { position: relative; overflow: hidden; }
+.trusted-consultation-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top right, rgba(210,127,20,.18), transparent 30%); pointer-events: none; }
+.trusted-consultation-copy { position: relative; z-index: 1; }
+.trusted-consultation-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 40px; }
+.trusted-consultation-card { position: relative; padding: 28px 24px 26px; background: linear-gradient(180deg, rgba(24,11,7,.88), rgba(10,7,5,.96)); border: 1px solid rgba(236,214,150,.18); box-shadow: inset 0 1px 0 rgba(236,214,150,.08), 0 18px 35px rgba(0,0,0,.18); transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease; }
+.trusted-consultation-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(236,214,150,.08), transparent 44%, rgba(210,127,20,.06)); opacity: 0; transition: opacity .28s ease; }
+.trusted-consultation-card:hover { transform: translateY(-8px); border-color: rgba(236,214,150,.38); box-shadow: inset 0 1px 0 rgba(236,214,150,.12), 0 26px 52px rgba(0,0,0,.28); }
+.trusted-consultation-card:hover::after { opacity: 1; }
+.trusted-card-tag { position: relative; z-index: 1; color: var(--amber); font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; }
+.trusted-consultation-card h3 { position: relative; z-index: 1; color: var(--gold); font: 400 24px/1.2 'Playfair Display', serif; margin: 22px 0 16px; }
+.trusted-consultation-card p, .trusted-consultation-card li { position: relative; z-index: 1; color: var(--beige); font-size: 14px; line-height: 1.8; }
+.trusted-consultation-card p + p { margin-top: 16px; }
+.trusted-consultation-card ul { position: relative; z-index: 1; margin: 16px 0; padding-left: 18px; }
+.trusted-consultation-card li + li { margin-top: 6px; }
+.trusted-consultation-card.featured { background: linear-gradient(180deg, rgba(45,23,12,.9), rgba(12,7,5,.98)); border-color: rgba(210,127,20,.38); }
+@media (max-width: 800px) { .service-areas-grid { grid-template-columns: 1fr 1fr; }.service-areas-grid button { min-height: 84px; padding: 16px 14px; font-size: 14px; } .trusted-consultation-grid { grid-template-columns: 1fr; } }
 @media (max-width: 470px) { .service-areas-grid { grid-template-columns: 1fr; } }
 .wordmark { font-size: 16px; }
 .desktop-nav button { font-size: 13px; }

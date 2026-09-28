@@ -264,36 +264,47 @@ function HomePage({ goTo, onBook, location = 'Kolkata' }) {
         <div className="services-grid services-grid-complete">{homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}</div>
         <button className="gold-button centered-button" onClick={() => goTo('/services')}>Explore all services <span>↗</span></button>
       </section>
-      <section className="local-seo-section section-pad">
+      <section className="local-seo-section section-pad trusted-consultation-section">
         <div className="local-seo-heading">
           <p className="eyebrow">Trusted guidance for important life questions</p>
           <h2>Trusted Astrology Consultation in Kolkata</h2>
         </div>
-        <div className="local-seo-content location-seo-copy">
+        <div className="local-seo-content location-seo-copy trusted-consultation-copy">
           <p>Choosing an astrologer is a personal decision, particularly when the consultation involves important questions about relationships, marriage, career or other areas of life. A trustworthy astrology consultation should clearly explain its approach, requirements and limitations rather than making unrealistic promises or guaranteed predictions.</p>
           <p>A consultation with <strong>Avishek Sastri</strong> is based on the individual's available birth details and the specific questions they wish to discuss. Depending on the service, the consultation may involve horoscope interpretation, birth-chart analysis, Kundali matching and other forms of astrological guidance.</p>
+        </div>
 
-          <h3>A Clear and Personalized Consultation Approach</h3>
-          <p>The consultation begins by understanding the purpose of the session and collecting the information required for the relevant astrological analysis. The applicable aspects of the horoscope are then interpreted according to the consultation type, with the observations explained in straightforward language.</p>
-          <p>This approach helps keep the discussion relevant to the individual instead of relying only on generalized horoscope statements.</p>
+        <div className="trusted-consultation-grid">
+          <article className="trusted-consultation-card">
+            <span className="trusted-card-tag">01 / Approach</span>
+            <h3>A Clear and Personalized Consultation Approach</h3>
+            <p>The consultation begins by understanding the purpose of the session and collecting the information required for the relevant astrological analysis. The applicable aspects of the horoscope are then interpreted according to the consultation type, with the observations explained in straightforward language.</p>
+            <p>This approach helps keep the discussion relevant to the individual instead of relying only on generalized horoscope statements.</p>
+          </article>
 
-          <h3>Focus on Individual Concerns</h3>
-          <p>Different people seek astrology consultation for different reasons. A session may involve questions related to:</p>
-          <ul>
-            <li>Marriage and relationship compatibility</li>
-            <li>Career and professional decisions</li>
-            <li>Love and personal relationships</li>
-            <li>Kundali matching</li>
-            <li>Business-related concerns</li>
-            <li>Horoscope interpretation</li>
-            <li>Birth-chart analysis</li>
-            <li>General life-related questions</li>
-          </ul>
-          <p>The consultation is intended to provide an astrological perspective that clients can consider alongside their own circumstances, judgment and decisions.</p>
+          <article className="trusted-consultation-card featured">
+            <span className="trusted-card-tag">02 / Focus</span>
+            <h3>Focus on Individual Concerns</h3>
+            <p>Different people seek astrology consultation for different reasons. A session may involve questions related to:</p>
+            <ul>
+              <li>Marriage and relationship compatibility</li>
+              <li>Career and professional decisions</li>
+              <li>Love and personal relationships</li>
+              <li>Kundali matching</li>
+              <li>Business-related concerns</li>
+              <li>Horoscope interpretation</li>
+              <li>Birth-chart analysis</li>
+              <li>General life-related questions</li>
+            </ul>
+            <p>The consultation is intended to provide an astrological perspective that clients can consider alongside their own circumstances, judgment and decisions.</p>
+          </article>
 
-          <h3>Transparent Astrology Guidance</h3>
-          <p>A responsible astrology consultation should distinguish traditional astrological interpretation from certainty about future events. Rather than promising specific outcomes, the focus is on explaining the relevant astrological factors and helping clients understand the interpretation associated with them.</p>
-          <p>For people searching for <strong>astrology consultation in Kolkata</strong>, this transparent and personalized approach can make it easier to understand what to expect before booking a session.</p>
+          <article className="trusted-consultation-card">
+            <span className="trusted-card-tag">03 / Transparency</span>
+            <h3>Transparent Astrology Guidance</h3>
+            <p>A responsible astrology consultation should distinguish traditional astrological interpretation from certainty about future events. Rather than promising specific outcomes, the focus is on explaining the relevant astrological factors and helping clients understand the interpretation associated with them.</p>
+            <p>For people searching for <strong>astrology consultation in Kolkata</strong>, this transparent and personalized approach can make it easier to understand what to expect before booking a session.</p>
+          </article>
         </div>
       </section>
       <Testimonials />
