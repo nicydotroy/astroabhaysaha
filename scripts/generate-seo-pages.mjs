@@ -67,6 +67,8 @@ function escapeAttribute(value) {
 
 function renderPage({ route, title, description }) {
   const canonical = `${domain}${route}`
+  const heading = title.split(' | ')[0]
+  const fallback = `<main><h1>${heading}</h1><p>${description}</p><p>Contact Avishek Sastri to book a personalized astrology consultation based on your birth details and questions.</p></main>`
   return source
     .replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
     .replace(/<meta name="description" content=".*?"\s*\/>/, `<meta name="description" content="${escapeAttribute(description)}" />`)
@@ -74,6 +76,11 @@ function renderPage({ route, title, description }) {
     .replace(/<meta property="og:title" content=".*?"\s*\/>/, `<meta property="og:title" content="${escapeAttribute(title)}" />`)
     .replace(/<meta property="og:description" content=".*?"\s*\/>/, `<meta property="og:description" content="${escapeAttribute(description)}" />`)
     .replace(/<meta property="og:url" content=".*?"\s*\/>/, `<meta property="og:url" content="${canonical}" />`)
+    .replace(/<meta name="twitter:title" content=".*?"\s*\/>/, `<meta name="twitter:title" content="${escapeAttribute(title)}" />`)
+    .replace(/<meta name="twitter:description" content=".*?"\s*\/>/, `<meta name="twitter:description" content="${escapeAttribute(description)}" />`)
+    .replace(/<noscript>[\s\S]*?<\/noscript>/, `<noscript>${fallback}</noscript>`)
+    .replace(/"@id":".*?#business"/, `"@id":"${canonical}#business"`)
+    .replace(/"url":".*?"/, `"url":"${canonical}"`)
 }
 
 for (const page of pages) {
