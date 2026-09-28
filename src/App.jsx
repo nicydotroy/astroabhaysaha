@@ -494,6 +494,7 @@ function HoroscopeConsultationContent({ goTo }) {
   return <div className="horoscope-content">
     <div className="center-heading horoscope-services-heading"><p className="eyebrow">Our astrology services</p><h2>Our <em>Services.</em></h2></div>
     <div className="services-grid services-grid-complete horoscope-services-grid">{homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}</div>
+    <HoroscopeAdditionalSections />
     <div className="horoscope-details">
       <div><p className="eyebrow">What to bring</p><h2>Prepare for a useful reading.</h2></div>
       <div><p>Share your date of birth, available birth time, and place of birth. It also helps to bring two or three clear questions, such as a career decision, relationship concern, marriage question, business choice, or financial planning issue. More accurate birth information can support a more detailed chart interpretation.</p><p>Astrology offers a traditional interpretive perspective, not a guarantee of future events. The goal is to explain the chart clearly and help you consider your choices with awareness.</p></div>
@@ -501,6 +502,62 @@ function HoroscopeConsultationContent({ goTo }) {
   </div>
 }
 function ContactPage() { return <PageIntro eyebrow="Begin the conversation" title={<>Let’s find the<br /><em>right direction.</em></>}><div className="contact-layout"><div className="contact-copy"><h2>A thoughtful reading starts with a thoughtful question.</h2><p>Share what is on your mind and Sree Avishek Sastri will help you understand the right next step. Consultations are available for career, relationships, marriage, business, education, and personal decisions.</p><div className="contact-details"><div><span>Email</span><a href="mailto:sreeavisheksastri95@gmail.com">sreeavisheksastri95@gmail.com</a></div><div><span>Location</span><p>Kolkata · West Bengal</p></div><div><span>Response time</span><p>Within 24 hours</p></div></div></div><form className="contact-form" onSubmit={(event) => event.preventDefault()}><label>Name<input required placeholder="Your name" /></label><label>Email<input required type="email" placeholder="you@example.com" /></label><label>What would you like to explore?<select defaultValue=""><option value="" disabled>Select a reading</option><option>Birth chart</option><option>Love & partnership</option><option>Career & purpose</option><option>Marriage & Kundli matching</option></select></label><label>Your question<textarea required rows="5" placeholder="Tell us a little about what you would like guidance on" /></label><button className="gold-button" type="submit">Send enquiry <span>↗</span></button></form></div></PageIntro> }
+function HoroscopeAdditionalSections() {
+  return <div className="horoscope-additional-guidance">
+    <article>
+      <span className="trusted-astrology-index">01 / PREPARATION</span>
+      <div><h2>What Information Is Needed for a Horoscope Reading?</h2>
+        <p>The information required depends on the type of consultation and the astrology method being followed. For a detailed birth chart analysis, astrologers commonly ask for:</p>
+        <p><strong>Date of birth:</strong> The day, month and year you were born.</p>
+        <p><strong>Time of birth:</strong> The recorded time of birth can be important when preparing a detailed birth chart.</p>
+        <p><strong>Place of birth:</strong> The city or location where you were born helps determine the astronomical calculations used in preparing the chart.</p>
+        <p>Providing accurate information can make the horoscope analysis more precise within the framework of the astrological system being used.</p>
+      </div>
+    </article>
+    <article>
+      <span className="trusted-astrology-index">02 / BIRTH CHARTS</span>
+      <div><h2>Birth Chart Analysis in Kolkata</h2>
+        <p>A birth chart represents the positions of relevant celestial bodies at the time and place of birth. In Vedic astrology, an astrologer may examine different houses, planetary placements, signs and other chart factors while interpreting the horoscope.</p>
+        <p>A <strong>birth chart consultation in Kolkata</strong> can therefore provide a more individualized discussion than a general daily or monthly horoscope.</p>
+        <p>The interpretation depends on the complete chart rather than one planetary position or a single zodiac sign. This is why a personal reading should consider the broader context of the horoscope.</p>
+      </div>
+    </article>
+    <article>
+      <span className="trusted-astrology-index">03 / CAREER</span>
+      <div><h2>Career Horoscope Consultation In Kolkata</h2>
+        <p>Career is one of the common reasons people seek an astrology consultation.</p>
+        <p>A career-focused horoscope reading may examine the astrological factors traditionally associated with profession, skills, responsibilities, opportunities and periods of change.</p>
+        <p>If you are considering a career change, a new professional direction or an important work-related decision, a horoscope consultation can provide an additional perspective through traditional astrology.</p>
+        <p>However, career decisions should also consider your education, experience, financial situation, skills, interests and professional opportunities.</p>
+      </div>
+    </article>
+    <article>
+      <span className="trusted-astrology-index">04 / RELATIONSHIPS</span>
+      <div><h2>Marriage and Relationship Horoscope Consultation Kolkata</h2>
+        <p>Relationships and marriage are another important area of horoscope consultation.</p>
+        <p>A relationship-focused reading may consider relevant aspects of the individual birth charts and discuss traditional astrological interpretations connected with relationships, marriage and compatibility.</p>
+        <p>For couples, a separate <strong>Kundali matching consultation</strong> may be more appropriate when the objective is to compare two birth charts.</p>
+        <p>Astrology can offer a traditional perspective, but relationship decisions are also influenced by communication, mutual understanding, values and individual circumstances.</p>
+      </div>
+    </article>
+    <article>
+      <span className="trusted-astrology-index">05 / BUSINESS</span>
+      <div><h2>Business Horoscope Consultation in Kolkata</h2>
+        <p>Business owners and professionals may seek horoscope consultation when considering an important professional decision.</p>
+        <p>A business-focused consultation can discuss the astrological factors traditionally associated with professional activity, decision-making and periods of change.</p>
+        <p>Astrology should not replace business planning, financial analysis, market research or professional advice. Instead, it can be considered an additional perspective for someone who personally values astrological guidance.</p>
+      </div>
+    </article>
+    <article>
+      <span className="trusted-astrology-index">06 / VEDIC ASTROLOGY</span>
+      <div><h2>Vedic Horoscope Consultation in Kolkata</h2>
+        <p>A <strong>Vedic horoscope consultation in Kolkata</strong> follows principles associated with the Vedic astrology tradition.</p>
+        <p>Depending on the consultation, an astrologer may consider planetary positions, houses, signs, dashas and other relevant factors when interpreting the birth chart.</p>
+        <p>The specific techniques used can differ between practitioners, so it is useful to ask the astrologer about their approach before booking a consultation.</p>
+      </div>
+    </article>
+  </div>
+}
 function PageIntro({ eyebrow, title, children, heroVisual, afterHero }) {
   const heading = <div className={`page-heading${heroVisual ? ' page-heading-with-visual' : ''}`}>{heroVisual ? <div className="page-heading-copy"><p className="eyebrow">{eyebrow}</p><h1>{title}</h1></div> : <><p className="eyebrow">{eyebrow}</p><h1>{title}</h1></>}{heroVisual}</div>
 
