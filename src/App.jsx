@@ -212,7 +212,7 @@ function App() {
         {currentLocation && <LocationPage location={currentLocation.name} goTo={goTo} onBook={() => setBookingOpen(true)} />}
         {path === '/' && <><HomePage goTo={goTo} onBook={() => setBookingOpen(true)} /><MeetYourAstrologer /></>}
       </main>
-      {path !== '/' && <MeetYourAstrologer />}
+      {path !== '/' && path !== '/horoscope-consultaion-in-kolkata' && path !== '/services/horoscope' && <MeetYourAstrologer />}
       {(path === '/numerologist-in-kolkata' || path.endsWith('/numerologist')) && <NumerologyConsultationProcess />}
       <FaqSection location={currentLocation?.name || 'Kolkata'} isNumerologistPage={path === '/numerologist-in-kolkata' || path.endsWith('/numerologist')} />
       {(path === '/' || currentLocation) && <ServiceAreasSection goTo={goTo} />}
@@ -376,6 +376,15 @@ function MeetYourAstrologer() {
     </div>
   </section>
 }
+function HoroscopeGuidanceSection() {
+  return <section className="horoscope-guidance-section section-pad" aria-labelledby="horoscope-guidance-title">
+    <div className="horoscope-guidance-heading"><p className="eyebrow">A birth-chart based perspective</p><h2 id="horoscope-guidance-title">Horoscope Consultation in Kolkata for <em>Personalized Guidance</em></h2></div>
+    <div className="horoscope-guidance-copy">
+      <p>A horoscope is more than a general prediction based on your zodiac sign. In traditional astrology, a horoscope is prepared using details such as your date, time and place of birth and is interpreted to understand the planetary positions and other factors associated with your birth chart.</p>
+      <p>If you are looking for <strong>horoscope consultation in Kolkata</strong>, a personalized consultation can help you understand your birth chart and discuss the areas of life that are important to you. Depending on your question, the consultation may cover relationships, marriage, career, business, personal decisions and other concerns.</p>
+    </div>
+  </section>
+}
 function NumerologyConsultationProcess() {
   const steps = [
     { title: '1. Share Your Details', text: 'You provide the information required for the chosen numerology method, such as your name and date of birth.' },
@@ -422,6 +431,7 @@ function ServicesPage({ path, goTo, onBook }) {
     eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : isNumerologistPage ? 'Numerology guidance in Kolkata' : isPalmReaderPage ? 'Personalized palm reading in Kolkata' : isServicesOverview ? 'Astrology services in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'}
     title={isHoroscopePage ? <>Horoscope Consultation<br /><em>in Kolkata.</em></> : isNumerologistPage ? <>Numerologist in Kolkata<br /><em>for life clarity.</em></> : isPalmReaderPage ? <>Best Palm Reader in Kolkata</> : isServicesOverview ? <>Astrology Services in Kolkata<br /><em>for every life question.</em></> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}
     heroVisual={isHoroscopePage ? <HoroscopeChartVisual /> : isNumerologistPage ? <NumerologyNumberStudy /> : isPalmReaderPage ? <PalmistryHeroVisual /> : null}
+    afterHero={isHoroscopePage ? <HoroscopeGuidanceSection /> : null}
   >
     {isNumerologistPage && <div className="service-intro-copy numerology-intro-feature">
       <div className="numerology-intro-heading"><span className="numerology-intro-index">01 / THE PRACTICE</span><h2>Best Numerologist<br /><em>in Kolkata.</em></h2></div>
@@ -432,7 +442,7 @@ function ServicesPage({ path, goTo, onBook }) {
     </div>}
     {isPalmReaderPage && <div className="service-intro-copy"><p>Looking for the <strong>best palm reader in Kolkata</strong>? Sree Avishek Sastri offers personalized palm reading to discuss the major lines and features of your hand, and what traditional palmistry may suggest about your strengths, relationships, career, and life direction.</p><p>A palm reading consultation is shaped around your questions and personal circumstances. It offers a thoughtful perspective for reflection, not a guaranteed prediction of future events.</p></div>}
     {isServicesOverview && <div className="service-intro-copy"><p>Explore trusted <strong>astrology services in Kolkata</strong> for love, marriage, career, business, spiritual guidance, and personal growth.</p><p>Whether you need an astrologer, numerologist, palmist, horoscope consultation, or Kundali matching, every session is designed to offer clarity and practical direction.</p></div>}
-    {isHoroscopePage && <HoroscopeConsultationContent onBook={onBook} goTo={goTo} />}
+    {isHoroscopePage && <HoroscopeConsultationContent goTo={goTo} />}
     {(isPalmReaderPage || isNumerologistPage) && (
       <>
         <div className="center-heading"><p className="eyebrow">Our astrology services</p><h2>Services<br /><em>we provide.</em></h2></div>
@@ -445,13 +455,8 @@ function ServicesPage({ path, goTo, onBook }) {
   </PageIntro>
 }
 
-function HoroscopeConsultationContent({ onBook, goTo }) {
+function HoroscopeConsultationContent({ goTo }) {
   return <div className="horoscope-content">
-    <div className="horoscope-introduction">
-      <p>Looking for a <strong>horoscope consultation in Kolkata</strong>? Sree Avishek Sastri offers trusted, personalized guidance based on your birth details and the questions you bring to the consultation. A horoscope reading can help you reflect on career, love, marriage, finance, and important life decisions with greater structure and clarity.</p>
-      <p>Each session is approached as a conversation rather than a generic prediction. Your date, time, and place of birth are considered alongside your present circumstances, so the discussion stays relevant to your real concerns.</p>
-      <button className="gold-button" onClick={onBook}>Book a horoscope consultation <span>↗</span></button>
-    </div>
     <div className="services-grid services-grid-complete horoscope-services-grid">{homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}</div>
     <div className="horoscope-details">
       <div><p className="eyebrow">What to bring</p><h2>Prepare for a useful reading.</h2></div>
@@ -460,7 +465,17 @@ function HoroscopeConsultationContent({ onBook, goTo }) {
   </div>
 }
 function ContactPage() { return <PageIntro eyebrow="Begin the conversation" title={<>Let’s find the<br /><em>right direction.</em></>}><div className="contact-layout"><div className="contact-copy"><h2>A thoughtful reading starts with a thoughtful question.</h2><p>Share what is on your mind and Sree Avishek Sastri will help you understand the right next step. Consultations are available for career, relationships, marriage, business, education, and personal decisions.</p><div className="contact-details"><div><span>Email</span><a href="mailto:sreeavisheksastri95@gmail.com">sreeavisheksastri95@gmail.com</a></div><div><span>Location</span><p>Kolkata · West Bengal</p></div><div><span>Response time</span><p>Within 24 hours</p></div></div></div><form className="contact-form" onSubmit={(event) => event.preventDefault()}><label>Name<input required placeholder="Your name" /></label><label>Email<input required type="email" placeholder="you@example.com" /></label><label>What would you like to explore?<select defaultValue=""><option value="" disabled>Select a reading</option><option>Birth chart</option><option>Love & partnership</option><option>Career & purpose</option><option>Marriage & Kundli matching</option></select></label><label>Your question<textarea required rows="5" placeholder="Tell us a little about what you would like guidance on" /></label><button className="gold-button" type="submit">Send enquiry <span>↗</span></button></form></div></PageIntro> }
-function PageIntro({ eyebrow, title, children, heroVisual }) { return <section className="page-intro section-pad"><div className={`page-heading${heroVisual ? ' page-heading-with-visual' : ''}`}>{heroVisual ? <div className="page-heading-copy"><p className="eyebrow">{eyebrow}</p><h1>{title}</h1></div> : <><p className="eyebrow">{eyebrow}</p><h1>{title}</h1></>}{heroVisual}</div>{children}</section> }
+function PageIntro({ eyebrow, title, children, heroVisual, afterHero }) {
+  const heading = <div className={`page-heading${heroVisual ? ' page-heading-with-visual' : ''}`}>{heroVisual ? <div className="page-heading-copy"><p className="eyebrow">{eyebrow}</p><h1>{title}</h1></div> : <><p className="eyebrow">{eyebrow}</p><h1>{title}</h1></>}{heroVisual}</div>
+
+  if (afterHero) return <>
+    <section className="page-intro page-intro-hero-only section-pad">{heading}</section>
+    {afterHero}
+    <section className="page-intro page-intro-content section-pad">{children}</section>
+  </>
+
+  return <section className="page-intro section-pad">{heading}{children}</section>
+}
 function NumerologyNumberStudy() {
   const numbers = Array.from({ length: 9 }, (_, index) => index + 1)
   return <div className="numerology-number-study" role="img" aria-label="Numerology number grid from one through nine">
