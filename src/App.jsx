@@ -432,7 +432,7 @@ function ServicesPage({ path, goTo, onBook }) {
     </div>}
     {isPalmReaderPage && <div className="service-intro-copy"><p>Looking for the <strong>best palm reader in Kolkata</strong>? Sree Avishek Sastri offers personalized palm reading to discuss the major lines and features of your hand, and what traditional palmistry may suggest about your strengths, relationships, career, and life direction.</p><p>A palm reading consultation is shaped around your questions and personal circumstances. It offers a thoughtful perspective for reflection, not a guaranteed prediction of future events.</p></div>}
     {isServicesOverview && <div className="service-intro-copy"><p>Explore trusted <strong>astrology services in Kolkata</strong> for love, marriage, career, business, spiritual guidance, and personal growth.</p><p>Whether you need an astrologer, numerologist, palmist, horoscope consultation, or Kundali matching, every session is designed to offer clarity and practical direction.</p></div>}
-    {isHoroscopePage && <HoroscopeConsultationContent onBook={onBook} />}
+    {isHoroscopePage && <HoroscopeConsultationContent onBook={onBook} goTo={goTo} />}
     {(isPalmReaderPage || isNumerologistPage) && (
       <>
         <div className="center-heading"><p className="eyebrow">Our astrology services</p><h2>Services<br /><em>we provide.</em></h2></div>
@@ -445,21 +445,14 @@ function ServicesPage({ path, goTo, onBook }) {
   </PageIntro>
 }
 
-function HoroscopeConsultationContent({ onBook }) {
-  const topics = [
-    { title: 'Career and work', text: 'Explore professional strengths, periods of change, work patterns, and questions about your next career step through a personalized horoscope reading.' },
-    { title: 'Love and relationships', text: 'Discuss relationship patterns, emotional needs, communication, and the questions that matter to you with context from your birth chart.' },
-    { title: 'Marriage and compatibility', text: 'Understand marriage-related questions through a careful reading of relevant horoscope factors, with space to discuss timing, expectations, and compatibility.' },
-    { title: 'Finance and business', text: 'Use your horoscope as one perspective when thinking about business choices, financial patterns, professional partnerships, and periods that need thoughtful planning.' },
-  ]
-
+function HoroscopeConsultationContent({ onBook, goTo }) {
   return <div className="horoscope-content">
     <div className="horoscope-introduction">
       <p>Looking for a <strong>horoscope consultation in Kolkata</strong>? Sree Avishek Sastri offers trusted, personalized guidance based on your birth details and the questions you bring to the consultation. A horoscope reading can help you reflect on career, love, marriage, finance, and important life decisions with greater structure and clarity.</p>
       <p>Each session is approached as a conversation rather than a generic prediction. Your date, time, and place of birth are considered alongside your present circumstances, so the discussion stays relevant to your real concerns.</p>
       <button className="gold-button" onClick={onBook}>Book a horoscope consultation <span>↗</span></button>
     </div>
-    <div className="horoscope-topic-grid">{topics.map((topic, index) => <article key={topic.title}><span>0{index + 1}</span><h2>{topic.title}</h2><p>{topic.text}</p></article>)}</div>
+    <div className="services-grid services-grid-complete horoscope-services-grid">{homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}</div>
     <div className="horoscope-details">
       <div><p className="eyebrow">What to bring</p><h2>Prepare for a useful reading.</h2></div>
       <div><p>Share your date of birth, available birth time, and place of birth. It also helps to bring two or three clear questions, such as a career decision, relationship concern, marriage question, business choice, or financial planning issue. More accurate birth information can support a more detailed chart interpretation.</p><p>Astrology offers a traditional interpretive perspective, not a guarantee of future events. The goal is to explain the chart clearly and help you consider your choices with awareness.</p></div>
