@@ -385,6 +385,41 @@ function HoroscopeGuidanceSection() {
     </div>
   </section>
 }
+function HoroscopeConsultationDetails() {
+  const discussionAreas = [
+    'Career and professional life',
+    'Marriage and relationships',
+    'Love and compatibility',
+    'Business and professional decisions',
+    'Personal development',
+    'Important life transitions',
+    'Birth chart interpretation',
+    'General horoscope-related questions',
+  ]
+
+  return <>
+    <section className="horoscope-info-section section-pad" aria-labelledby="horoscope-consultation-explainer">
+      <div className="horoscope-info-layout">
+        <div className="horoscope-info-heading"><p className="eyebrow">01 / THE BASICS</p><h2 id="horoscope-consultation-explainer">What Is a Horoscope Consultation?</h2></div>
+        <div className="horoscope-info-copy">
+          <p>A horoscope consultation is a personalized astrology session in which an astrologer examines relevant information from your birth chart and discusses its traditional astrological interpretation.</p>
+          <p>Unlike a general horoscope that is written for a large group of people based on a zodiac sign, a personal horoscope reading considers individual birth information. This allows the discussion to focus on the particular chart and questions of the person seeking the consultation.</p>
+          <p>The exact method of interpretation can vary according to the astrology tradition and approach followed by the astrologer.</p>
+        </div>
+      </div>
+    </section>
+    <section className="horoscope-questions-section section-pad" aria-labelledby="horoscope-individual-questions">
+      <div className="horoscope-info-layout">
+        <div className="horoscope-info-heading"><p className="eyebrow">02 / YOUR QUESTIONS</p><h2 id="horoscope-individual-questions">Horoscope Consultation in Kolkata for Your Individual Questions</h2></div>
+        <div className="horoscope-info-copy">
+          <p>People seek horoscope consultations for different reasons. You may want to understand your career direction, relationship concerns, marriage prospects, business circumstances or simply learn more about your birth chart.</p>
+          <p>During a consultation, you can discuss the specific questions that matter to you. The astrologer can then focus the interpretation on the relevant areas of your horoscope rather than providing a generalized reading.</p>
+        </div>
+      </div>
+      <div className="horoscope-discussion-areas"><p className="eyebrow">Common areas discussed</p><ul>{discussionAreas.map((area) => <li key={area}>{area}</li>)}</ul></div>
+    </section>
+  </>
+}
 function NumerologyConsultationProcess() {
   const steps = [
     { title: '1. Share Your Details', text: 'You provide the information required for the chosen numerology method, such as your name and date of birth.' },
@@ -431,7 +466,7 @@ function ServicesPage({ path, goTo, onBook }) {
     eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : isNumerologistPage ? 'Numerology guidance in Kolkata' : isPalmReaderPage ? 'Personalized palm reading in Kolkata' : isServicesOverview ? 'Astrology services in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'}
     title={isHoroscopePage ? <>Horoscope Consultation<br /><em>in Kolkata.</em></> : isNumerologistPage ? <>Numerologist in Kolkata<br /><em>for life clarity.</em></> : isPalmReaderPage ? <>Best Palm Reader in Kolkata</> : isServicesOverview ? <>Astrology Services in Kolkata<br /><em>for every life question.</em></> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}
     heroVisual={isHoroscopePage ? <HoroscopeChartVisual /> : isNumerologistPage ? <NumerologyNumberStudy /> : isPalmReaderPage ? <PalmistryHeroVisual /> : null}
-    afterHero={isHoroscopePage ? <HoroscopeGuidanceSection /> : null}
+    afterHero={isHoroscopePage ? <><HoroscopeGuidanceSection /><HoroscopeConsultationDetails /></> : null}
   >
     {isNumerologistPage && <div className="service-intro-copy numerology-intro-feature">
       <div className="numerology-intro-heading"><span className="numerology-intro-index">01 / THE PRACTICE</span><h2>Best Numerologist<br /><em>in Kolkata.</em></h2></div>
