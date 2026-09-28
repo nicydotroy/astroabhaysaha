@@ -261,7 +261,7 @@ function HomePage({ goTo, onBook, location = 'Kolkata' }) {
       </section>
       {isKolkataHome ? <LocalSeoSection onBook={onBook} /> : <LocationSeoSection location={location} onBook={onBook} />}
       <section className="services-section section-pad">
-        <div className="center-heading"><p className="eyebrow">Our astrology services</p><h2>Services<br /><em>we provide.</em></h2></div>
+        <div className="center-heading"><p className="eyebrow">Our astrology services</p><h2>{isNumerologistPage ? <>Our <em>Services.</em></> : <>Services<br /><em>we provide.</em></>}</h2></div>
         <div className="services-grid services-grid-complete">{homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}</div>
         <button className="gold-button centered-button" onClick={() => goTo('/services')}>Explore all services <span>↗</span></button>
       </section>
@@ -492,6 +492,7 @@ function ServicesPage({ path, goTo, onBook }) {
 
 function HoroscopeConsultationContent({ goTo }) {
   return <div className="horoscope-content">
+    <div className="center-heading horoscope-services-heading"><p className="eyebrow">Our astrology services</p><h2>Our <em>Services.</em></h2></div>
     <div className="services-grid services-grid-complete horoscope-services-grid">{homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}</div>
     <div className="horoscope-details">
       <div><p className="eyebrow">What to bring</p><h2>Prepare for a useful reading.</h2></div>
