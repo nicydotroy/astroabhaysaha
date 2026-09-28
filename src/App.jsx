@@ -420,8 +420,8 @@ function ServicesPage({ path, goTo, onBook }) {
 
   return <PageIntro
     eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : isNumerologistPage ? 'Numerology guidance in Kolkata' : isPalmReaderPage ? 'Personalized palm reading in Kolkata' : isServicesOverview ? 'Astrology services in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'}
-    title={isHoroscopePage ? <>Horoscope Consultation in Kolkata</> : isNumerologistPage ? <>Numerologist in Kolkata<br /><em>for life clarity.</em></> : isPalmReaderPage ? <>Best Palm Reader in Kolkata</> : isServicesOverview ? <>Astrology Services in Kolkata<br /><em>for every life question.</em></> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}
-    heroVisual={isNumerologistPage ? <NumerologyNumberStudy /> : isPalmReaderPage ? <PalmistryHeroVisual /> : null}
+    title={isHoroscopePage ? <>Horoscope Consultation<br /><em>in Kolkata.</em></> : isNumerologistPage ? <>Numerologist in Kolkata<br /><em>for life clarity.</em></> : isPalmReaderPage ? <>Best Palm Reader in Kolkata</> : isServicesOverview ? <>Astrology Services in Kolkata<br /><em>for every life question.</em></> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}
+    heroVisual={isHoroscopePage ? <HoroscopeChartVisual /> : isNumerologistPage ? <NumerologyNumberStudy /> : isPalmReaderPage ? <PalmistryHeroVisual /> : null}
   >
     {isNumerologistPage && <div className="service-intro-copy numerology-intro-feature">
       <div className="numerology-intro-heading"><span className="numerology-intro-index">01 / THE PRACTICE</span><h2>Best Numerologist<br /><em>in Kolkata.</em></h2></div>
@@ -475,6 +475,17 @@ function NumerologyNumberStudy() {
     <div className="numerology-number-grid">{numbers.map((number) => <span key={number}>{String(number).padStart(2, '0')}</span>)}</div>
     <div className="numerology-study-label numerology-study-footer"><span>NAME</span><span>DATE</span><span>PATTERN</span></div>
   </div>
+}
+function HoroscopeChartVisual() {
+  const zodiacSigns = ['♈', '♉', '♊', '♋', '♌', '♍', '♎', '♏', '♐', '♑', '♒', '♓']
+  return <figure className="horoscope-chart-visual" role="img" aria-label="Astrological birth chart wheel with the twelve zodiac signs">
+    <div className="horoscope-chart-meta"><span>BIRTH CHART</span><span>12 HOUSES</span></div>
+    <div className="horoscope-chart-wheel">
+      <div className="horoscope-chart-signs">{zodiacSigns.map((sign) => <span key={sign}>{sign}</span>)}</div>
+      <div className="horoscope-chart-center"><span>✦</span><strong>KUNDLI</strong></div>
+    </div>
+    <figcaption><span>DATE · TIME · PLACE</span><strong>A map of your sky.</strong></figcaption>
+  </figure>
 }
 function PalmistryHeroVisual() {
   return <figure className="palmistry-hero-visual">

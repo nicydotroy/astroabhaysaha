@@ -90,6 +90,35 @@
 @media (max-width: 800px) { .palmistry-hero-visual { width: min(100%, 300px); } }
 @media (max-width: 600px) { .palmistry-hero-visual { justify-self: start; width: min(100%, 320px); } }
 @media (prefers-reduced-motion: reduce) { .palmistry-hero-visual { animation: none; }.palmistry-hero-visual img { transition: none; }.palmistry-hero-visual:hover img { transform: none; } }
+.horoscope-chart-visual { width: min(100%, 360px); justify-self: end; margin: 0; padding: 18px 18px 16px; border: 1px solid rgba(192,163,119,.42); background: linear-gradient(145deg, rgba(20,10,4,.82), rgba(0,0,0,.65)); animation: reveal-up .8s .12s both; transition: border-color .3s ease, box-shadow .3s ease; }
+.horoscope-chart-visual:hover { border-color: rgba(236,214,150,.75); box-shadow: 0 20px 42px rgba(0,0,0,.3); }
+.horoscope-chart-meta { display: flex; justify-content: space-between; gap: 12px; color: var(--amber); font-size: 9px; letter-spacing: 1.8px; }
+.horoscope-chart-wheel { position: relative; width: 100%; aspect-ratio: 1; margin: 20px 0; overflow: hidden; border: 1px solid rgba(236,214,150,.55); border-radius: 50%; background: radial-gradient(circle, transparent 0 30%, rgba(236,214,150,.35) 30.3% 30.6%, transparent 30.9% 60%, rgba(236,214,150,.42) 60.3% 60.6%, transparent 60.9%), repeating-conic-gradient(from -15deg, rgba(192,163,119,.27) 0deg 1px, transparent 1px 30deg); }
+.horoscope-chart-wheel::before { content: ''; position: absolute; inset: 14%; border: 1px solid rgba(192,163,119,.45); border-radius: 50%; pointer-events: none; }
+.horoscope-chart-wheel::after { content: ''; position: absolute; inset: 39%; border: 1px solid rgba(210,127,20,.55); transform: rotate(45deg); pointer-events: none; }
+.horoscope-chart-signs { position: absolute; inset: 0; }
+.horoscope-chart-signs span { position: absolute; display: grid; width: 24px; height: 24px; place-items: center; color: var(--gold); font-size: 17px; line-height: 1; text-shadow: 0 0 10px rgba(236,214,150,.25); }
+.horoscope-chart-signs span:nth-child(1) { top: 3%; left: 50%; transform: translateX(-50%); }
+.horoscope-chart-signs span:nth-child(2) { top: 7%; right: 22%; }
+.horoscope-chart-signs span:nth-child(3) { top: 22%; right: 7%; }
+.horoscope-chart-signs span:nth-child(4) { top: 50%; right: 3%; transform: translateY(-50%); }
+.horoscope-chart-signs span:nth-child(5) { right: 7%; bottom: 22%; }
+.horoscope-chart-signs span:nth-child(6) { right: 22%; bottom: 7%; }
+.horoscope-chart-signs span:nth-child(7) { bottom: 3%; left: 50%; transform: translateX(-50%); }
+.horoscope-chart-signs span:nth-child(8) { bottom: 7%; left: 22%; }
+.horoscope-chart-signs span:nth-child(9) { bottom: 22%; left: 7%; }
+.horoscope-chart-signs span:nth-child(10) { top: 50%; left: 3%; transform: translateY(-50%); }
+.horoscope-chart-signs span:nth-child(11) { top: 22%; left: 7%; }
+.horoscope-chart-signs span:nth-child(12) { top: 7%; left: 22%; }
+.horoscope-chart-center { position: absolute; z-index: 1; inset: 50% auto auto 50%; display: grid; justify-items: center; gap: 3px; transform: translate(-50%, -50%); color: var(--gold); }
+.horoscope-chart-center span { font-size: 22px; line-height: 1; }
+.horoscope-chart-center strong { font-size: 8px; font-weight: 500; letter-spacing: 1.8px; }
+.horoscope-chart-visual figcaption { display: grid; gap: 8px; padding-top: 13px; border-top: 1px solid rgba(192,163,119,.22); }
+.horoscope-chart-visual figcaption span { color: var(--amber); font-size: 9px; letter-spacing: 1.6px; }
+.horoscope-chart-visual figcaption strong { color: var(--white); font: 400 21px/1.2 'Playfair Display',serif; }
+@media (max-width: 800px) { .horoscope-chart-visual { width: min(100%, 300px); } }
+@media (max-width: 600px) { .horoscope-chart-visual { justify-self: start; width: min(100%, 320px); } }
+@media (prefers-reduced-motion: reduce) { .horoscope-chart-visual { animation: none; transition: none; } }
 
 .numerology-intro-feature { max-width: 1180px; margin: 0 auto 90px; }
 .numerology-intro-heading { display: grid; grid-template-columns: minmax(145px, .48fr) 1.52fr; align-items: start; gap: 35px; padding-bottom: 30px; border-bottom: 1px solid rgba(192,163,119,.32); }
