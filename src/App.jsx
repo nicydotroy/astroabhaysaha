@@ -213,7 +213,8 @@ function App() {
         {path === '/' && <><HomePage goTo={goTo} onBook={() => setBookingOpen(true)} /><MeetYourAstrologer /></>}
       </main>
       {path !== '/' && <MeetYourAstrologer />}
-      <FaqSection location={currentLocation?.name || 'Kolkata'} />
+      {(path === '/numerologist-in-kolkata' || path.endsWith('/numerologist')) && <NumerologyConsultationProcess />}
+      <FaqSection location={currentLocation?.name || 'Kolkata'} isNumerologistPage={path === '/numerologist-in-kolkata' || path.endsWith('/numerologist')} />
       {(path === '/' || currentLocation) && <ServiceAreasSection goTo={goTo} />}
       <footer className="site-footer">
         <div className="footer-invitation"><p className="eyebrow">The conversation can begin anywhere</p><h2>Problem is yours<br /><em>solution is mine.</em></h2><button className="gold-button" onClick={() => setBookingOpen(true)}>Book a private reading <span>↗</span></button></div>
@@ -375,6 +376,26 @@ function MeetYourAstrologer() {
     </div>
   </section>
 }
+function NumerologyConsultationProcess() {
+  const steps = [
+    { title: '1. Share Your Details', text: 'You provide the information required for the chosen numerology method, such as your name and date of birth.' },
+    { title: '2. Explain Your Question', text: 'Tell the numerologist what you would like to understand. Your question could relate to your career, relationship, business, personal development or another area of life.' },
+    { title: '3. Numerical Analysis', text: 'The relevant numbers are calculated and interpreted according to the numerology system being used.' },
+    { title: '4. Discuss the Interpretation', text: 'The numerologist explains the meaning traditionally associated with the numbers and how those interpretations relate to your question.' },
+    { title: '5. Ask Questions', text: 'You can discuss anything that remains unclear and ask follow-up questions about the reading.' },
+  ]
+
+  return <section className="numerology-process-section section-pad" aria-labelledby="numerology-process-title">
+    <div className="numerology-process-heading">
+      <div><p className="eyebrow">A clear, personal process</p><h2 id="numerology-process-title">How a Numerology<br /><em>Consultation Works</em></h2></div>
+      <p>A professional numerology consultation can follow a simple and transparent process.</p>
+    </div>
+    <ol className="numerology-process-steps">
+      {steps.map((step, index) => <li key={step.title}><span className="numerology-process-number">0{index + 1}</span><h3>{step.title}</h3><p>{step.text}</p></li>)}
+    </ol>
+    <p className="numerology-process-close">This approach keeps the consultation focused on your individual circumstances rather than providing a generic number prediction.</p>
+  </section>
+}
 function LocalSeoSection({ onBook }) { return <section className="local-seo-section section-pad"><div className="local-seo-heading"><p className="eyebrow">Astrology guidance in the city of joy</p><h2>Best astrologer in Kolkata for your future</h2></div><div className="local-seo-main"><div className="local-seo-image" role="img" aria-label="Avishek Sastri astrologer photo"><img src={bestAstrologerInKolkata} alt="Best astrologer in Kolkata" /></div><div className="local-seo-content"><p>Finding the right astrologer can help you understand your birth chart, planetary influences, and important phases of life with greater clarity. If you are looking for the <strong>best astrologer in Kolkata</strong>, choose an astrology professional who takes time to understand your concerns and provides a personalized interpretation based on your birth details. Whether you need guidance about marriage, relationships, career, business, finances, or personal decisions, a detailed astrology consultation can provide a structured perspective.</p><p>An experienced <strong>astrologer in Kolkata</strong> can analyze your date, time, and place of birth to prepare and interpret your Kundli. Vedic astrology considers planetary positions, houses, zodiac signs, and other astrological factors to understand different areas of life. A consultation should focus on your individual chart rather than providing generic predictions.</p><button className="line-button" onClick={onBook}>Speak with Avishek <span>↗</span></button></div></div><div className="local-seo-faq"><article><h3>Online Astrology Consultation</h3><p>You do not always need to visit an astrologer's office for guidance. An <strong>online astrologer in Kolkata</strong> can provide consultations through phone calls, video consultations, or other online communication methods. Online sessions can be convenient for people with busy schedules or those living outside central Kolkata.</p><p>If you have searched for an <strong>astrologer near me</strong>, you can consider both local and online consultation options based on your requirements. A <strong>Kolkata astrologer</strong> offering online services can also connect with clients from different parts of the city and beyond.</p></article><article><h3>Personalized Astrology Guidance in Kolkata</h3><p>Many people search for a <strong>famous astrologer in Kolkata</strong> or a <strong>top astrologer in Kolkata</strong> when they want personalized guidance for important life questions. Similarly, those looking for a <strong>renowned astrologer in Kolkata</strong> often want someone with knowledge of traditional astrology and experience in interpreting different types of Kundli.</p><p>A <strong>professional astrologer in Kolkata</strong> can offer consultations for a range of concerns, including marriage compatibility, love and relationships, career growth, business decisions, financial planning, family matters, and future trends. The purpose of an astrology consultation is to help you understand the astrological factors connected with your questions and make decisions with greater awareness.</p></article></div></section> }
 function AboutPage({ goTo }) { return <PageIntro eyebrow="The person behind the chart" title={<>A quiet space for<br /><em>big questions.</em></>}><div className="about-layout"><div className="portrait-card portrait-large"><div className="portrait-image"><img src={bestAstrologerInKolkata} alt="Sree Avishek Sastri" /></div><div className="portrait-glow" /></div><div className="about-copy"><p>Hi, I’m Sree Avishek. I believe astrology is most powerful when it brings you back to yourself.</p><p>My work blends the depth of Vedic tradition with a warm, practical approach. Every reading is a conversation, not a performance. We look at what is happening, why it may be happening now, and what you can do with the clarity you find.</p><div className="signature">Sree Avishek <span>✦</span></div><button className="line-button" onClick={() => goTo('/services')}>See how we can work together <span>→</span></button></div></div></PageIntro> }
 function ServicesPage({ path, goTo, onBook }) {
@@ -400,7 +421,7 @@ function ServicesPage({ path, goTo, onBook }) {
   return <PageIntro
     eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : isNumerologistPage ? 'Numerology guidance in Kolkata' : isPalmReaderPage ? 'Personalized palm reading in Kolkata' : isServicesOverview ? 'Astrology services in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'}
     title={isHoroscopePage ? <>Horoscope Consultation in Kolkata</> : isNumerologistPage ? <>Numerologist in Kolkata<br /><em>for life clarity.</em></> : isPalmReaderPage ? <>Best Palm Reader in Kolkata</> : isServicesOverview ? <>Astrology Services in Kolkata<br /><em>for every life question.</em></> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}
-    heroVisual={isNumerologistPage ? <NumerologyNumberStudy /> : null}
+    heroVisual={isNumerologistPage ? <NumerologyNumberStudy /> : isPalmReaderPage ? <PalmistryHeroVisual /> : null}
   >
     {isNumerologistPage && <div className="service-intro-copy numerology-intro-feature">
       <div className="numerology-intro-heading"><span className="numerology-intro-index">01 / THE PRACTICE</span><h2>Best Numerologist<br /><em>in Kolkata.</em></h2></div>
@@ -455,6 +476,13 @@ function NumerologyNumberStudy() {
     <div className="numerology-study-label numerology-study-footer"><span>NAME</span><span>DATE</span><span>PATTERN</span></div>
   </div>
 }
+function PalmistryHeroVisual() {
+  return <figure className="palmistry-hero-visual">
+    <img src={bestAstrologerInKolkata} alt="Sree Avishek Sastri, palm reading consultant" />
+    <span className="palmistry-hero-index">PALMISTRY / 01</span>
+    <figcaption><span>PERSONALIZED PALM READING</span><strong>A closer look at your story.</strong></figcaption>
+  </figure>
+}
 function Testimonials() { return <section className="testimonials-section section-pad"><div className="section-grid"><div className="section-label">02 / In their own words</div><div className="testimonial-heading"><p className="eyebrow">Real stories, real shifts</p><h2>It starts with<br /><em>being seen.</em></h2></div></div><div className="testimonial-grid">{testimonials.map((item) => <article className="testimonial-card" key={item.name}><span className="quote-mark">“</span><p>{item.quote}</p><footer><b>{item.name}</b><span>{item.role}</span></footer></article>)}</div></section> }
 function CtaBand({ onBook }) { return <section className="cta-band section-pad"><div className="cta-stars">✦　·　✧　·　✦</div><p className="eyebrow">Your next chapter is already unfolding</p><h2>Get the Solution of<br /><em>Every Kind of problem</em></h2><button className="gold-button" onClick={onBook}>Book your private reading <span>↗</span></button></section> }
 
@@ -473,9 +501,25 @@ const faqItems = [
   { q: 'Why choose Sree Avishek Sastri as an astrologer in Kolkata?', a: 'Sree Avishek Sastri has 5 years of experience in astrology and focuses on personalized consultations based on individual concerns and birth details. His approach is intended to make astrological guidance understandable, relevant, and respectful of each client\'s personal circumstances.' },
 ]
 
-function FaqSection({ location = 'Kolkata' }) {
+const numerologyFaqItems = [
+  { q: 'What does a numerologist in Kolkata do?', a: "A numerologist interprets numbers associated with information such as a person's name and date of birth according to a particular numerology system. A consultation may cover personality, relationships, career, business or other areas depending on the client's questions." },
+  { q: 'What information is needed for a numerology consultation?', a: 'The information required depends on the numerology system and type of consultation. Name and date of birth are commonly used for many numerological calculations.' },
+  { q: 'What is name numerology?', a: "Name numerology involves assigning numerical values to the letters of a person's name and interpreting the resulting numbers according to a chosen numerology system." },
+  { q: 'Can numerology help with career decisions?', a: 'Numerology may provide a traditional interpretive perspective on career-related questions, but it should not replace practical career research, professional advice, skills assessment or informed decision-making.' },
+  { q: 'What is date of birth numerology?', a: "Date of birth numerology involves calculating numbers from a person's birth date and interpreting them according to the principles of the numerology system being used." },
+  { q: 'Can numerology be used for marriage compatibility?', a: 'Some numerology systems interpret numbers associated with two individuals to discuss compatibility. The interpretation should be treated as a perspective rather than a definitive prediction about a relationship.' },
+  { q: 'Can I consult a numerologist online?', a: 'Yes, if the numerologist provides online consultations. You should confirm the available consultation format and the information required before booking.' },
+  { q: 'How long does a numerology consultation take?', a: 'The duration depends on the type and depth of the consultation. A simple reading may require less time than a detailed consultation covering several areas.' },
+  { q: 'Is numerology the same as astrology?', a: 'No. Astrology primarily interprets celestial bodies and their positions, while numerology works with numbers and their traditional interpretations. They are different systems of divination.' },
+  { q: 'Can numerology predict my future exactly?', a: 'Numerology should not be presented as a method that can guarantee or precisely predict future events. It is better understood as a traditional interpretive practice that some people use for reflection and guidance.' },
+  { q: 'How do I choose a numerologist in Kolkata?', a: 'Look for a numerologist who clearly explains their methodology, experience and consultation process. Avoid providers making unrealistic guarantees or unsupported claims.' },
+  { q: 'How can I book a numerology consultation in Kolkata?', a: 'You can contact the numerologist through the available booking or contact options on their website and confirm the consultation format, requirements and appointment availability.' },
+]
+
+function FaqSection({ location = 'Kolkata', isNumerologistPage = false }) {
   const [openIndex, setOpenIndex] = useState(0)
-  const localizedFaqItems = faqItems.map((item) => ({ q: item.q.replaceAll('Kolkata', location), a: item.a.replaceAll('Kolkata', location) }))
+  const sourceFaqItems = isNumerologistPage ? numerologyFaqItems : faqItems
+  const localizedFaqItems = sourceFaqItems.map((item) => ({ q: item.q.replaceAll('Kolkata', location), a: item.a.replaceAll('Kolkata', location) }))
   const leftFaq = localizedFaqItems.slice(0, 6)
   const rightFaq = localizedFaqItems.slice(6)
 
@@ -496,7 +540,7 @@ function FaqSection({ location = 'Kolkata' }) {
     </article>
   })
 
-  return <section className="faq-section section-pad"><div className="faq-header"><p className="eyebrow">Frequently asked questions</p><h2>Astrology questions</h2></div><div className="faq-grid"><div className="faq-column">{renderColumn(leftFaq)}</div><div className="faq-column">{renderColumn(rightFaq)}</div></div></section>
+  return <section className="faq-section section-pad"><div className="faq-header"><p className="eyebrow">Frequently asked questions</p><h2>{isNumerologistPage ? 'Numerology questions' : 'Astrology questions'}</h2></div><div className="faq-grid"><div className="faq-column">{renderColumn(leftFaq)}</div><div className="faq-column">{renderColumn(rightFaq)}</div></div></section>
 }
 
 function BookingModal({ onClose }) { return <div className="modal-backdrop" onClick={onClose}><div className="booking-modal" onClick={(event) => event.stopPropagation()}><button className="modal-close" onClick={onClose}>×</button><p className="eyebrow">Begin the conversation</p><h2>Let’s find the<br /><em>right reading.</em></h2><p className="modal-copy">Leave your details and Avishek will be in touch within 24 hours.</p><form onSubmit={(event) => { event.preventDefault(); onClose(); }}><label>Name<input required placeholder="Your name" /></label><label>Email<input required type="email" placeholder="you@example.com" /></label><label>What would you like to explore?<select defaultValue=""><option value="" disabled>Select a reading</option><option>Birth chart</option><option>Love & partnership</option><option>Career & purpose</option></select></label><button className="gold-button" type="submit">Send enquiry <span>↗</span></button></form></div></div> }
