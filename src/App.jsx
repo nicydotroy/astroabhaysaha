@@ -214,6 +214,7 @@ function App() {
       </main>
       {path !== '/' && path !== '/horoscope-consultaion-in-kolkata' && path !== '/services/horoscope' && <MeetYourAstrologer />}
       {(path === '/numerologist-in-kolkata' || path.endsWith('/numerologist')) && <NumerologyConsultationProcess />}
+      {(path === '/horoscope-consultaion-in-kolkata' || path === '/services/horoscope') && <HoroscopeConsultationProcess />}
       <FaqSection location={currentLocation?.name || 'Kolkata'} isNumerologistPage={path === '/numerologist-in-kolkata' || path.endsWith('/numerologist')} />
       {(path === '/' || currentLocation) && <ServiceAreasSection goTo={goTo} />}
       <footer className="site-footer">
@@ -374,6 +375,26 @@ function MeetYourAstrologer() {
         </article>
       </div>
     </div>
+  </section>
+}
+function HoroscopeConsultationProcess() {
+  const steps = [
+    { title: 'Share Your Birth Details', text: 'You provide your date, time and place of birth along with any information required for the consultation.' },
+    { title: 'Explain Your Concern', text: 'You can explain the specific area you would like to discuss, such as career, marriage, relationships, business or another personal concern.' },
+    { title: 'Horoscope Analysis', text: 'The relevant portions of your birth chart are examined according to the astrology system and methods being followed.' },
+    { title: 'Discuss the Interpretation', text: 'The astrologer explains the relevant planetary and chart-related observations and how they are traditionally interpreted.' },
+    { title: 'Ask Questions', text: 'You can ask questions and clarify anything you would like to understand better about the reading.' },
+  ]
+
+  return <section className="numerology-process-section section-pad" aria-labelledby="horoscope-process-title">
+    <div className="numerology-process-heading">
+      <div><p className="eyebrow">A clear, personal process</p><h2 id="horoscope-process-title">How Horoscope<br /><em>Consultation Works</em></h2></div>
+      <p>A personalized horoscope consultation generally follows a straightforward process.</p>
+    </div>
+    <ol className="numerology-process-steps">
+      {steps.map((step, index) => <li key={step.title}><span className="numerology-process-number">0{index + 1}</span><h3>Step {index + 1}: {step.title}</h3><p>{step.text}</p></li>)}
+    </ol>
+    <p className="numerology-process-close">This process keeps the consultation focused on your actual concerns rather than relying on a generic horoscope.</p>
   </section>
 }
 function HoroscopeGuidanceSection() {
