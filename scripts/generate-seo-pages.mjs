@@ -89,4 +89,22 @@ for (const page of pages) {
   fs.writeFileSync(path.join(outputDirectory, 'index.html'), renderPage(page))
 }
 
-console.log(`Generated ${pages.length} static SEO pages.`)
+const sitemapRoutes = [...new Set([
+  '/',
+  '/about',
+  '/contact',
+  '/services',
+  ...pages.map(({ route }) => route),
+])]
+const sitemap = [
+  '<?xml version="1.0" encoding="UTF-8"?>',
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+  ...sitemapRoutes.map((route) => `  <url><loc>${domain}${route}</loc></url>`),
+  '</urlset>',
+  '',
+].join('\n')
+
+fs.writeFileSync(path.join(root, 'public', 'sitemap.xml'), sitemap)
+fs.writeFileSync(path.join(dist, 'sitemap.xml'), sitemap)
+
+console.log(`Generated ${pages.length} static SEO pages and a sitemap with ${sitemapRoutes.length} canonical URLs.`)
