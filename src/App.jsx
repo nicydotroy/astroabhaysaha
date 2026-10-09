@@ -158,7 +158,7 @@ function App() {
                 : isServicesPage
                   ? '/services'
                   : currentLocation ? `/astrologer-in-${locationPages.find((item) => item.name === location).slug}` : path === '/' ? '/' : path
-    const canonicalUrl = `https://astroabhaysaha.vercel.app${canonicalPath}`
+    const canonicalUrl = `https://www.avisheksastri.com${canonicalPath}`
     let canonicalTag = document.querySelector('link[rel="canonical"]')
     if (!canonicalTag) {
       canonicalTag = document.createElement('link')

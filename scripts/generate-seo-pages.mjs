@@ -4,7 +4,7 @@ import path from 'node:path'
 const root = process.cwd()
 const dist = path.join(root, 'dist')
 const source = fs.readFileSync(path.join(dist, 'index.html'), 'utf8')
-const domain = 'https://astroabhaysaha.vercel.app'
+const domain = 'https://www.avisheksastri.com'
 const locations = [
   ['salt-lake-city-bidhannagar', 'Salt Lake City (Bidhannagar)'],
   ['new-town', 'New Town'],
