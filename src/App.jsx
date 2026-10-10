@@ -121,7 +121,7 @@ function App() {
               ? 'Best Palm Reader in Kolkata | Palm Reading Consultation'
               : isServicesPage
                 ? 'Astrology Services in Kolkata | Astrologer, Numerologist & Palmist'
-                : location === 'Kolkata' ? 'Astrologer in Kolkata | Sree Avishek Sastri' : `Best Astrologer in ${location} | Sree Avishek Sastri`
+                : location === 'Kolkata' ? 'Best Astrologer in Kolkata | Sree Avishek Sastri' : `Best Astrologer in ${location} | Sree Avishek Sastri`
     const description = isKundaliPage
       ? 'Get accurate Kundali Matching in Kolkata for marriage compatibility, Guna Milan and horoscope analysis. Consult an experienced astrologer for personalized guidance.'
       : isBlackMagicPage
@@ -679,5 +679,4 @@ function FaqSection({ location = 'Kolkata', isNumerologistPage = false }) {
 function BookingModal({ onClose }) { return <div className="modal-backdrop" onClick={onClose}><div className="booking-modal" onClick={(event) => event.stopPropagation()}><button className="modal-close" onClick={onClose}>×</button><p className="eyebrow">Begin the conversation</p><h2>Let’s find the<br /><em>right reading.</em></h2><p className="modal-copy">Leave your details and Avishek will be in touch within 24 hours.</p><form onSubmit={(event) => { event.preventDefault(); onClose(); }}><label>Name<input required placeholder="Your name" /></label><label>Email<input required type="email" placeholder="you@example.com" /></label><label>What would you like to explore?<select defaultValue=""><option value="" disabled>Select a reading</option><option>Birth chart</option><option>Love & partnership</option><option>Career & purpose</option></select></label><button className="gold-button" type="submit">Send enquiry <span>↗</span></button></form></div></div> }
 
 export default App
-
 
