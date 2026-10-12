@@ -739,6 +739,63 @@ function FaqSection({ location = 'Kolkata', isNumerologistPage = false }) {
   return <section className="faq-section section-pad"><div className="faq-header"><p className="eyebrow">Frequently asked questions</p><h2>{isNumerologistPage ? 'Numerology questions' : 'Astrology questions'}</h2></div><div className="faq-grid"><div className="faq-column">{renderColumn(leftFaq)}</div><div className="faq-column">{renderColumn(rightFaq)}</div></div></section>
 }
 
-function BookingModal({ onClose }) { return <div className="modal-backdrop" onClick={onClose}><div className="booking-modal" onClick={(event) => event.stopPropagation()}><button className="modal-close" onClick={onClose}>×</button><p className="eyebrow">Begin the conversation</p><h2>Let’s find the<br /><em>right reading.</em></h2><p className="modal-copy">Leave your details and Avishek will be in touch within 24 hours.</p><form onSubmit={(event) => { event.preventDefault(); onClose(); }}><label>Name<input required placeholder="Your name" /></label><label>Email<input required type="email" placeholder="you@example.com" /></label><label>Mobile number<input required type="tel" inputMode="tel" autoComplete="tel" placeholder="Your mobile number" /></label><label>What would you like to explore?<select defaultValue=""><option value="" disabled>Select a reading</option><option>Birth chart</option><option>Love & partnership</option><option>Career & purpose</option></select></label><button className="gold-button" type="submit">Send enquiry <span>↗</span></button></form></div></div> }
+function BookingModal({ onClose }) {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submissionMessage, setSubmissionMessage] = useState('')
+
+  async function handleSubmit(event) {
+    event.preventDefault()
+    const accessKey = import.meta.env.VITE_WEB3FORMS_HOME_ACCESS_KEY
+
+    if (!accessKey) {
+      setSubmissionMessage('Enquiry delivery is not configured yet. Please try again later or email us directly.')
+      return
+    }
+
+    const form = event.currentTarget
+    const formData = new FormData(form)
+    formData.set('access_key', accessKey)
+    formData.set('subject', 'New home page booking enquiry')
+    setIsSubmitting(true)
+    setSubmissionMessage('')
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      })
+      const result = await response.json()
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || 'Web3Forms could not accept the enquiry.')
+      }
+
+      form.reset()
+      setSubmissionMessage('Thank you! Your enquiry has been sent. We will be in touch within 24 hours.')
+    } catch (error) {
+      console.error('Booking form submission failed:', error)
+      setSubmissionMessage('Sorry, your enquiry could not be sent. Please try again or email us directly.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  return <div className="modal-backdrop" onClick={onClose}>
+    <div className="booking-modal" onClick={(event) => event.stopPropagation()}>
+      <button className="modal-close" onClick={onClose}>×</button>
+      <p className="eyebrow">Begin the conversation</p>
+      <h2>Let’s find the<br /><em>right reading.</em></h2>
+      <p className="modal-copy">Leave your details and Avishek will be in touch within 24 hours.</p>
+      <form onSubmit={handleSubmit}>
+        <label>Name<input name="name" required placeholder="Your name" autoComplete="name" /></label>
+        <label>Email<input name="email" required type="email" placeholder="you@example.com" autoComplete="email" /></label>
+        <label>Mobile number<input name="phone" required type="tel" inputMode="tel" autoComplete="tel" placeholder="Your mobile number" /></label>
+        <label>What would you like to explore?<select name="reading" defaultValue=""><option value="" disabled>Select a reading</option><option>Birth chart</option><option>Love & partnership</option><option>Career & purpose</option></select></label>
+        <button className="gold-button" type="submit" disabled={isSubmitting}>{isSubmitting ? 'Sending…' : 'Send enquiry'} <span>↗</span></button>
+        {submissionMessage && <p className="booking-form-status" role="status" aria-live="polite">{submissionMessage}</p>}
+      </form>
+    </div>
+  </div>
+}
 
 export default App
