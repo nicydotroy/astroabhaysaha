@@ -23,6 +23,8 @@ const serviceMenuItems = [
 
 const servicePath = (service) => service.slug === 'numerologist' ? '/numerologist-in-kolkata' : service.slug === 'palmist' ? '/palm-reader-in-kolkata' : service.slug === 'kundali-matching' ? '/kundali-matching-in-kolkata' : service.slug === 'black-magic' ? '/black-magic-in-kolkata' : service.slug === 'horoscope' ? '/horoscope-consultaion-in-kolkata' : `/services/${service.slug}`
 
+const homeFormAccessKey = import.meta.env.VITE_WEB3FORMS_HOME_ACCESS_KEY || '29885bc0-7bbd-4fe1-a48e-7150dd1eb8f8'
+
 const locationPages = [
   { name: 'Salt Lake City (Bidhannagar)', slug: 'salt-lake-city-bidhannagar' },
   { name: 'New Town', slug: 'new-town' },
@@ -745,7 +747,7 @@ function BookingModal({ onClose }) {
 
   async function handleSubmit(event) {
     event.preventDefault()
-    const accessKey = import.meta.env.VITE_WEB3FORMS_HOME_ACCESS_KEY
+    const accessKey = homeFormAccessKey
 
     if (!accessKey) {
       setSubmissionMessage('Enquiry delivery is not configured yet. Please try again later or email us directly.')
