@@ -1,11 +1,12 @@
 # React + Vite
 
-## Contact form
+## Enquiry forms
 
-The Contact page sends enquiries through Web3Forms. For local development, set
-`VITE_WEB3FORMS_ACCESS_KEY` in `.env.local` (see `.env.example`). Add the same
-variable to the Vercel project environment for each deployment environment and
-redeploy. Vite exposes `VITE_` variables to the browser bundle, which is
+The Contact page and home page booking form send enquiries through Web3Forms.
+For local development, set `VITE_WEB3FORMS_ACCESS_KEY` and
+`VITE_WEB3FORMS_HOME_ACCESS_KEY` in `.env.local` (see `.env.example`). Add both
+variables to the Vercel project environment for each deployment environment
+and redeploy. Vite exposes `VITE_` variables to the browser bundle, which is
 expected for a Web3Forms access key; do not use this approach for private API
 secrets.
 
