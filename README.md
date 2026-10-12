@@ -3,12 +3,12 @@
 ## Enquiry forms
 
 The Contact page and home page booking form send enquiries through Web3Forms.
-For local development, set `VITE_WEB3FORMS_ACCESS_KEY` and
-`VITE_WEB3FORMS_HOME_ACCESS_KEY` in `.env.local` (see `.env.example`). Add both
-variables to the Vercel project environment for each deployment environment
-and redeploy. Vite exposes `VITE_` variables to the browser bundle, which is
-expected for a Web3Forms access key; do not use this approach for private API
-secrets.
+The home page has its Web3Forms public access key built in, so it works without
+a Vercel environment variable. The Contact page requires
+`VITE_WEB3FORMS_ACCESS_KEY` in `.env.local` (see `.env.example`) and in each
+Vercel deployment environment. Web3Forms access keys are intended for use in
+client-side forms and are visible in the browser; do not use this approach for
+private API secrets.
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
