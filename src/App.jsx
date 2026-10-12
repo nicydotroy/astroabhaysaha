@@ -522,7 +522,70 @@ function HoroscopeConsultationContent({ goTo }) {
     </div>
   </div>
 }
-function ContactPage() { return <PageIntro eyebrow="Begin the conversation" title={<>Let’s find the<br /><em>right direction.</em></>}><div className="contact-layout"><div className="contact-copy"><h2>A thoughtful reading starts with a thoughtful question.</h2><p>Share what is on your mind and Sree Avishek Sastri will help you understand the right next step. Consultations are available for career, relationships, marriage, business, education, and personal decisions.</p><div className="contact-details"><div><span>Email</span><a href="mailto:sreeavisheksastri95@gmail.com">sreeavisheksastri95@gmail.com</a></div><div><span>Location</span><p>Kolkata · West Bengal</p></div><div><span>Response time</span><p>Within 24 hours</p></div></div></div><form className="contact-form" onSubmit={(event) => event.preventDefault()}><label>Name<input required placeholder="Your name" /></label><label>Email<input required type="email" placeholder="you@example.com" /></label><label>Mobile number<input required type="tel" inputMode="tel" autoComplete="tel" placeholder="Your mobile number" /></label><label>What would you like to explore?<select defaultValue=""><option value="" disabled>Select a reading</option><option>Birth chart</option><option>Love & partnership</option><option>Career & purpose</option><option>Marriage & Kundli matching</option></select></label><label>Your question<textarea required rows="5" placeholder="Tell us a little about what you would like guidance on" /></label><button className="gold-button" type="submit">Send enquiry <span>↗</span></button></form></div></PageIntro> }
+function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submissionMessage, setSubmissionMessage] = useState('')
+
+  async function handleSubmit(event) {
+    event.preventDefault()
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
+
+    if (!accessKey) {
+      setSubmissionMessage('Enquiry delivery is not configured yet. Please try again later or email us directly.')
+      return
+    }
+
+    const form = event.currentTarget
+    const formData = new FormData(form)
+    formData.set('access_key', accessKey)
+    formData.set('subject', 'New contact form enquiry')
+    setIsSubmitting(true)
+    setSubmissionMessage('')
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      })
+      const result = await response.json()
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || 'Web3Forms could not accept the enquiry.')
+      }
+
+      form.reset()
+      setSubmissionMessage('Thank you! Your enquiry has been sent. We will be in touch within 24 hours.')
+    } catch (error) {
+      console.error('Contact form submission failed:', error)
+      setSubmissionMessage('Sorry, your enquiry could not be sent. Please try again or email us directly.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  return <PageIntro eyebrow="Begin the conversation" title={<>Let’s find the<br /><em>right direction.</em></>}>
+    <div className="contact-layout">
+      <div className="contact-copy">
+        <h2>A thoughtful reading starts with a thoughtful question.</h2>
+        <p>Share what is on your mind and Sree Avishek Sastri will help you understand the right next step. Consultations are available for career, relationships, marriage, business, education, and personal decisions.</p>
+        <div className="contact-details">
+          <div><span>Email</span><a href="mailto:sreeavisheksastri95@gmail.com">sreeavisheksastri95@gmail.com</a></div>
+          <div><span>Location</span><p>Kolkata · West Bengal</p></div>
+          <div><span>Response time</span><p>Within 24 hours</p></div>
+        </div>
+      </div>
+      <form className="contact-form" onSubmit={handleSubmit}>
+        <label>Name<input name="name" required placeholder="Your name" autoComplete="name" /></label>
+        <label>Email<input name="email" required type="email" placeholder="you@example.com" autoComplete="email" /></label>
+        <label>Mobile number<input name="phone" required type="tel" inputMode="tel" autoComplete="tel" placeholder="Your mobile number" /></label>
+        <label>What would you like to explore?<select name="reading" defaultValue=""><option value="" disabled>Select a reading</option><option>Birth chart</option><option>Love & partnership</option><option>Career & purpose</option><option>Marriage & Kundli matching</option></select></label>
+        <label>Your question<textarea name="message" required rows="5" placeholder="Tell us a little about what you would like guidance on" /></label>
+        <button className="gold-button" type="submit" disabled={isSubmitting}>{isSubmitting ? 'Sending…' : 'Send enquiry'} <span>↗</span></button>
+        {submissionMessage && <p className="contact-form-status" role="status" aria-live="polite">{submissionMessage}</p>}
+      </form>
+    </div>
+  </PageIntro>
+}
 function HoroscopeAdditionalSections() {
   return <div className="horoscope-additional-guidance">
     <article>
