@@ -1,5 +1,14 @@
 # React + Vite
 
+## Contact form
+
+The Contact page sends enquiries through Web3Forms. For local development, set
+`VITE_WEB3FORMS_ACCESS_KEY` in `.env.local` (see `.env.example`). Add the same
+variable to the Vercel project environment for each deployment environment and
+redeploy. Vite exposes `VITE_` variables to the browser bundle, which is
+expected for a Web3Forms access key; do not use this approach for private API
+secrets.
+
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
 Currently, two official plugins are available:
