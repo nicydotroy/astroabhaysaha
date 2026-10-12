@@ -118,7 +118,7 @@ function App() {
           : isNumerologistPage
             ? 'Numerologist in Kolkata | Personalized Numerology Consultation'
             : isPalmReaderPage
-              ? 'Best Palm Reader in Kolkata | Palm Reading Consultation'
+              ? 'Best palm reader in Kolkata | Avishek Sastri'
               : isServicesPage
                 ? 'Astrology Services in Kolkata | Astrologer, Numerologist & Palmist'
                 : location === 'Kolkata' ? 'Best Astrologer in Kolkata | Sree Avishek Sastri' : `Best Astrologer in ${location} | Sree Avishek Sastri`
