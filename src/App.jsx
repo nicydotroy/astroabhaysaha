@@ -217,7 +217,7 @@ function App() {
       {path !== '/' && path !== '/horoscope-consultaion-in-kolkata' && path !== '/services/horoscope' && <MeetYourAstrologer />}
       {(path === '/numerologist-in-kolkata' || path.endsWith('/numerologist')) && <NumerologyConsultationProcess />}
       {(path === '/horoscope-consultaion-in-kolkata' || path === '/services/horoscope') && <HoroscopeConsultationProcess />}
-      <FaqSection location={currentLocation?.name || 'Kolkata'} isNumerologistPage={path === '/numerologist-in-kolkata' || path.endsWith('/numerologist')} />
+      <FaqSection location={currentLocation?.name || 'Kolkata'} isNumerologistPage={path === '/numerologist-in-kolkata' || path.endsWith('/numerologist')} isHomePage={path === '/'} isPalmReaderPage={path === '/palm-reader-in-kolkata' || path.endsWith('/palmist')} />
       {(path === '/' || currentLocation) && <ServiceAreasSection goTo={goTo} />}
       <footer className="site-footer">
         <div className="footer-invitation"><p className="eyebrow">The conversation can begin anywhere</p><h2>Problem is yours<br /><em>solution is mine.</em></h2><button className="gold-button" onClick={() => setBookingOpen(true)}>Book a private reading <span>↗</span></button></div>
@@ -699,6 +699,36 @@ const faqItems = [
   { q: 'Why choose Sree Avishek Sastri as an astrologer in Kolkata?', a: 'Sree Avishek Sastri has 5 years of experience in astrology and focuses on personalized consultations based on individual concerns and birth details. His approach is intended to make astrological guidance understandable, relevant, and respectful of each client\'s personal circumstances.' },
 ]
 
+const homeFaqItems = [
+  { q: 'Who is the best astrologer in Kolkata?', a: 'Choosing the best astrologer in Kolkata depends on the astrologer\'s experience, consultation approach, areas of expertise and transparency. Avishek Sastri offers astrology-related consultation for individuals seeking personalised guidance. Visitors can explore his professional background and available services before booking an appointment.' },
+  { q: 'How can I find a reliable astrologer in Kolkata?', a: 'To find a reliable astrologer in Kolkata, review their professional background, experience, consultation process, service details and genuine client feedback where available. Choose an astrologer who explains their approach clearly, communicates transparently about fees and avoids guaranteeing specific outcomes.' },
+  { q: 'Where can I get astrology consultation in Kolkata?', a: 'You can explore astrology consultation services in Kolkata through an astrologer\'s official website and published contact details. Visit Avishek Sastri\'s website to learn about available services, understand the consultation process and enquire about appointment availability.' },
+  { q: 'Which astrologer in Kolkata offers personal consultation?', a: 'If you are looking for personal astrology consultation in Kolkata, compare astrologers based on their experience, consultation methods and availability. You can contact Avishek Sastri to enquire about his consultation services, appointment options and the process for discussing your individual questions.' },
+  { q: 'How much does an astrologer charge in Kolkata?', a: 'Astrology consultation fees in Kolkata can vary depending on the astrologer\'s experience, the type of service and the duration of the session. For accurate pricing, contact Avishek Sastri directly to confirm the current consultation fee, available services and appointment details.' },
+  { q: 'How can I book an appointment with Avishek Sastri?', a: 'To book an appointment with Avishek Sastri, visit his official website and use the available contact or booking options. Enquire about the consultation service you need, confirm the applicable fee and appointment availability, and follow the instructions provided to complete your booking.' },
+  { q: 'What information is required for Kundli analysis?', a: 'Kundli analysis generally requires your date of birth, exact or approximate birth time, and birthplace. Accurate birth details help prepare the birth chart for traditional astrological interpretation. If you are unsure about your birth time, ask the astrologer how that may affect the consultation.' },
+  { q: 'Can I consult an astrologer online in Kolkata?', a: 'Online astrology consultation may be available depending on the astrologer\'s services and appointment arrangements. Contact Avishek Sastri to confirm whether online sessions are offered, which communication method is used and what information you need to provide before the consultation.' },
+  { q: 'Which astrologer in Kolkata offers numerology consultation?', a: 'If you are looking for numerology consultation in Kolkata, review the services and professional background of available practitioners. You can visit Avishek Sastri\'s website or contact him to confirm whether numerology consultation is available and learn about its process, requirements and fees.' },
+  { q: 'What should I consider before choosing an astrologer in Kolkata?', a: 'Before choosing an astrologer in Kolkata, consider their relevant experience, consultation approach, service details, fee transparency and genuine client reviews. Check whether the astrologer explains interpretations clearly and sets realistic expectations rather than promising guaranteed results.' },
+  { q: 'How can I book an appointment with an astrologer in Kolkata?', a: 'You can usually enquire about an appointment through an astrologer\'s official website, published phone number or booking form. Before confirming, ask about the consultation type, fees, available timings and whether the appointment will take place online or in person.' },
+  { q: 'How do I choose a reliable astrologer in Kolkata?', a: 'Choose a reliable astrologer in Kolkata by checking their verifiable professional background, relevant experience, communication style and consultation process. Review available client feedback carefully, confirm fees in advance and select someone who respects your privacy and explains the limitations of astrological interpretations.' },
+]
+
+const palmReaderFaqItems = [
+  { q: 'Who is the best palm reader in Kolkata?', a: 'Choosing the best palm reader in Kolkata depends on their experience, approach to palmistry, consultation process and transparency. Before booking a session with Avishek Sastri, explore his professional background and confirm whether palmistry consultation is among his available services.' },
+  { q: 'How can I find a reliable palm reader in Kolkata?', a: 'To find a reliable palm reader in Kolkata, check their professional background, experience, consultation details and genuine client reviews where available. Choose someone who explains palmistry clearly, communicates fees in advance and avoids promising guaranteed predictions about your future.' },
+  { q: 'Where can I get palm reading in Kolkata?', a: 'You can explore palm reading services in Kolkata through an astrologer\'s official website or published contact details. Visit Avishek Sastri\'s website to learn about his available consultation services and contact him to confirm whether in-person or online palmistry sessions are offered.' },
+  { q: 'How does palm reading work?', a: 'Palm reading, also known as palmistry or chiromancy, involves interpreting features of the hand, including major lines, palm shape and finger patterns. Practitioners use traditional palmistry systems to assign meanings to these features. These interpretations are not scientifically established methods for predicting future events.' },
+  { q: 'How much does a palm reader charge in Kolkata?', a: 'Palm reading fees in Kolkata can vary according to the practitioner\'s experience, session duration and consultation format. Contact the palm reader directly to confirm the current price, available services and appointment details before booking.' },
+  { q: 'What can a palm reader tell you about your hand?', a: 'A palm reader traditionally interprets the major lines, palm shape, fingers and other hand features to discuss themes such as personality, relationships and career. Interpretations vary between palmistry traditions and should be treated as traditional beliefs rather than scientifically verified conclusions.' },
+  { q: 'Can I consult a palm reader online in Kolkata?', a: 'Online palm reading may be possible through a video consultation or clear photographs of the palm, depending on the practitioner\'s method. Contact Avishek Sastri to confirm whether online palmistry sessions are available and what information or images are required.' },
+  { q: 'What do the major palm lines mean?', a: 'In traditional palmistry, the heart line is associated with emotions and relationships, the head line with thinking and decision-making, and the life line with vitality and life patterns. The fate line is often associated with career and life direction. These meanings belong to palmistry traditions and are not scientifically proven indicators of a person\'s future or lifespan.' },
+  { q: 'How can I book a palm reading session in Kolkata?', a: 'To book a palm reading session in Kolkata, visit the practitioner\'s official website or use their published contact details. Ask whether palmistry consultations are available, confirm the session format and fee, and follow the booking instructions provided.' },
+  { q: 'Which hand is read during palmistry?', a: 'Palmistry traditions differ in how they interpret the hands. Some practitioners examine both hands, using one to discuss inherited or traditional characteristics and the other to interpret present patterns or life experiences. The method depends on the practitioner\'s tradition, and there is no scientifically validated rule for predicting life outcomes from either hand.' },
+  { q: 'What is the difference between palmistry and astrology?', a: 'Palmistry interprets features of the hands, such as palm lines, shapes and fingers. Astrology interprets celestial positions and their traditional relationship to human life, often using birth details and a horoscope. Both are traditional interpretive practices, but they use different methods and are not scientifically established ways to predict individual outcomes.' },
+  { q: 'Can a palm reader in Kolkata provide personal consultation?', a: 'Many palmistry practitioners offer individual sessions in which clients can ask questions about traditional hand interpretations. The availability of personal consultation depends on the practitioner. Contact Avishek Sastri to confirm whether he offers palm reading sessions, the consultation format and appointment availability.' },
+]
+
 const numerologyFaqItems = [
   { q: 'What does a numerologist in Kolkata do?', a: "A numerologist interprets numbers associated with information such as a person's name and date of birth according to a particular numerology system. A consultation may cover personality, relationships, career, business or other areas depending on the client's questions." },
   { q: 'What information is needed for a numerology consultation?', a: 'The information required depends on the numerology system and type of consultation. Name and date of birth are commonly used for many numerological calculations.' },
@@ -714,9 +744,9 @@ const numerologyFaqItems = [
   { q: 'How can I book a numerology consultation in Kolkata?', a: 'You can contact the numerologist through the available booking or contact options on their website and confirm the consultation format, requirements and appointment availability.' },
 ]
 
-function FaqSection({ location = 'Kolkata', isNumerologistPage = false }) {
+function FaqSection({ location = 'Kolkata', isNumerologistPage = false, isHomePage = false, isPalmReaderPage = false }) {
   const [openIndex, setOpenIndex] = useState(0)
-  const sourceFaqItems = isNumerologistPage ? numerologyFaqItems : faqItems
+  const sourceFaqItems = isHomePage ? homeFaqItems : isPalmReaderPage ? palmReaderFaqItems : isNumerologistPage ? numerologyFaqItems : faqItems
   const localizedFaqItems = sourceFaqItems.map((item) => ({ q: item.q.replaceAll('Kolkata', location), a: item.a.replaceAll('Kolkata', location) }))
   const leftFaq = localizedFaqItems.slice(0, 6)
   const rightFaq = localizedFaqItems.slice(6)
@@ -738,7 +768,7 @@ function FaqSection({ location = 'Kolkata', isNumerologistPage = false }) {
     </article>
   })
 
-  return <section className="faq-section section-pad"><div className="faq-header"><p className="eyebrow">Frequently asked questions</p><h2>{isNumerologistPage ? 'Numerology questions' : 'Astrology questions'}</h2></div><div className="faq-grid"><div className="faq-column">{renderColumn(leftFaq)}</div><div className="faq-column">{renderColumn(rightFaq)}</div></div></section>
+  return <section className="faq-section section-pad"><div className="faq-header"><p className="eyebrow">Frequently asked questions</p><h2>{isNumerologistPage ? 'Numerology questions' : isPalmReaderPage ? 'Palm reading questions' : 'Astrology questions'}</h2></div><div className="faq-grid"><div className="faq-column">{renderColumn(leftFaq)}</div><div className="faq-column">{renderColumn(rightFaq)}</div></div></section>
 }
 
 function BookingModal({ onClose }) {
