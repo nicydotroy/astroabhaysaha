@@ -123,7 +123,7 @@ function App() {
               ? 'Best palm reader in Kolkata | Avishek Sastri'
               : isServicesPage
                 ? 'Astrology Services in Kolkata | Astrologer, Numerologist & Palmist'
-                : location === 'Kolkata' ? 'Best Astrologer in Kolkata | Sree Avishek Sastri' : `Best Astrologer in ${location} | Sree Avishek Sastri`
+                : location === 'Kolkata' ? 'Best Astrologer in Kolkata | Avishek Sastri' : `Best Astrologer in ${location} | Sree Avishek Sastri`
     const description = isKundaliPage
       ? 'Get accurate Kundali Matching in Kolkata for marriage compatibility, Guna Milan and horoscope analysis. Consult an experienced astrologer for personalized guidance.'
       : isBlackMagicPage
@@ -137,7 +137,7 @@ function App() {
             : isServicesPage
               ? 'Explore trusted astrology services in Kolkata including astrologer, numerologist, palmist, horoscope consultation, Kundali matching and spiritual guidance services.'
               : location === 'Kolkata'
-                ? 'Looking for an astrologer in Kolkata? Sree Avishek Sastri offers personalized Vedic astrology, Kundli, marriage, career and relationship guidance.'
+                ? 'Discover personalized astrology guidance with Avishek Sastri, a best astrologer in Kolkata. Get insights into love, career, marriage and life\'s challenges. Book your consultation today!'
                 : `Find the best astrologer in ${location} for personalized Kundli, marriage, career and relationship guidance. Book an astrology consultation with an experienced astrologer.`
     document.title = title
     let descriptionTag = document.querySelector('meta[name="description"]')
