@@ -489,7 +489,7 @@ function ServicesPage({ path, goTo, onBook }) {
   return <PageIntro
     eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : isNumerologistPage ? 'Numerology guidance in Kolkata' : isPalmReaderPage ? 'Personalized palm reading in Kolkata' : isKundaliPage ? 'Kundali matching specialist in Kolkata' : isServicesOverview ? 'Astrology services in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'}
     title={isHoroscopePage ? <>Horoscope Consultation<br /><em>in Kolkata.</em></> : isNumerologistPage ? <>Numerologist in Kolkata<br /><em>for life clarity.</em></> : isPalmReaderPage ? <>Best Palm Reader in Kolkata</> : isKundaliPage ? <>Kundali Matching specialist in Kolkata</> : isServicesOverview ? <>Astrology Services in Kolkata<br /><em>for every life question.</em></> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}
-    heroVisual={isHoroscopePage ? <HoroscopeChartVisual /> : isNumerologistPage ? <NumerologyNumberStudy /> : isPalmReaderPage ? <PalmistryHeroVisual /> : null}
+    heroVisual={isHoroscopePage ? <HoroscopeChartVisual /> : isNumerologistPage ? <NumerologyNumberStudy /> : isPalmReaderPage ? <PalmistryHeroVisual /> : isKundaliPage ? <KundaliHeroVisual /> : null}
     afterHero={isHoroscopePage ? <><HoroscopeGuidanceSection /><HoroscopeConsultationDetails /></> : null}
   >
     {isNumerologistPage && <div className="service-intro-copy numerology-intro-feature">
@@ -680,6 +680,35 @@ function PalmistryHeroVisual() {
     <img src={bestAstrologerInKolkata} alt="Sree Avishek Sastri, palm reading consultant" />
     <span className="palmistry-hero-index">PALMISTRY / 01</span>
     <figcaption><span>PERSONALIZED PALM READING</span><strong>A closer look at your story.</strong></figcaption>
+  </figure>
+}
+function KundaliHeroVisual() {
+  return <figure className="kundali-hero-visual" role="img" aria-label="Kundali matching compatibility panel for marriage guidance">
+    <div className="kundali-hero-card">
+      <div className="kundali-hero-head">
+        <span>Matching</span>
+        <strong>Guna / 36</strong>
+      </div>
+      <div className="kundali-hero-ring">
+        <div className="kundali-hero-person kundali-hero-person-left">
+          <span>☉</span>
+          <small>BRIDE</small>
+        </div>
+        <div className="kundali-hero-center">
+          <strong>86%</strong>
+          <em>Match</em>
+        </div>
+        <div className="kundali-hero-person kundali-hero-person-right">
+          <span>☾</span>
+          <small>GROOM</small>
+        </div>
+      </div>
+      <div className="kundali-hero-metrics">
+        <div><span>Vedic</span><b>Compatibility</b></div>
+        <div><span>Marriage</span><b>Readiness</b></div>
+      </div>
+    </div>
+    <figcaption><span>PERSONALIZED MATCHING</span><strong>Understand harmony before marriage.</strong></figcaption>
   </figure>
 }
 function Testimonials() { return <section className="testimonials-section section-pad"><div className="section-grid"><div className="section-label">02 / In their own words</div><div className="testimonial-heading"><p className="eyebrow">Real stories, real shifts</p><h2>It starts with<br /><em>being seen.</em></h2></div></div><div className="testimonial-grid">{testimonials.map((item) => <article className="testimonial-card" key={item.name}><span className="quote-mark">“</span><p>{item.quote}</p><footer><b>{item.name}</b><span>{item.role}</span></footer></article>)}</div></section> }
