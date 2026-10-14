@@ -123,7 +123,7 @@ function App() {
               ? 'Best palm reader in Kolkata | Avishek Sastri'
               : isServicesPage
                 ? 'Astrology Services in Kolkata | Astrologer, Numerologist & Palmist'
-                : location === 'Kolkata' ? 'Best Astrologer in Kolkata | Avishek Sastri' : `Best Astrologer in ${location} | Sree Avishek Sastri`
+                : location === 'Kolkata' ? 'Best Astrologer in Kolkata | Book Your Consultation' : `Best Astrologer in ${location} | Sree Avishek Sastri`
     const description = isKundaliPage
       ? 'Get accurate Kundali Matching in Kolkata for marriage compatibility, Guna Milan and horoscope analysis. Consult an experienced astrologer for personalized guidance.'
       : isBlackMagicPage
