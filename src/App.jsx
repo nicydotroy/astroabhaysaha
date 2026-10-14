@@ -492,6 +492,16 @@ function ServicesPage({ path, goTo, onBook }) {
     heroVisual={isHoroscopePage ? <HoroscopeChartVisual /> : isNumerologistPage ? <NumerologyNumberStudy /> : isPalmReaderPage ? <PalmistryHeroVisual /> : isKundaliPage ? <KundaliHeroVisual /> : null}
     afterHero={isHoroscopePage ? <><HoroscopeGuidanceSection /><HoroscopeConsultationDetails /></> : null}
   >
+    {isKundaliPage && <section className="kundali-intro-copy section-pad">
+      <div className="section-grid kundali-intro-grid">
+        <div className="section-label">Kundali Matching</div>
+        <div className="kundali-intro-content">
+          <h2># Kundali Matching Astrologer in Kolkata – Avishek Sastri</h2>
+          <p>Marriage is an important life decision, and many families in India consider astrology when evaluating compatibility between prospective partners. <strong>Kundali Matching in Kolkata</strong> offers a traditional Vedic astrology approach to understanding the compatibility of two individuals through their birth charts. If you are looking for guidance before marriage, Astrologer Avishek Sastri provides a consultation option for discussing horoscope matching, Guna Milan and related astrological considerations.</p>
+          <p>Whether you are planning an arranged marriage or exploring a relationship that may lead to marriage, understanding the traditional principles of horoscope matching can help you make a more informed and thoughtful decision.</p>
+        </div>
+      </div>
+    </section>}
     {isNumerologistPage && <div className="service-intro-copy numerology-intro-feature">
       <div className="numerology-intro-heading"><span className="numerology-intro-index">01 / THE PRACTICE</span><h2>Best Numerologist<br /><em>in Kolkata.</em></h2></div>
       <div className="numerology-intro-body">
@@ -502,15 +512,15 @@ function ServicesPage({ path, goTo, onBook }) {
     {isPalmReaderPage && <div className="service-intro-copy palm-reader-intro"><div className="palm-reader-intro-header"><span className="palm-reader-kicker">Traditional hand analysis</span><h2>Palm Reader in Kolkata for better guidance</h2></div><div className="palm-reader-layout"><div className="palm-reader-copy"><p>Palmistry, also known as palm reading or chiromancy, is a traditional practice in which the lines, shapes and features of the hands are interpreted to explore different aspects of an individual's life and personality. If you are looking for a <strong>palm reader in Kolkata</strong>, a personalized palmistry consultation can help you understand the traditional meanings associated with the features of your palms.</p><p>Unlike a general reading, a personal palmistry consultation focuses on the individual's hands and the specific questions they want to discuss. Depending on the approach followed, a palm reader may examine major palm lines, mounts, finger shapes, hand structure and other visible features.</p><p className="palm-reader-note">A palm reading consultation is shaped around your questions and personal circumstances. It offers a thoughtful perspective for reflection, not a guaranteed prediction of future events.</p></div><aside className="palm-reader-feature-panel"><span>What may be explored</span><ul><li>Major palm lines</li><li>Finger shapes</li><li>Hand structure</li><li>Mounts and visible features</li></ul></aside></div></div>}
     {isServicesOverview && <div className="service-intro-copy"><p>Explore trusted <strong>astrology services in Kolkata</strong> for love, marriage, career, business, spiritual guidance, and personal growth.</p><p>Whether you need an astrologer, numerologist, palmist, horoscope consultation, or Kundali matching, every session is designed to offer clarity and practical direction.</p></div>}
     {isHoroscopePage && <HoroscopeConsultationContent goTo={goTo} />}
-    {(isPalmReaderPage || isNumerologistPage) && (
+    {(isPalmReaderPage || isNumerologistPage || isKundaliPage) && (
       <>
-        <div className="center-heading"><p className="eyebrow">Our astrology services</p><h2>{isNumerologistPage ? <>Our <em>Services.</em></> : <>Services<br /><em>we provide.</em></>}</h2></div>
+        <div className="center-heading"><p className="eyebrow">Our astrology services</p><h2>{isNumerologistPage ? <>Our <em>Services.</em></> : isKundaliPage ? <>Explore more<br /><em>matchmaking services.</em></> : <>Services<br /><em>we provide.</em></>}</h2></div>
         <div className="services-grid services-grid-complete">
           {homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}
         </div>
       </>
     )}
-    {!isHoroscopePage && !isPalmReaderPage && !isNumerologistPage && <div className="full-services-grid">{serviceCards.map((service, index) => <article className="service-card service-card-large" key={service.title}><span className="service-number">0{index + 1}</span><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><button className="line-button" onClick={onBook}>Book this reading <span>↗</span></button></article>)}</div>}
+    {!isHoroscopePage && !isPalmReaderPage && !isNumerologistPage && !isKundaliPage && <div className="full-services-grid">{serviceCards.map((service, index) => <article className="service-card service-card-large" key={service.title}><span className="service-number">0{index + 1}</span><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><button className="line-button" onClick={onBook}>Book this reading <span>↗</span></button></article>)}</div>}
   </PageIntro>
 }
 
