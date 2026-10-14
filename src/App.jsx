@@ -114,7 +114,7 @@ function App() {
     const title = isHoroscopePage
       ? 'Horoscope Consultation in Kolkata | Sree Avishek Sastri'
       : isKundaliPage
-        ? 'Kundali Matching in Kolkata | Best Kundli Matching Astrologer'
+        ? 'Kundali Matching Specialist in Kolkata | Avishek Sastri'
         : isBlackMagicPage
           ? 'Black Magic in Kolkata | Sree Avishek Sastri'
           : isNumerologistPage
@@ -125,7 +125,7 @@ function App() {
                 ? 'Astrology Services in Kolkata | Astrologer, Numerologist & Palmist'
                 : location === 'Kolkata' ? 'Best Astrologer in Kolkata | Book Your Consultation' : `Best Astrologer in ${location} | Sree Avishek Sastri`
     const description = isKundaliPage
-      ? 'Get accurate Kundali Matching in Kolkata for marriage compatibility, Guna Milan and horoscope analysis. Consult an experienced astrologer for personalized guidance.'
+      ? 'Looking for a Kundali matching specialist in Kolkata? Consult Avishek Sastri for personalized horoscope matching and marriage compatibility insights. Book today!'
       : isBlackMagicPage
         ? 'Looking for black magic guidance in Kolkata? Consult an experienced astrologer for spiritual guidance, Vedic astrology insights and personalized solutions.'
       : isHoroscopePage
@@ -471,14 +471,15 @@ function ServicesPage({ path, goTo, onBook }) {
   const isServicesOverview = path === '/services'
   const isNumerologistPage = selectedService?.slug === 'numerologist'
   const isPalmReaderPage = selectedService?.slug === 'palmist'
+  const isKundaliPage = path === '/kundali-matching-in-kolkata'
   const pageTitle = isHoroscopePage
     ? 'Horoscope Consultation in Kolkata'
     : isNumerologistPage
       ? 'Numerologist in Kolkata'
       : isPalmReaderPage
         ? 'Best Palm Reader in Kolkata'
-      : path === '/kundali-matching-in-kolkata'
-        ? 'Kundali Matching in Kolkata'
+      : isKundaliPage
+        ? 'Kundali Matching Specialist in Kolkata'
         : path === '/black-magic-in-kolkata'
           ? 'Black Magic in Kolkata'
           : isServicesOverview
@@ -486,8 +487,8 @@ function ServicesPage({ path, goTo, onBook }) {
             : selectedService?.label
 
   return <PageIntro
-    eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : isNumerologistPage ? 'Numerology guidance in Kolkata' : isPalmReaderPage ? 'Personalized palm reading in Kolkata' : isServicesOverview ? 'Astrology services in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'}
-    title={isHoroscopePage ? <>Horoscope Consultation<br /><em>in Kolkata.</em></> : isNumerologistPage ? <>Numerologist in Kolkata<br /><em>for life clarity.</em></> : isPalmReaderPage ? <>Best Palm Reader in Kolkata</> : isServicesOverview ? <>Astrology Services in Kolkata<br /><em>for every life question.</em></> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}
+    eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : isNumerologistPage ? 'Numerology guidance in Kolkata' : isPalmReaderPage ? 'Personalized palm reading in Kolkata' : isKundaliPage ? 'Kundali matching specialist in Kolkata' : isServicesOverview ? 'Astrology services in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'}
+    title={isHoroscopePage ? <>Horoscope Consultation<br /><em>in Kolkata.</em></> : isNumerologistPage ? <>Numerologist in Kolkata<br /><em>for life clarity.</em></> : isPalmReaderPage ? <>Best Palm Reader in Kolkata</> : isKundaliPage ? <>Kundali Matching specialist in Kolkata</> : isServicesOverview ? <>Astrology Services in Kolkata<br /><em>for every life question.</em></> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}
     heroVisual={isHoroscopePage ? <HoroscopeChartVisual /> : isNumerologistPage ? <NumerologyNumberStudy /> : isPalmReaderPage ? <PalmistryHeroVisual /> : null}
     afterHero={isHoroscopePage ? <><HoroscopeGuidanceSection /><HoroscopeConsultationDetails /></> : null}
   >
