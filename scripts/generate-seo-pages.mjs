@@ -46,8 +46,8 @@ const pages = [
   })),
   {
     route: '/kundali-matching-in-kolkata',
-    title: 'Kundali Matching in Kolkata',
-    description: 'Get accurate Kundali Matching in Kolkata for marriage compatibility, Guna Milan and horoscope analysis. Consult an experienced astrologer for personalized guidance.',
+    title: 'Kundali Matching Specialist in Kolkata | Avishek Sastri',
+    description: 'Looking for a Kundali matching specialist in Kolkata? Consult Avishek Sastri for personalized horoscope matching and marriage compatibility insights. Book today!',
   },
   {
     route: '/horoscope-consultation-in-kolkata',
