@@ -163,13 +163,11 @@
 .kundali-intro-grid { display: block; width: 100%; max-width: 100%; }
 .kundali-intro-grid .section-label { display: block; margin-bottom: 18px; }
 .kundali-intro-content { display: grid; gap: 18px; width: 100%; max-width: 100%; }
-.kundali-intro-content h2 { font: 400 clamp(52px, 6vw, 112px)/0.92 'Playfair Display',serif; margin: 0; color: var(--white); letter-spacing: -2px; }
-.kundali-intro-content p { margin: 0; color: var(--beige); line-height: 1.6; font-size: clamp(18px, 2vw, 30px); max-width: 100%; }
+.kundali-intro-content h2 { font: 400 clamp(30px, 3.4vw, 60px)/1.08 'Playfair Display',serif; margin: 0; color: var(--white); letter-spacing: -1.8px; }
+.kundali-intro-content p { margin: 0; color: var(--beige); line-height: 1.8; font-size: clamp(17px, 1.55vw, 25px); max-width: 100%; }
 .kundali-intro-content strong { color: var(--gold); font-weight: 600; }
 @media (max-width: 800px) { .kundali-hero-visual { width: min(100%, 300px); } }
-@media (max-width: 600px) { .kundali-hero-visual { justify-self: start; width: min(100%, 320px); } .kundali-intro-copy { padding-top: 0; } .kundali-intro-content h2 { font-size: clamp(38px, 12vw, 68px); } .kundali-intro-content p { font-size: clamp(17px, 5vw, 24px); } }-chart-center { position: absolute; z-index: 1; inset: 50% auto auto 50%; display: grid; justify-items: center; gap: 3px; transform: translate(-50%, -50%); color: var(--gold); }.horoscope-chart-center span { font-size: 22px; line-height: 1; }.horoscope-chart-center strong { font-size: 8px; font-weight: 500; letter-spacing: 1.8px; }
-.horoscope-chart-visual figcaption { display: grid; gap: 8px; padding-top: 13px; border-top: 1px solid rgba(192,163,119,.22); }
-.horoscope-chart-visual figcaption span { color: var(--amber); font-size: 9px; letter-spacing: 1.6px; }
+@media (max-width: 600px) { .kundali-hero-visual { justify-self: start; width: min(100%, 320px); } .kundali-intro-copy { padding-top: 0; } .kundali-intro-content h2 { font-size: clamp(26px, 8vw, 42px); } .kundali-intro-content p { font-size: 18px; } }-chart-center { position: absolute; z-index: 1; inset: 50% auto auto 50%; display: grid; justify-items: center; gap: 3px; transform: translate(-50%, -50%); color: var(--gold); }.horoscope-chart-center span { font-size: 22px; line-height: 1; }.horoscope-chart-center strong { font-size: 8px; font-weight: 500; letter-spacing: 1.8px; }.horoscope-chart-visual figcaption { display: grid; gap: 8px; padding-top: 13px; border-top: 1px solid rgba(192,163,119,.22); }.horoscope-chart-visual figcaption span { color: var(--amber); font-size: 9px; letter-spacing: 1.6px; }
 .horoscope-chart-visual figcaption strong { color: var(--white); font: 400 21px/1.2 'Playfair Display',serif; }
 @media (max-width: 800px) { .horoscope-chart-visual { width: min(100%, 300px); } }
 @media (max-width: 600px) { .horoscope-chart-visual { justify-self: start; width: min(100%, 320px); } }
