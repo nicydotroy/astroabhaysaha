@@ -36,7 +36,7 @@ const pages = [
   },
   {
     route: '/palm-reader-in-kolkata',
-    title: 'Best Palm Reader in Kolkata | Palm Reading Consultation',
+    title: 'Best palm reader in Kolkata | Avishek Sastri',
     description: 'Looking for the best palm reader in Kolkata? Get a personalized palm reading to understand palm lines, strengths, relationships, career questions, and life direction.',
   },
   ...locations.map(([slug, location]) => ({
@@ -50,7 +50,7 @@ const pages = [
     description: 'Get accurate Kundali Matching in Kolkata for marriage compatibility, Guna Milan and horoscope analysis. Consult an experienced astrologer for personalized guidance.',
   },
   {
-    route: '/horoscope-consultaion-in-kolkata',
+    route: '/horoscope-consultation-in-kolkata',
     title: 'Horoscope Consultation in Kolkata | Avishek Sastri',
     description: 'Get trusted horoscope consultation in Kolkata for personalized guidance on career, love, marriage, finance, and important life decisions based on your horoscope.',
   },
