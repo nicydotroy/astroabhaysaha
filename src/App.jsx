@@ -21,7 +21,7 @@ const serviceMenuItems = [
   { label: 'Mangal Dosh', slug: 'mangal-dosh' },
 ]
 
-const servicePath = (service) => service.slug === 'numerologist' ? '/numerologist-in-kolkata' : service.slug === 'palmist' ? '/palm-reader-in-kolkata' : service.slug === 'kundali-matching' ? '/kundali-matching-in-kolkata' : service.slug === 'black-magic' ? '/black-magic-in-kolkata' : service.slug === 'horoscope' ? '/horoscope-consultaion-in-kolkata' : `/services/${service.slug}`
+const servicePath = (service) => service.slug === 'numerologist' ? '/numerologist-in-kolkata' : service.slug === 'palmist' ? '/palm-reader-in-kolkata' : service.slug === 'kundali-matching' ? '/kundali-matching-in-kolkata' : service.slug === 'black-magic' ? '/black-magic-in-kolkata' : service.slug === 'horoscope' ? '/horoscope-consultation-in-kolkata' : `/services/${service.slug}`
 
 const homeFormAccessKey = import.meta.env.VITE_WEB3FORMS_HOME_ACCESS_KEY || '29885bc0-7bbd-4fe1-a48e-7150dd1eb8f8'
 
@@ -99,7 +99,7 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const currentLabel = navItems.find((item) => item.path === path)?.label || (path.startsWith('/services') || path === '/horoscope-consultaion-in-kolkata' || path === '/numerologist-in-kolkata' || path === '/palm-reader-in-kolkata' ? 'Services' : 'Home')
+  const currentLabel = navItems.find((item) => item.path === path)?.label || (path.startsWith('/services') || path === '/horoscope-consultation-in-kolkata' || path === '/horoscope-consultaion-in-kolkata' || path === '/numerologist-in-kolkata' || path === '/palm-reader-in-kolkata' ? 'Services' : 'Home')
   const currentLocation = locationPages.find((location) => path === `/astrologer-in-${location.slug}`)
 
   useEffect(() => {
@@ -107,7 +107,7 @@ function App() {
     const selectedService = serviceMenuItems.find((service) => path === servicePath(service) || path.endsWith(`/${service.slug}`))
     const isKundaliPage = path === '/kundali-matching-in-kolkata'
     const isBlackMagicPage = path === '/black-magic-in-kolkata'
-    const isHoroscopePage = path === '/horoscope-consultaion-in-kolkata' || path === '/services/horoscope'
+    const isHoroscopePage = path === '/horoscope-consultation-in-kolkata' || path === '/horoscope-consultaion-in-kolkata' || path === '/services/horoscope'
     const isServicesPage = path === '/services' || path.startsWith('/services/')
     const isNumerologistPage = selectedService?.slug === 'numerologist'
     const isPalmReaderPage = selectedService?.slug === 'palmist'
@@ -148,7 +148,7 @@ function App() {
     }
     descriptionTag.content = description
     const canonicalPath = isHoroscopePage
-      ? '/horoscope-consultaion-in-kolkata'
+      ? '/horoscope-consultation-in-kolkata'
       : isKundaliPage
         ? '/kundali-matching-in-kolkata'
         : isBlackMagicPage
@@ -209,14 +209,14 @@ function App() {
       </nav>
       <main>
         {path === '/about' && <><AboutPage goTo={goTo} /><AboutServicesSection goTo={goTo} /></>}
-        {(path.startsWith('/services') || path === '/horoscope-consultaion-in-kolkata' || path === '/kundali-matching-in-kolkata' || path === '/black-magic-in-kolkata' || path === '/numerologist-in-kolkata' || path === '/palm-reader-in-kolkata') && <ServicesPage path={path} goTo={goTo} onBook={() => setBookingOpen(true)} />}
+        {(path.startsWith('/services') || path === '/horoscope-consultation-in-kolkata' || path === '/horoscope-consultaion-in-kolkata' || path === '/kundali-matching-in-kolkata' || path === '/black-magic-in-kolkata' || path === '/numerologist-in-kolkata' || path === '/palm-reader-in-kolkata') && <ServicesPage path={path} goTo={goTo} onBook={() => setBookingOpen(true)} />}
         {path === '/contact' && <ContactPage />}
         {currentLocation && <LocationPage location={currentLocation.name} goTo={goTo} onBook={() => setBookingOpen(true)} />}
         {path === '/' && <><HomePage goTo={goTo} onBook={() => setBookingOpen(true)} /><MeetYourAstrologer /></>}
       </main>
-      {path !== '/' && path !== '/horoscope-consultaion-in-kolkata' && path !== '/services/horoscope' && <MeetYourAstrologer />}
+      {path !== '/' && path !== '/horoscope-consultation-in-kolkata' && path !== '/horoscope-consultaion-in-kolkata' && path !== '/services/horoscope' && <MeetYourAstrologer />}
       {(path === '/numerologist-in-kolkata' || path.endsWith('/numerologist')) && <NumerologyConsultationProcess />}
-      {(path === '/horoscope-consultaion-in-kolkata' || path === '/services/horoscope') && <HoroscopeConsultationProcess />}
+      {(path === '/horoscope-consultation-in-kolkata' || path === '/horoscope-consultaion-in-kolkata' || path === '/services/horoscope') && <HoroscopeConsultationProcess />}
       <FaqSection location={currentLocation?.name || 'Kolkata'} isNumerologistPage={path === '/numerologist-in-kolkata' || path.endsWith('/numerologist')} isHomePage={path === '/'} isPalmReaderPage={path === '/palm-reader-in-kolkata' || path.endsWith('/palmist')} />
       {(path === '/' || currentLocation) && <ServiceAreasSection goTo={goTo} />}
       <footer className="site-footer">
@@ -467,7 +467,7 @@ function LocalSeoSection({ onBook }) { return <section className="local-seo-sect
 function AboutPage({ goTo }) { return <PageIntro eyebrow="The person behind the chart" title={<>A quiet space for<br /><em>big questions.</em></>}><div className="about-layout"><div className="portrait-card portrait-large"><div className="portrait-image"><img src={bestAstrologerInKolkata} alt="Sree Avishek Sastri" /></div><div className="portrait-glow" /></div><div className="about-copy"><p>Hi, I’m Sree Avishek. I believe astrology is most powerful when it brings you back to yourself.</p><p>My work blends the depth of Vedic tradition with a warm, practical approach. Every reading is a conversation, not a performance. We look at what is happening, why it may be happening now, and what you can do with the clarity you find.</p><div className="signature">Sree Avishek <span>✦</span></div><button className="line-button" onClick={() => goTo('/services')}>See how we can work together <span>→</span></button></div></div></PageIntro> }
 function ServicesPage({ path, goTo, onBook }) {
   const selectedService = serviceMenuItems.find((service) => path === servicePath(service) || path.endsWith(`/${service.slug}`))
-  const isHoroscopePage = path === '/horoscope-consultaion-in-kolkata' || path === '/services/horoscope'
+  const isHoroscopePage = path === '/horoscope-consultation-in-kolkata' || path === '/horoscope-consultaion-in-kolkata' || path === '/services/horoscope'
   const isServicesOverview = path === '/services'
   const isNumerologistPage = selectedService?.slug === 'numerologist'
   const isPalmReaderPage = selectedService?.slug === 'palmist'
