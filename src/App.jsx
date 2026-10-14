@@ -493,7 +493,7 @@ function ServicesPage({ path, goTo, onBook }) {
     afterHero={isHoroscopePage ? <><HoroscopeGuidanceSection /><HoroscopeConsultationDetails /></> : null}
   >
     {isKundaliPage && <section className="kundali-intro-copy section-pad">
-      <div className="section-grid kundali-intro-grid">
+      <div className="kundali-intro-grid">
         <div className="section-label">Kundali Matching</div>
         <div className="kundali-intro-content">
           <h2># Kundali Matching Astrologer in Kolkata – Avishek Sastri</h2>
