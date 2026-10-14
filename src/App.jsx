@@ -120,7 +120,7 @@ function App() {
           : isNumerologistPage
             ? 'Numerologist in Kolkata | Personalized Numerology Consultation'
             : isPalmReaderPage
-              ? 'Best palm reader in Kolkata | Avishek Sastri'
+              ? 'Best Palm Reader in Kolkata for Love & Career Guidance'
               : isServicesPage
                 ? 'Astrology Services in Kolkata | Astrologer, Numerologist & Palmist'
                 : location === 'Kolkata' ? 'Best Astrologer in Kolkata | Book Your Consultation' : `Best Astrologer in ${location} | Sree Avishek Sastri`
@@ -133,7 +133,7 @@ function App() {
         : isNumerologistPage
           ? 'Looking for a numerologist in Kolkata? Get personalized numerology guidance based on your name, date of birth and specific life concerns.'
           : isPalmReaderPage
-            ? 'Looking for the best palm reader in Kolkata? Get a personalized palm reading to understand palm lines, strengths, relationships, career questions, and life direction.'
+            ? 'Seeking clarity about love, marriage or career? Consult Avishek Sastri, a palm reader in Kolkata, for personalized palmistry insights. Connect today to explore your consultation options.'
             : isServicesPage
               ? 'Explore trusted astrology services in Kolkata including astrologer, numerologist, palmist, horoscope consultation, Kundali matching and spiritual guidance services.'
               : location === 'Kolkata'
