@@ -580,13 +580,19 @@ function ServicesPage({ path, goTo, onBook }) {
     afterHero={isHoroscopePage ? <><HoroscopeGuidanceSection /><HoroscopeConsultationDetails /></> : null}
   >
     {isKundaliPage && <section className="kundali-intro-copy section-pad">
-      <div className="kundali-intro-grid">
-        <div className="section-label">Kundali Matching</div>
-        <div className="kundali-intro-content">
-          <h2># Kundali Matching Astrologer in Kolkata – Avishek Sastri</h2>
-          <p>Marriage is an important life decision, and many families in India consider astrology when evaluating compatibility between prospective partners. <strong>Kundali Matching in Kolkata</strong> offers a traditional Vedic astrology approach to understanding the compatibility of two individuals through their birth charts. If you are looking for guidance before marriage, Astrologer Avishek Sastri provides a consultation option for discussing horoscope matching, Guna Milan and related astrological considerations.</p>
-          <p>Whether you are planning an arranged marriage or exploring a relationship that may lead to marriage, understanding the traditional principles of horoscope matching can help you make a more informed and thoughtful decision.</p>
+      <div className="kundali-intro-shell">
+        <div className="kundali-intro-topline"><span className="section-label">Kundali Matching</span><span className="kundali-intro-index">A TRADITIONAL VEDIC PERSPECTIVE</span></div>
+        <div className="kundali-intro-grid">
+          <div className="kundali-intro-title">
+            <h2>Kundali Matching Astrologer <em>in Kolkata</em></h2>
+            <p className="kundali-intro-signature">A consultation with Avishek Sastri</p>
+          </div>
+          <div className="kundali-intro-content">
+            <p>Marriage is an important life decision, and many families in India consider astrology when evaluating compatibility between prospective partners. <strong>Kundali Matching in Kolkata</strong> offers a traditional Vedic astrology approach to understanding the compatibility of two individuals through their birth charts. If you are looking for guidance before marriage, Astrologer Avishek Sastri provides a consultation option for discussing horoscope matching, Guna Milan and related astrological considerations.</p>
+            <p>Whether you are planning an arranged marriage or exploring a relationship that may lead to marriage, understanding the traditional principles of horoscope matching can help you make a more informed and thoughtful decision.</p>
+          </div>
         </div>
+        <div className="kundali-intro-mandala" aria-hidden="true"><span>✦</span></div>
       </div>
     </section>}
     {isNumerologistPage && <div className="service-intro-copy numerology-intro-feature">

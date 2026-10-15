@@ -159,15 +159,32 @@
 .kundali-hero-visual figcaption { display: grid; gap: 8px; margin-top: 18px; }
 .kundali-hero-visual figcaption span { color: var(--amber); font-size: 9px; letter-spacing: 1.8px; }
 .kundali-hero-visual figcaption strong { color: var(--white); font: 400 22px/1.2 'Playfair Display',serif; }
-.kundali-intro-copy { padding-top: 0; padding-bottom: 36px; background: linear-gradient(180deg, rgba(20,10,4,0), rgba(20,10,4,.5)); }
-.kundali-intro-grid { display: block; width: 100%; max-width: 100%; }
-.kundali-intro-grid .section-label { display: block; margin-bottom: 18px; }
-.kundali-intro-content { display: grid; gap: 18px; width: 100%; max-width: 100%; }
-.kundali-intro-content h2 { font: 400 clamp(30px, 3.4vw, 60px)/1.08 'Playfair Display',serif; margin: 0; color: var(--white); letter-spacing: -1.8px; }
-.kundali-intro-content p { margin: 0; color: var(--beige); line-height: 1.8; font-size: clamp(17px, 1.55vw, 25px); max-width: 100%; }
-.kundali-intro-content strong { color: var(--gold); font-weight: 600; }
+.kundali-intro-copy { padding-top: 0; padding-bottom: 56px; background: linear-gradient(180deg, rgba(20,10,4,0), rgba(20,10,4,.46)); }
+.kundali-intro-shell { position: relative; isolation: isolate; overflow: hidden; padding: clamp(25px, 5vw, 60px); border: 1px solid rgba(192,163,119,.28); background: radial-gradient(ellipse at 92% 10%, rgba(210,127,20,.13), transparent 34%), linear-gradient(125deg, rgba(17,9,4,.98), rgba(0,0,0,.95) 70%); box-shadow: 0 26px 70px rgba(0,0,0,.32), inset 0 0 0 5px rgba(236,214,150,.018); animation: kundaliIntroReveal .8s ease both; transition: border-color .3s ease, box-shadow .3s ease; }
+.kundali-intro-shell:hover { border-color: rgba(236,214,150,.48); box-shadow: 0 30px 76px rgba(0,0,0,.4), 0 0 34px rgba(210,127,20,.08), inset 0 0 0 5px rgba(236,214,150,.025); }
+.kundali-intro-shell::before { content: ''; position: absolute; z-index: -1; inset: 12px; border: 1px solid rgba(192,163,119,.1); pointer-events: none; }
+.kundali-intro-topline { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 22px; border-bottom: 1px solid rgba(192,163,119,.24); }
+.kundali-intro-topline .section-label { padding: 0; color: var(--amber); }
+.kundali-intro-index { color: rgba(192,163,119,.7); font-size: 9px; letter-spacing: 1.8px; }
+.kundali-intro-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(260px, .82fr) minmax(0, 1.18fr); align-items: center; gap: clamp(36px, 7vw, 100px); padding-top: clamp(32px, 5vw, 62px); }
+.kundali-intro-title h2 { max-width: 570px; margin: 0; color: var(--white); font: 400 clamp(38px, 5vw, 70px)/1.02 'Playfair Display',serif; letter-spacing: -1.8px; }
+.kundali-intro-title h2 em { color: var(--gold); font-style: italic; }
+.kundali-intro-signature { margin: 24px 0 0; color: var(--beige); font-size: 12px; letter-spacing: 1px; }
+.kundali-intro-content { display: grid; gap: 20px; max-width: 760px; }
+.kundali-intro-content p { position: relative; margin: 0; color: var(--beige); line-height: 1.85; font-size: clamp(15px, 1.2vw, 18px); }
+.kundali-intro-content p:first-child { padding-left: 20px; border-left: 1px solid rgba(210,127,20,.65); }
+.kundali-intro-content strong { color: var(--gold); font-weight: 500; }
+.kundali-intro-mandala { position: absolute; z-index: -1; width: clamp(230px, 30vw, 410px); aspect-ratio: 1; top: 10%; right: -9%; display: grid; place-items: center; border: 1px solid rgba(210,127,20,.14); border-radius: 50%; animation: kundaliIntroOrbit 42s linear infinite; pointer-events: none; }
+.kundali-intro-mandala::before, .kundali-intro-mandala::after { content: ''; position: absolute; inset: 12%; border: 1px solid rgba(236,214,150,.11); border-radius: 50%; transform: rotate(45deg) scaleX(.72); }
+.kundali-intro-mandala::after { transform: rotate(-45deg) scaleX(.72); }
+.kundali-intro-mandala span { color: rgba(236,214,150,.48); font-size: 32px; text-shadow: 0 0 26px rgba(236,214,150,.35); animation: kundaliIntroPulse 4s ease-in-out infinite; }
+@keyframes kundaliIntroReveal { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes kundaliIntroOrbit { to { transform: rotate(360deg); } }
+@keyframes kundaliIntroPulse { 0%, 100% { opacity: .62; transform: scale(.9); } 50% { opacity: 1; transform: scale(1.08); } }
+@media (max-width: 800px) { .kundali-intro-grid { grid-template-columns: 1fr; gap: 28px; }.kundali-intro-title h2 { max-width: 660px; }.kundali-intro-content { max-width: 100%; }.kundali-intro-mandala { top: 20%; right: -16%; } }
 @media (max-width: 800px) { .kundali-hero-visual { width: min(100%, 300px); } }
-@media (max-width: 600px) { .kundali-hero-visual { justify-self: start; width: min(100%, 320px); } .kundali-intro-copy { padding-top: 0; } .kundali-intro-content h2 { font-size: clamp(26px, 8vw, 42px); } .kundali-intro-content p { font-size: 18px; } }-chart-center { position: absolute; z-index: 1; inset: 50% auto auto 50%; display: grid; justify-items: center; gap: 3px; transform: translate(-50%, -50%); color: var(--gold); }.horoscope-chart-center span { font-size: 22px; line-height: 1; }.horoscope-chart-center strong { font-size: 8px; font-weight: 500; letter-spacing: 1.8px; }.horoscope-chart-visual figcaption { display: grid; gap: 8px; padding-top: 13px; border-top: 1px solid rgba(192,163,119,.22); }.horoscope-chart-visual figcaption span { color: var(--amber); font-size: 9px; letter-spacing: 1.6px; }
+@media (max-width: 600px) { .kundali-hero-visual { justify-self: start; width: min(100%, 320px); } .kundali-intro-copy { padding-top: 0; padding-bottom: 36px; }.kundali-intro-shell { padding: 27px 22px; }.kundali-intro-shell::before { inset: 8px; }.kundali-intro-topline { align-items: flex-start; flex-direction: column; gap: 10px; padding-bottom: 16px; }.kundali-intro-grid { gap: 22px; padding-top: 28px; }.kundali-intro-title h2 { font-size: clamp(36px, 10vw, 48px); }.kundali-intro-content p { font-size: 15px; }.kundali-intro-mandala { width: 250px; top: 16%; right: -44%; } }
+@media (prefers-reduced-motion: reduce) { .kundali-intro-shell, .kundali-intro-mandala, .kundali-intro-mandala span { animation: none; transition: none; } }-chart-center { position: absolute; z-index: 1; inset: 50% auto auto 50%; display: grid; justify-items: center; gap: 3px; transform: translate(-50%, -50%); color: var(--gold); }.horoscope-chart-center span { font-size: 22px; line-height: 1; }.horoscope-chart-center strong { font-size: 8px; font-weight: 500; letter-spacing: 1.8px; }.horoscope-chart-visual figcaption { display: grid; gap: 8px; padding-top: 13px; border-top: 1px solid rgba(192,163,119,.22); }.horoscope-chart-visual figcaption span { color: var(--amber); font-size: 9px; letter-spacing: 1.6px; }
 .horoscope-chart-visual figcaption strong { color: var(--white); font: 400 21px/1.2 'Playfair Display',serif; }
 @media (max-width: 800px) { .horoscope-chart-visual { width: min(100%, 300px); } }
 @media (max-width: 600px) { .horoscope-chart-visual { justify-self: start; width: min(100%, 320px); } }
