@@ -339,3 +339,18 @@
 @keyframes whyConsultPulse { 0%, 100% { opacity: .65; } 50% { opacity: 1; } }
 @media (max-width: 600px) { .why-consult-qualities { grid-template-columns: 1fr; gap: 12px; }.why-consult-qualities li { min-height: 112px; padding: 20px 18px 20px 62px; }.why-consult-qualities li::before { left: 19px; }.why-consult-section::before { width: 280px; height: 280px; right: -185px; top: -120px; }.why-consult-section::after { right: 12%; top: 82px; } }
 @media (prefers-reduced-motion: reduce) { .why-consult-section::before, .why-consult-section::after, .why-consult-heading, .why-consult-heading .eyebrow::before, .why-consult-qualities li { animation: none; }.why-consult-qualities li { transition: none; }.why-consult-qualities li:hover { transform: none; } }
+.astrology-services-heading { grid-template-columns: 1fr; }
+.astrology-services-heading h2 { max-width: 900px; }
+.astrology-services-content { max-width: 1160px; }
+.astrology-services-intro { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; margin-bottom: 38px; }
+.astrology-services-intro p { margin: 0; }
+.astrology-services-intro p + p { padding-left: 28px; border-left: 1px solid rgba(192,163,119,.28); }
+.astrology-services-grid { margin-top: 0; }
+.astrology-services-grid article { background: linear-gradient(145deg, rgba(20,10,4,.58), rgba(0,0,0,.2)); }
+.astrology-services-grid article:nth-child(5) { grid-column: 1 / -1; }
+.astrology-services-grid article h3 { margin-top: 19px; }
+.astrology-services-grid article p { max-width: 760px; }
+.astrology-services-grid article p + p { margin-top: 15px; }
+.astrology-services-grid article strong { color: var(--gold); font-weight: 500; }
+@media (max-width: 800px) { .astrology-services-intro { grid-template-columns: 1fr; gap: 18px; }.astrology-services-intro p + p { padding: 18px 0 0; border-left: 0; border-top: 1px solid rgba(192,163,119,.28); }.astrology-services-grid article:nth-child(5) { grid-column: auto; } }
+@media (prefers-reduced-motion: reduce) { .astrology-services-grid article { transition: none; }.astrology-services-grid article:hover { transform: none; } }

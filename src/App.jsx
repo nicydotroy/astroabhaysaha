@@ -212,7 +212,7 @@ function App() {
         {(path.startsWith('/services') || path === '/horoscope-consultation-in-kolkata' || path === '/horoscope-consultaion-in-kolkata' || path === '/kundali-matching-in-kolkata' || path === '/black-magic-in-kolkata' || path === '/numerologist-in-kolkata' || path === '/palm-reader-in-kolkata') && <ServicesPage path={path} goTo={goTo} onBook={() => setBookingOpen(true)} />}
         {path === '/contact' && <ContactPage />}
         {currentLocation && <LocationPage location={currentLocation.name} goTo={goTo} onBook={() => setBookingOpen(true)} />}
-        {path === '/' && <><HomePage goTo={goTo} onBook={() => setBookingOpen(true)} /><MeetYourAstrologer /></>}
+        {path === '/' && <><HomePage goTo={goTo} onBook={() => setBookingOpen(true)} /><AstrologyServicesKolkata /></>}
       </main>
       {path !== '/' && path !== '/horoscope-consultation-in-kolkata' && path !== '/horoscope-consultaion-in-kolkata' && path !== '/services/horoscope' && <MeetYourAstrologer />}
       {(path === '/numerologist-in-kolkata' || path.endsWith('/numerologist')) && <NumerologyConsultationProcess />}
@@ -401,6 +401,67 @@ function MeetYourAstrologer() {
           <p>Whether you are searching for an <strong>astrologer in Kolkata</strong> for a specific question or looking for a more detailed birth chart consultation, Sree Avishek Sastri provides an opportunity to discuss your concerns through a personalized astrology session.</p>
           <p>If you are looking for a <strong>renowned astrologer in Kolkata</strong>, focus on the astrologer's actual experience, approach and transparency when choosing a consultation. Sree Avishek Sastri aims to provide personalized astrology guidance based on individual birth details and the specific concerns discussed during the session.</p>
         </article>
+      </div>
+    </div>
+  </section>
+}
+function AstrologyServicesKolkata() {
+  const services = [
+    {
+      title: 'Vedic Astrology Consultation',
+      paragraphs: [
+        <>Vedic astrology is a traditional Indian astrological system that interprets planetary positions, birth charts and related astrological factors. A consultation may involve discussing a person's birth details and explaining how these factors are traditionally interpreted.</>,
+        <>If you are searching for the <strong>Best Vedic Astrologer in Kolkata</strong>, ask about the methods used, the information required for a reading and what the consultation includes.</>,
+      ],
+    },
+    {
+      title: 'Marriage and Relationship Astrology',
+      paragraphs: [
+        <>Marriage and relationships are important areas of concern for many people exploring astrology. A marriage-related consultation may involve traditional horoscope interpretation, compatibility considerations and a discussion of astrological factors associated with relationships.</>,
+        <>A <strong>Horoscope Consultation in Kolkata</strong> can provide an opportunity to understand these traditional interpretations while keeping communication, mutual respect and personal choice at the centre of relationship decisions.</>,
+      ],
+    },
+    {
+      title: 'Career and Professional Guidance',
+      paragraphs: [
+        <>Career changes, professional growth and future planning can involve difficult choices. Astrology consultations may explore traditional interpretations of career-related houses, planetary placements and relevant horoscope factors.</>,
+        <>People seeking an <strong>Astrology Expert in Kolkata</strong> for career-related questions should treat astrological readings as one perspective, alongside their skills, experience, research and practical circumstances.</>,
+      ],
+    },
+    {
+      title: 'Personal Horoscope Consultation',
+      paragraphs: [
+        <>A personal consultation allows you to discuss questions relevant to your individual situation. Depending on the service offered, this may include birth-chart interpretation, planetary positions and other elements of traditional astrology.</>,
+        <>A <strong>Personal Astrologer in Kolkata</strong> should explain the consultation process clearly, including the details required, the scope of the reading and any applicable fees.</>,
+      ],
+    },
+    {
+      title: 'Online Astrology Consultation',
+      paragraphs: [
+        <>If visiting an astrologer's office is inconvenient, online consultation may provide a flexible alternative. Depending on availability, you may be able to discuss your questions remotely and receive horoscope-related guidance without travelling.</>,
+        <>If you are searching for an <strong>Online Astrologer in Kolkata</strong>, confirm the available consultation format, appointment process, fees and information you need to provide before booking.</>,
+      ],
+    },
+  ]
+
+  return <section className="local-seo-section trusted-astrology-section astrology-services-section section-pad" aria-labelledby="astrology-services-title">
+    <div className="trusted-astrology-heading astrology-services-heading">
+      <div>
+        <p className="eyebrow">Thoughtful guidance for life's questions</p>
+        <h2 id="astrology-services-title">Astrology Services <em>in Kolkata</em></h2>
+      </div>
+    </div>
+    <div className="trusted-astrology-content astrology-services-content">
+      <div className="astrology-services-intro">
+        <p>Different people approach astrology with different questions. Some want to understand their birth chart, while others seek a traditional astrological perspective on marriage, career or personal relationships.</p>
+        <p>Avishek Sastri's available services should be listed according to the consultations he actually provides.</p>
+      </div>
+      <div className="trusted-astrology-grid astrology-services-grid">
+        {services.map((service, index) => <article key={service.title}>
+          <span className="trusted-astrology-index">0{index + 1} / CONSULTATION</span>
+          <h3>{service.title}</h3>
+          {service.paragraphs.map((paragraph, paragraphIndex) => <p key={paragraphIndex}>{paragraph}</p>)}
+        </article>)}
       </div>
     </div>
   </section>
