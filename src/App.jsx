@@ -327,6 +327,7 @@ function HomepageServicesSection({ goTo }) {
 }
 function BlackMagicServicesSection({ goTo }) {
   return <section className="services-section black-magic-services-section" aria-label="Astrology services">
+    <div className="center-heading"><p className="eyebrow">Astrology services in Kolkata</p><h2>Explore our services <em>in Kolkata</em></h2></div>
     <div className="services-grid services-grid-complete">{homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}</div>
   </section>
 }
