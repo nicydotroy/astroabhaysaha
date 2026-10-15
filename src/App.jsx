@@ -578,7 +578,7 @@ function ServicesPage({ path, goTo, onBook }) {
     eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : isNumerologistPage ? 'Numerology guidance in Kolkata' : isPalmReaderPage ? 'Personalized palm reading in Kolkata' : isKundaliPage ? 'Kundali matching specialist in Kolkata' : isBlackMagicPage ? 'Grounded spiritual guidance' : isServicesOverview ? 'Astrology services in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'}
     title={isHoroscopePage ? <>Horoscope Consultation<br /><em>in Kolkata.</em></> : isNumerologistPage ? <>Numerologist in Kolkata<br /><em>for life clarity.</em></> : isPalmReaderPage ? <>Best Palm Reader in Kolkata</> : isKundaliPage ? <>Kundali Matching specialist in Kolkata</> : isBlackMagicPage ? <>Black Magic Guidance<br /><em>in Kolkata.</em></> : isServicesOverview ? <>Astrology Services in Kolkata<br /><em>for every life question.</em></> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}
     heroVisual={isHoroscopePage ? <HoroscopeChartVisual /> : isNumerologistPage ? <NumerologyNumberStudy /> : isPalmReaderPage ? <PalmistryHeroVisual /> : isKundaliPage ? <KundaliHeroVisual /> : isBlackMagicPage ? <BlackMagicHeroVisual /> : null}
-    afterHero={isHoroscopePage ? <><HoroscopeGuidanceSection /><HoroscopeConsultationDetails /></> : null}
+    afterHero={isHoroscopePage ? <><HoroscopeGuidanceSection /><HoroscopeConsultationDetails /></> : isBlackMagicPage ? <BlackMagicIntroSection /> : null}
   >
     {isKundaliPage && <section className="kundali-intro-copy section-pad">
       <div className="kundali-intro-shell">
@@ -814,6 +814,22 @@ function KundaliHeroVisual() {
     </div>
     <figcaption><span>PERSONALIZED MATCHING</span><strong>Understand harmony before marriage.</strong></figcaption>
   </figure>
+}
+function BlackMagicIntroSection() {
+  return <section className="black-magic-intro section-pad" aria-labelledby="black-magic-intro-title">
+    <div className="black-magic-intro-panel">
+      <div className="black-magic-intro-heading">
+        <p className="eyebrow">A respectful, grounded conversation</p>
+        <h2 id="black-magic-intro-title">Black Magic Specialist <em>in Kolkata</em> – Avishek Sastri</h2>
+      </div>
+      <div className="black-magic-intro-copy">
+        <p>Are you looking for information about black magic, traditional spiritual practices, or astrology-related concerns in Kolkata? Astrologer Avishek Sastri offers a consultation option for people who wish to discuss these concerns through the perspective of traditional astrology and spiritual beliefs.</p>
+        <p>Searching for a <strong>Black Magic Specialist in Kolkata</strong> can feel overwhelming, especially when you encounter conflicting advice or promises of immediate results. It is important to approach spiritual consultations thoughtfully, understand what a service includes, and avoid anyone who uses fear or pressure to demand money.</p>
+        <p>Whether you want to learn about traditional beliefs surrounding black magic, explore spiritual practices, or discuss personal concerns, a clear and respectful consultation can help you understand your options.</p>
+      </div>
+      <span className="black-magic-intro-mark" aria-hidden="true">✦</span>
+    </div>
+  </section>
 }
 function BlackMagicHeroVisual() {
   return <figure className="black-magic-hero-visual" role="img" aria-label="Abstract celestial design representing reflection and grounded spiritual guidance">
