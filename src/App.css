@@ -181,6 +181,36 @@
 @keyframes kundaliIntroReveal { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes kundaliIntroOrbit { to { transform: rotate(360deg); } }
 @keyframes kundaliIntroPulse { 0%, 100% { opacity: .62; transform: scale(.9); } 50% { opacity: 1; transform: scale(1.08); } }
+.black-magic-hero-visual { position: relative; width: min(100%, 380px); justify-self: end; margin: 0; padding: 14px; border: 1px solid rgba(192,163,119,.38); background: linear-gradient(145deg, rgba(24,12,7,.88), rgba(0,0,0,.8)); box-shadow: 0 22px 54px rgba(0,0,0,.3), inset 0 0 0 4px rgba(236,214,150,.025); animation: blackMagicReveal .8s .12s both; transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease; }
+.black-magic-hero-visual:hover { transform: translateY(-6px); border-color: rgba(236,214,150,.66); box-shadow: 0 30px 60px rgba(0,0,0,.42), 0 0 34px rgba(210,127,20,.12), inset 0 0 0 4px rgba(236,214,150,.04); }
+.black-magic-hero-frame { position: relative; display: flex; min-height: 370px; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 18px; border: 1px solid rgba(192,163,119,.16); background: radial-gradient(circle at 50% 45%, rgba(126,62,41,.28), transparent 48%), linear-gradient(155deg, rgba(20,10,4,.86), rgba(0,0,0,.82)); }
+.black-magic-hero-frame::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(236,214,150,.7) .8px, transparent .8px); background-size: 38px 38px; opacity: .12; mask-image: linear-gradient(135deg, #000, transparent 70%); pointer-events: none; }
+.black-magic-hero-meta, .black-magic-hero-principles { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; color: var(--amber); font-size: 8px; letter-spacing: 1.7px; }
+.black-magic-hero-meta span:last-child { color: var(--gold); font-size: 15px; animation: blackMagicTwinkle 3s ease-in-out infinite; }
+.black-magic-hero-emblem { position: absolute; top: 50%; left: 50%; display: grid; width: 255px; aspect-ratio: 1; place-items: center; transform: translate(-50%, -50%); }
+.black-magic-hero-orbit { position: absolute; inset: 7%; border: 1px solid rgba(236,214,150,.36); border-radius: 50%; }
+.black-magic-hero-orbit-outer { animation: blackMagicRotate 34s linear infinite; }
+.black-magic-hero-orbit-outer::before, .black-magic-hero-orbit-outer::after { content: ''; position: absolute; inset: 12%; border: 1px solid rgba(192,163,119,.22); border-radius: 50%; transform: rotate(60deg) scaleX(.72); }
+.black-magic-hero-orbit-outer::after { transform: rotate(-60deg) scaleX(.72); }
+.black-magic-hero-orbit-inner { inset: 23%; border-color: rgba(210,127,20,.5); box-shadow: 0 0 30px rgba(210,127,20,.08); animation: blackMagicRotate 24s linear infinite reverse; }
+.black-magic-hero-diamond { position: absolute; width: 39%; aspect-ratio: 1; border: 1px solid rgba(236,214,150,.4); transform: rotate(45deg); }
+.black-magic-hero-center { position: relative; z-index: 1; display: grid; width: 110px; aspect-ratio: 1; place-content: center; justify-items: center; gap: 5px; border: 1px solid rgba(236,214,150,.42); border-radius: 50%; background: radial-gradient(circle, rgba(126,62,41,.76), rgba(10,5,3,.96) 72%); box-shadow: 0 0 30px rgba(210,127,20,.16), inset 0 0 24px rgba(236,214,150,.08); animation: blackMagicBreathe 4s ease-in-out infinite; }
+.black-magic-hero-center span { color: var(--gold); font-size: 31px; line-height: 1; }
+.black-magic-hero-center small { color: var(--beige); font-size: 8px; letter-spacing: 2px; }
+.black-magic-star { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px 2px rgba(236,214,150,.6); animation: blackMagicTwinkle 2.8s ease-in-out infinite; }
+.black-magic-star-one { top: 15%; left: 31%; }.black-magic-star-two { top: 35%; right: 8%; animation-delay: .8s; }.black-magic-star-three { bottom: 19%; left: 13%; animation-delay: 1.4s; }
+.black-magic-hero-principles { justify-content: center; gap: 9px; color: rgba(192,163,119,.76); font-size: 7px; letter-spacing: 1.2px; }
+.black-magic-hero-principles i { width: 3px; height: 3px; border-radius: 50%; background: var(--amber); }
+.black-magic-hero-visual figcaption { display: grid; gap: 8px; padding: 18px 5px 3px; }
+.black-magic-hero-visual figcaption span { color: var(--amber); font-size: 8px; letter-spacing: 1.7px; }
+.black-magic-hero-visual figcaption strong { color: var(--white); font: 400 21px/1.25 'Playfair Display',serif; }
+@keyframes blackMagicReveal { from { opacity: 0; } to { opacity: 1; } }
+@keyframes blackMagicRotate { to { rotate: 360deg; } }
+@keyframes blackMagicBreathe { 0%, 100% { box-shadow: 0 0 22px rgba(210,127,20,.1), inset 0 0 18px rgba(236,214,150,.05); } 50% { box-shadow: 0 0 38px rgba(210,127,20,.23), inset 0 0 26px rgba(236,214,150,.12); } }
+@keyframes blackMagicTwinkle { 0%, 100% { opacity: .5; } 50% { opacity: 1; } }
+@media (max-width: 800px) { .black-magic-hero-visual { width: min(100%, 340px); }.black-magic-hero-frame { min-height: 340px; } }
+@media (max-width: 600px) { .black-magic-hero-visual { justify-self: start; width: min(100%, 360px); }.black-magic-hero-frame { min-height: 325px; }.black-magic-hero-emblem { width: 225px; } }
+@media (prefers-reduced-motion: reduce) { .black-magic-hero-visual, .black-magic-hero-orbit-outer, .black-magic-hero-orbit-inner, .black-magic-hero-center, .black-magic-hero-meta span:last-child, .black-magic-star { animation: none; }.black-magic-hero-visual { transition: none; }.black-magic-hero-visual:hover { transform: none; } }
 @media (max-width: 800px) { .kundali-intro-grid { grid-template-columns: 1fr; gap: 28px; }.kundali-intro-title h2 { max-width: 660px; }.kundali-intro-content { max-width: 100%; }.kundali-intro-mandala { top: 20%; right: -16%; } }
 @media (max-width: 800px) { .kundali-hero-visual { width: min(100%, 300px); } }
 @media (max-width: 600px) { .kundali-hero-visual { justify-self: start; width: min(100%, 320px); } .kundali-intro-copy { padding-top: 0; padding-bottom: 36px; }.kundali-intro-shell { padding: 27px 22px; }.kundali-intro-shell::before { inset: 8px; }.kundali-intro-topline { align-items: flex-start; flex-direction: column; gap: 10px; padding-bottom: 16px; }.kundali-intro-grid { gap: 22px; padding-top: 28px; }.kundali-intro-title h2 { font-size: clamp(36px, 10vw, 48px); }.kundali-intro-content p { font-size: 15px; }.kundali-intro-mandala { width: 250px; top: 16%; right: -44%; } }

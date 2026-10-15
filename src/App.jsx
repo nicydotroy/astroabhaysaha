@@ -559,6 +559,7 @@ function ServicesPage({ path, goTo, onBook }) {
   const isNumerologistPage = selectedService?.slug === 'numerologist'
   const isPalmReaderPage = selectedService?.slug === 'palmist'
   const isKundaliPage = path === '/kundali-matching-in-kolkata'
+  const isBlackMagicPage = path === '/black-magic-in-kolkata'
   const pageTitle = isHoroscopePage
     ? 'Horoscope Consultation in Kolkata'
     : isNumerologistPage
@@ -574,9 +575,9 @@ function ServicesPage({ path, goTo, onBook }) {
             : selectedService?.label
 
   return <PageIntro
-    eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : isNumerologistPage ? 'Numerology guidance in Kolkata' : isPalmReaderPage ? 'Personalized palm reading in Kolkata' : isKundaliPage ? 'Kundali matching specialist in Kolkata' : isServicesOverview ? 'Astrology services in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'}
-    title={isHoroscopePage ? <>Horoscope Consultation<br /><em>in Kolkata.</em></> : isNumerologistPage ? <>Numerologist in Kolkata<br /><em>for life clarity.</em></> : isPalmReaderPage ? <>Best Palm Reader in Kolkata</> : isKundaliPage ? <>Kundali Matching specialist in Kolkata</> : isServicesOverview ? <>Astrology Services in Kolkata<br /><em>for every life question.</em></> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}
-    heroVisual={isHoroscopePage ? <HoroscopeChartVisual /> : isNumerologistPage ? <NumerologyNumberStudy /> : isPalmReaderPage ? <PalmistryHeroVisual /> : isKundaliPage ? <KundaliHeroVisual /> : null}
+    eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : isNumerologistPage ? 'Numerology guidance in Kolkata' : isPalmReaderPage ? 'Personalized palm reading in Kolkata' : isKundaliPage ? 'Kundali matching specialist in Kolkata' : isBlackMagicPage ? 'Grounded spiritual guidance' : isServicesOverview ? 'Astrology services in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'}
+    title={isHoroscopePage ? <>Horoscope Consultation<br /><em>in Kolkata.</em></> : isNumerologistPage ? <>Numerologist in Kolkata<br /><em>for life clarity.</em></> : isPalmReaderPage ? <>Best Palm Reader in Kolkata</> : isKundaliPage ? <>Kundali Matching specialist in Kolkata</> : isBlackMagicPage ? <>Black Magic Guidance<br /><em>in Kolkata.</em></> : isServicesOverview ? <>Astrology Services in Kolkata<br /><em>for every life question.</em></> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}
+    heroVisual={isHoroscopePage ? <HoroscopeChartVisual /> : isNumerologistPage ? <NumerologyNumberStudy /> : isPalmReaderPage ? <PalmistryHeroVisual /> : isKundaliPage ? <KundaliHeroVisual /> : isBlackMagicPage ? <BlackMagicHeroVisual /> : null}
     afterHero={isHoroscopePage ? <><HoroscopeGuidanceSection /><HoroscopeConsultationDetails /></> : null}
   >
     {isKundaliPage && <section className="kundali-intro-copy section-pad">
@@ -812,6 +813,24 @@ function KundaliHeroVisual() {
       </div>
     </div>
     <figcaption><span>PERSONALIZED MATCHING</span><strong>Understand harmony before marriage.</strong></figcaption>
+  </figure>
+}
+function BlackMagicHeroVisual() {
+  return <figure className="black-magic-hero-visual" role="img" aria-label="Abstract celestial design representing reflection and grounded spiritual guidance">
+    <div className="black-magic-hero-frame">
+      <div className="black-magic-hero-meta"><span>GROUNDING / 01</span><span>✦</span></div>
+      <div className="black-magic-hero-emblem" aria-hidden="true">
+        <div className="black-magic-hero-orbit black-magic-hero-orbit-outer" />
+        <div className="black-magic-hero-orbit black-magic-hero-orbit-inner" />
+        <div className="black-magic-hero-diamond" />
+        <div className="black-magic-hero-center"><span>✧</span><small>CLARITY</small></div>
+        <i className="black-magic-star black-magic-star-one" />
+        <i className="black-magic-star black-magic-star-two" />
+        <i className="black-magic-star black-magic-star-three" />
+      </div>
+      <div className="black-magic-hero-principles"><span>REFLECTION</span><i /><span>BALANCE</span><i /><span>PERSPECTIVE</span></div>
+    </div>
+    <figcaption><span>A THOUGHTFUL, GROUNDED APPROACH</span><strong>Begin with a calm conversation.</strong></figcaption>
   </figure>
 }
 function Testimonials() { return <section className="testimonials-section section-pad"><div className="section-grid"><div className="section-label">02 / In their own words</div><div className="testimonial-heading"><p className="eyebrow">Real stories, real shifts</p><h2>It starts with<br /><em>being seen.</em></h2></div></div><div className="testimonial-grid">{testimonials.map((item) => <article className="testimonial-card" key={item.name}><span className="quote-mark">“</span><p>{item.quote}</p><footer><b>{item.name}</b><span>{item.role}</span></footer></article>)}</div></section> }
