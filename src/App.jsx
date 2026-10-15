@@ -215,6 +215,7 @@ function App() {
         {path === '/' && <><HomePage goTo={goTo} onBook={() => setBookingOpen(true)} /><AstrologyServicesKolkata /></>}
       </main>
       {path !== '/' && path !== '/horoscope-consultation-in-kolkata' && path !== '/horoscope-consultaion-in-kolkata' && path !== '/services/horoscope' && <MeetYourAstrologer />}
+      {path === '/black-magic-in-kolkata' && <WhoIsBlackMagicSpecialistSection />}
       {(path === '/numerologist-in-kolkata' || path.endsWith('/numerologist')) && <NumerologyConsultationProcess />}
       {(path === '/horoscope-consultation-in-kolkata' || path === '/horoscope-consultaion-in-kolkata' || path === '/services/horoscope') && <HoroscopeConsultationProcess />}
       <FaqSection location={currentLocation?.name || 'Kolkata'} isNumerologistPage={path === '/numerologist-in-kolkata' || path.endsWith('/numerologist')} isHomePage={path === '/'} isPalmReaderPage={path === '/palm-reader-in-kolkata' || path.endsWith('/palmist')} />
@@ -342,6 +343,22 @@ function BlackMagicConsultationSection() {
         <p>Finding a <strong>Black Magic Astrologer in Kolkata</strong> can be important for people who want to discuss concerns connected with traditional spiritual beliefs. Black magic is commonly described in folklore and spiritual traditions as the use of supernatural practices to influence another person or situation. However, there is no reliable scientific evidence that black magic can cause personal problems or that an astrologer can diagnose its presence.</p>
         <p>Astrologer Avishek Sastri brings 5 years of experience in astrology to consultations involving spiritual questions and traditional astrological perspectives. You can discuss your concerns, learn about relevant beliefs and practices, and ask questions before deciding whether a service is right for you.</p>
         <p className="black-magic-consultation-note">A responsible consultation should help you feel informed rather than frightened. No one should pressure you into expensive rituals, claim certainty without evidence, or promise guaranteed results.</p>
+      </div>
+    </div>
+  </section>
+}
+function WhoIsBlackMagicSpecialistSection() {
+  return <section className="black-magic-consultation black-magic-specialist-section section-pad" aria-labelledby="black-magic-specialist-title">
+    <div className="black-magic-consultation-panel">
+      <div className="black-magic-consultation-heading">
+        <p className="eyebrow">Understanding the term</p>
+        <h2 id="black-magic-specialist-title">Who Is a Black Magic Specialist?</h2>
+      </div>
+      <div className="black-magic-consultation-copy">
+        <p>A <strong>Black Magic Specialist</strong> is a term commonly used for a spiritual practitioner or astrologer who offers consultations about traditional beliefs concerning black magic, spiritual protection, or negative energy.</p>
+        <p>People may seek these consultations when they feel worried about personal relationships, family circumstances, work, or unexpected changes in their lives. These experiences can have many different explanations, and they do not necessarily indicate black magic.</p>
+        <p>A consultation with Avishek Sastri provides an opportunity to discuss these concerns from a traditional astrology perspective. You can ask about the approach used, what the consultation includes, and whether any suggested practice is optional.</p>
+        <p className="black-magic-consultation-note">It is important to consider practical explanations for problems alongside any cultural or spiritual perspective. For health, safety, financial, or relationship difficulties, appropriate professional support may also be helpful.</p>
       </div>
     </div>
   </section>
