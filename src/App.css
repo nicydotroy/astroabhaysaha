@@ -219,6 +219,14 @@
 @media (max-width: 800px) { .black-magic-intro-panel { grid-template-columns: 1fr; gap: 25px; }.black-magic-intro-heading h2 { max-width: 700px; } }
 @media (max-width: 600px) { .black-magic-intro { padding-top: 66px; padding-bottom: 66px; }.black-magic-intro-panel { padding: 28px 22px; }.black-magic-intro-copy { gap: 14px; }.black-magic-intro-copy p { font-size: 14px; } }
 @media (prefers-reduced-motion: reduce) { .black-magic-intro-panel { animation: none; }.black-magic-intro-mark { transition: none; } }
+.black-magic-services-section { padding: 25px 17px; background: var(--brown); border-top: 1px solid var(--border); text-align: left; }
+.black-magic-services-section .services-grid-complete { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.black-magic-services-section .service-card { min-height: 250px; padding: 38px 24px; }
+.black-magic-services-section .service-icon { margin-bottom: 46px; }
+.black-magic-services-section .service-card p { max-width: 390px; margin-bottom: 0; }
+.black-magic-services-section .service-card:hover { background: rgba(126,62,41,.23); }
+@media (max-width: 800px) { .black-magic-services-section .services-grid-complete { grid-template-columns: repeat(2, minmax(0, 1fr)); }.black-magic-services-section .service-card { min-height: 220px; padding: 30px 21px; }.black-magic-services-section .service-icon { margin-bottom: 34px; } }
+@media (max-width: 520px) { .black-magic-services-section { padding: 18px 12px; }.black-magic-services-section .services-grid-complete { grid-template-columns: 1fr; }.black-magic-services-section .service-card { min-height: 190px; padding: 25px 21px; }.black-magic-services-section .service-icon { margin-bottom: 26px; } }
 @keyframes blackMagicReveal { from { opacity: 0; } to { opacity: 1; } }
 @keyframes blackMagicRotate { to { rotate: 360deg; } }
 @keyframes blackMagicBreathe { 0%, 100% { box-shadow: 0 0 22px rgba(210,127,20,.1), inset 0 0 18px rgba(236,214,150,.05); } 50% { box-shadow: 0 0 38px rgba(210,127,20,.23), inset 0 0 26px rgba(236,214,150,.12); } }

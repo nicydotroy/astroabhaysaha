@@ -264,11 +264,7 @@ function HomePage({ goTo, onBook, location = 'Kolkata' }) {
       </section>
       {isKolkataHome ? <LocalSeoSection onBook={onBook} /> : <LocationSeoSection location={location} onBook={onBook} />}
       {isKolkataHome && <WhyConsultAvishekSection />}
-      <section className="services-section section-pad">
-        <div className="center-heading"><p className="eyebrow">Our astrology services</p><h2>Services<br /><em>we provide.</em></h2></div>
-        <div className="services-grid services-grid-complete">{homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}</div>
-        <button className="gold-button centered-button" onClick={() => goTo('/services')}>Explore all services <span>↗</span></button>
-      </section>
+      <HomepageServicesSection goTo={goTo} />
       <section className="local-seo-section section-pad trusted-consultation-section">
         <div className="local-seo-heading">
           <p className="eyebrow">Trusted guidance for important life questions</p>
@@ -322,6 +318,18 @@ function LocationPage({ location, goTo, onBook }) { return <HomePage location={l
 
 function ServiceAreasSection({ goTo }) { return <section className="service-areas-section section-pad"><div className="center-heading"><p className="eyebrow">Astrology guidance across the city</p><h2>Our service areas<br /><em>in Kolkata.</em></h2></div><div className="service-areas-grid">{locationPages.map((location) => <button key={location.slug} onClick={() => goTo(`/astrologer-in-${location.slug}`)}>Astrologer in {location.name}<span>↗</span></button>)}</div></section> }
 function AboutServicesSection({ goTo }) { return <section className="services-section section-pad"><div className="center-heading"><p className="eyebrow">Our astrology services</p><h2>Services<br /><em>we provide.</em></h2></div><div className="services-grid services-grid-complete">{homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}</div><button className="gold-button centered-button" onClick={() => goTo('/services')}>Explore all services <span>↗</span></button></section> }
+function HomepageServicesSection({ goTo }) {
+  return <section className="services-section section-pad">
+    <div className="center-heading"><p className="eyebrow">Our astrology services</p><h2>Services<br /><em>we provide.</em></h2></div>
+    <div className="services-grid services-grid-complete">{homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}</div>
+    <button className="gold-button centered-button" onClick={() => goTo('/services')}>Explore all services <span>↗</span></button>
+  </section>
+}
+function BlackMagicServicesSection({ goTo }) {
+  return <section className="services-section black-magic-services-section" aria-label="Astrology services">
+    <div className="services-grid services-grid-complete">{homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}</div>
+  </section>
+}
 function LocationSeoSection({ location, onBook }) { return <section className="local-seo-section section-pad"><div className="local-seo-heading"><p className="eyebrow">Astrology guidance near you</p><h2>Best astrologer in {location} for your future</h2></div><div className="local-seo-content location-seo-copy"><p>Looking for an <strong>astrologer in {location}</strong>? Sree Avishek Sastri offers personalized astrology consultations based on your birth details, questions, and life circumstances. Get thoughtful guidance for marriage, relationships, career, business, education, and important personal decisions.</p><p>An experienced <strong>astrologer in {location}</strong> can interpret your Kundli and explain planetary influences in a clear, practical way. Consult online or arrange a reading from anywhere in Kolkata.</p><button className="line-button" onClick={onBook}>Speak with Sree Avishek <span>↗</span></button></div></section> }
 function WhyConsultAvishekSection() {
   const qualities = [
@@ -574,11 +582,13 @@ function ServicesPage({ path, goTo, onBook }) {
             ? 'Astrology Services in Kolkata'
             : selectedService?.label
 
-  return <PageIntro
+  return <>
+  <PageIntro
     eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : isNumerologistPage ? 'Numerology guidance in Kolkata' : isPalmReaderPage ? 'Personalized palm reading in Kolkata' : isKundaliPage ? 'Kundali matching specialist in Kolkata' : isBlackMagicPage ? 'Grounded spiritual guidance' : isServicesOverview ? 'Astrology services in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'}
     title={isHoroscopePage ? <>Horoscope Consultation<br /><em>in Kolkata.</em></> : isNumerologistPage ? <>Numerologist in Kolkata<br /><em>for life clarity.</em></> : isPalmReaderPage ? <>Best Palm Reader in Kolkata</> : isKundaliPage ? <>Kundali Matching specialist in Kolkata</> : isBlackMagicPage ? <>Black Magic Guidance<br /><em>in Kolkata.</em></> : isServicesOverview ? <>Astrology Services in Kolkata<br /><em>for every life question.</em></> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}
     heroVisual={isHoroscopePage ? <HoroscopeChartVisual /> : isNumerologistPage ? <NumerologyNumberStudy /> : isPalmReaderPage ? <PalmistryHeroVisual /> : isKundaliPage ? <KundaliHeroVisual /> : isBlackMagicPage ? <BlackMagicHeroVisual /> : null}
     afterHero={isHoroscopePage ? <><HoroscopeGuidanceSection /><HoroscopeConsultationDetails /></> : isBlackMagicPage ? <BlackMagicIntroSection /> : null}
+    renderContent={!isBlackMagicPage}
   >
     {isKundaliPage && <section className="kundali-intro-copy section-pad">
       <div className="kundali-intro-shell">
@@ -614,8 +624,10 @@ function ServicesPage({ path, goTo, onBook }) {
         </div>
       </>
     )}
-    {!isHoroscopePage && !isPalmReaderPage && !isNumerologistPage && !isKundaliPage && <div className="full-services-grid">{serviceCards.map((service, index) => <article className="service-card service-card-large" key={service.title}><span className="service-number">0{index + 1}</span><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><button className="line-button" onClick={onBook}>Book this reading <span>↗</span></button></article>)}</div>}
+    {!isHoroscopePage && !isPalmReaderPage && !isNumerologistPage && !isKundaliPage && !isBlackMagicPage && <div className="full-services-grid">{serviceCards.map((service, index) => <article className="service-card service-card-large" key={service.title}><span className="service-number">0{index + 1}</span><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><button className="line-button" onClick={onBook}>Book this reading <span>↗</span></button></article>)}</div>}
   </PageIntro>
+  {isBlackMagicPage && <BlackMagicServicesSection goTo={goTo} />}
+  </>
 }
 
 function HoroscopeConsultationContent({ goTo }) {
@@ -749,13 +761,13 @@ function HoroscopeAdditionalSections() {
     </article>
   </div>
 }
-function PageIntro({ eyebrow, title, children, heroVisual, afterHero }) {
+function PageIntro({ eyebrow, title, children, heroVisual, afterHero, renderContent = true }) {
   const heading = <div className={`page-heading${heroVisual ? ' page-heading-with-visual' : ''}`}>{heroVisual ? <div className="page-heading-copy"><p className="eyebrow">{eyebrow}</p><h1>{title}</h1></div> : <><p className="eyebrow">{eyebrow}</p><h1>{title}</h1></>}{heroVisual}</div>
 
   if (afterHero) return <>
     <section className="page-intro page-intro-hero-only section-pad">{heading}</section>
     {afterHero}
-    <section className="page-intro page-intro-content section-pad">{children}</section>
+    {renderContent && <section className="page-intro page-intro-content section-pad">{children}</section>}
   </>
 
   return <section className="page-intro section-pad">{heading}{children}</section>
