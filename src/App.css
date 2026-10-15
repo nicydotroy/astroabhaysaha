@@ -314,9 +314,28 @@
 .trusted-astrology-grid article > * { position: relative; z-index: 1; }
 @keyframes astrologerReveal { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) { .trusted-astrology-heading h2 { animation: none; }.trusted-astrology-years, .trusted-astrology-grid article, .trusted-astrology-grid article::before { transition: none; }.trusted-astrology-grid article:hover, .trusted-astrology-years:hover { transform: none; } }
-.why-consult-section .local-seo-heading { max-width: 950px; }
-.why-consult-content { max-width: 920px; margin-top: 34px; }
-.why-consult-qualities { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 34px; list-style: none; padding: 0; margin: 24px 0; }
-.why-consult-qualities li { padding: 0 0 15px; border-bottom: 1px solid rgba(192,163,119,.25); color: var(--beige); font-size: 14px; line-height: 1.75; }
-.why-consult-qualities strong { color: var(--gold); font-weight: 500; }
-@media (max-width: 600px) { .why-consult-qualities { grid-template-columns: 1fr; gap: 14px; } }
+.why-consult-section { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(ellipse at 95% 8%, rgba(210,127,20,.13), transparent 32%), linear-gradient(115deg, #000 8%, #100803 58%, #080402); }
+.why-consult-section::before, .why-consult-section::after { content: ''; position: absolute; z-index: -1; pointer-events: none; border: 1px solid rgba(210,127,20,.16); border-radius: 50%; }
+.why-consult-section::before { width: 390px; height: 390px; top: -210px; right: -95px; box-shadow: 0 0 0 26px rgba(210,127,20,.025), 0 0 0 62px rgba(210,127,20,.02); animation: whyConsultOrbit 28s linear infinite; }
+.why-consult-section::after { width: 8px; height: 8px; top: 92px; right: 11.5%; background: var(--gold); box-shadow: 0 0 18px rgba(236,214,150,.75); animation: whyConsultPulse 3s ease-in-out infinite; }
+.why-consult-heading { position: relative; max-width: 1000px; animation: whyConsultRise .75s ease both; }
+.why-consult-heading .eyebrow { color: var(--amber); margin-bottom: 18px; }
+.why-consult-heading .eyebrow::before { content: '✦'; display: inline-block; margin-right: 10px; color: var(--gold); animation: whyConsultPulse 3s ease-in-out infinite; }
+.why-consult-heading h2 { max-width: 930px; }
+.why-consult-content { max-width: 1100px; margin-top: 34px; }
+.why-consult-content > p { max-width: 930px; }
+.why-consult-qualities { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 18px; list-style: none; padding: 0; margin: 30px 0; counter-reset: why-quality; }
+.why-consult-qualities li { position: relative; min-height: 128px; overflow: hidden; display: flex; flex-direction: column; justify-content: center; gap: 9px; padding: 22px 24px 22px 70px; border: 1px solid rgba(192,163,119,.22); background: linear-gradient(120deg, rgba(20,10,4,.82), rgba(10,6,3,.55)); color: var(--beige); font-size: 14px; line-height: 1.7; counter-increment: why-quality; transition: transform .28s ease, border-color .28s ease, background .28s ease, box-shadow .28s ease; animation: whyConsultRise .65s ease both; }
+.why-consult-qualities li::before { content: '0' counter(why-quality); position: absolute; left: 22px; top: 25px; color: var(--amber); font: 400 15px 'Playfair Display', serif; letter-spacing: 1px; }
+.why-consult-qualities li::after { content: ''; position: absolute; left: 0; top: 14px; bottom: 14px; width: 2px; background: linear-gradient(transparent, var(--amber), transparent); opacity: .65; transition: opacity .28s ease, transform .28s ease; }
+.why-consult-qualities li:nth-child(1) { animation-delay: .06s; }.why-consult-qualities li:nth-child(2) { animation-delay: .12s; }.why-consult-qualities li:nth-child(3) { animation-delay: .18s; }.why-consult-qualities li:nth-child(4) { animation-delay: .24s; }.why-consult-qualities li:nth-child(5) { animation-delay: .3s; }.why-consult-qualities li:nth-child(6) { animation-delay: .36s; }
+.why-consult-qualities li:hover { transform: translateY(-5px); border-color: rgba(236,214,150,.58); background: linear-gradient(120deg, rgba(38,20,7,.92), rgba(15,8,4,.78)); box-shadow: 0 14px 34px rgba(0,0,0,.28), 0 0 24px rgba(210,127,20,.09); }
+.why-consult-qualities li:hover::after { opacity: 1; transform: scaleY(1.15); }
+.why-consult-quality-title { color: var(--gold); font: 400 19px/1.3 'Playfair Display', serif; }
+.why-consult-quality-description { color: var(--beige); }
+.why-consult-close { padding-top: 22px; border-top: 1px solid rgba(192,163,119,.25); }
+@keyframes whyConsultRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes whyConsultOrbit { to { transform: rotate(360deg); } }
+@keyframes whyConsultPulse { 0%, 100% { opacity: .65; } 50% { opacity: 1; } }
+@media (max-width: 600px) { .why-consult-qualities { grid-template-columns: 1fr; gap: 12px; }.why-consult-qualities li { min-height: 112px; padding: 20px 18px 20px 62px; }.why-consult-qualities li::before { left: 19px; }.why-consult-section::before { width: 280px; height: 280px; right: -185px; top: -120px; }.why-consult-section::after { right: 12%; top: 82px; } }
+@media (prefers-reduced-motion: reduce) { .why-consult-section::before, .why-consult-section::after, .why-consult-heading, .why-consult-heading .eyebrow::before, .why-consult-qualities li { animation: none; }.why-consult-qualities li { transition: none; }.why-consult-qualities li:hover { transform: none; } }

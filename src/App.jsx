@@ -334,16 +334,17 @@ function WhyConsultAvishekSection() {
   ]
 
   return <section className="local-seo-section section-pad why-consult-section" aria-labelledby="why-consult-title">
-    <div className="local-seo-heading">
+    <div className="local-seo-heading why-consult-heading">
+      <p className="eyebrow">A thoughtful approach to astrology</p>
       <h2 id="why-consult-title">Why Consult Avishek Sastri for Astrology Guidance in Kolkata?</h2>
     </div>
     <div className="local-seo-content why-consult-content">
       <p>Finding the right astrologer involves more than choosing someone based on popularity. A useful consultation should give you enough time to explain your concerns and understand the astrological perspective being offered.</p>
       <p>People considering Avishek Sastri for astrology consultation can look for the following qualities:</p>
       <ul className="why-consult-qualities">
-        {qualities.map(([title, description]) => <li key={title}><strong>{title}:</strong> {description}</li>)}
+        {qualities.map(([title, description]) => <li key={title}><span className="why-consult-quality-title">{title}</span><span className="why-consult-quality-description">{description}</span></li>)}
       </ul>
-      <p>When comparing a <strong>Trusted Astrologer in Kolkata</strong>, a <strong>Professional Astrologer in Kolkata</strong> or an <strong>Experienced Astrologer in Kolkata</strong>, consider the practitioner's verified background, transparency and communication style instead of relying on promotional claims alone.</p>
+      <p className="why-consult-close">When comparing a <strong>Trusted Astrologer in Kolkata</strong>, a <strong>Professional Astrologer in Kolkata</strong> or an <strong>Experienced Astrologer in Kolkata</strong>, consider the practitioner's verified background, transparency and communication style instead of relying on promotional claims alone.</p>
     </div>
   </section>
 }
