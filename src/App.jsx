@@ -418,7 +418,7 @@ function AstrologyServicesKolkata() {
       title: 'Marriage and Relationship Astrology',
       paragraphs: [
         <>Marriage and relationships are important areas of concern for many people exploring astrology. A marriage-related consultation may involve traditional horoscope interpretation, compatibility considerations and a discussion of astrological factors associated with relationships.</>,
-        <>A <strong>Horoscope Consultation in Kolkata</strong> can provide an opportunity to understand these traditional interpretations while keeping communication, mutual respect and personal choice at the centre of relationship decisions.</>,
+        <>A <a href="https://www.avisheksastri.com/horoscope-consultation-in-kolkata"><strong>Horoscope Consultation in Kolkata</strong></a> can provide an opportunity to understand these traditional interpretations while keeping communication, mutual respect and personal choice at the centre of relationship decisions.</>,
       ],
     },
     {
