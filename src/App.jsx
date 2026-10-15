@@ -331,6 +331,21 @@ function BlackMagicServicesSection({ goTo }) {
     <div className="services-grid services-grid-complete">{homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}</div>
   </section>
 }
+function BlackMagicConsultationSection() {
+  return <section className="black-magic-consultation section-pad" aria-labelledby="black-magic-consultation-title">
+    <div className="black-magic-consultation-panel">
+      <div className="black-magic-consultation-heading">
+        <p className="eyebrow">Traditional beliefs, considered thoughtfully</p>
+        <h2 id="black-magic-consultation-title">Consult a Black Magic Astrologer <em>in Kolkata</em></h2>
+      </div>
+      <div className="black-magic-consultation-copy">
+        <p>Finding a <strong>Black Magic Astrologer in Kolkata</strong> can be important for people who want to discuss concerns connected with traditional spiritual beliefs. Black magic is commonly described in folklore and spiritual traditions as the use of supernatural practices to influence another person or situation. However, there is no reliable scientific evidence that black magic can cause personal problems or that an astrologer can diagnose its presence.</p>
+        <p>Astrologer Avishek Sastri brings 5 years of experience in astrology to consultations involving spiritual questions and traditional astrological perspectives. You can discuss your concerns, learn about relevant beliefs and practices, and ask questions before deciding whether a service is right for you.</p>
+        <p className="black-magic-consultation-note">A responsible consultation should help you feel informed rather than frightened. No one should pressure you into expensive rituals, claim certainty without evidence, or promise guaranteed results.</p>
+      </div>
+    </div>
+  </section>
+}
 function LocationSeoSection({ location, onBook }) { return <section className="local-seo-section section-pad"><div className="local-seo-heading"><p className="eyebrow">Astrology guidance near you</p><h2>Best astrologer in {location} for your future</h2></div><div className="local-seo-content location-seo-copy"><p>Looking for an <strong>astrologer in {location}</strong>? Sree Avishek Sastri offers personalized astrology consultations based on your birth details, questions, and life circumstances. Get thoughtful guidance for marriage, relationships, career, business, education, and important personal decisions.</p><p>An experienced <strong>astrologer in {location}</strong> can interpret your Kundli and explain planetary influences in a clear, practical way. Consult online or arrange a reading from anywhere in Kolkata.</p><button className="line-button" onClick={onBook}>Speak with Sree Avishek <span>↗</span></button></div></section> }
 function WhyConsultAvishekSection() {
   const qualities = [
@@ -627,7 +642,7 @@ function ServicesPage({ path, goTo, onBook }) {
     )}
     {!isHoroscopePage && !isPalmReaderPage && !isNumerologistPage && !isKundaliPage && !isBlackMagicPage && <div className="full-services-grid">{serviceCards.map((service, index) => <article className="service-card service-card-large" key={service.title}><span className="service-number">0{index + 1}</span><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><button className="line-button" onClick={onBook}>Book this reading <span>↗</span></button></article>)}</div>}
   </PageIntro>
-  {isBlackMagicPage && <BlackMagicServicesSection goTo={goTo} />}
+  {isBlackMagicPage && <><BlackMagicServicesSection goTo={goTo} /><BlackMagicConsultationSection /></>}
   </>
 }
 
