@@ -263,6 +263,7 @@ function HomePage({ goTo, onBook, location = 'Kolkata' }) {
         <div className="scroll-cue">Scroll to explore <span>↓</span></div>
       </section>
       {isKolkataHome ? <LocalSeoSection onBook={onBook} /> : <LocationSeoSection location={location} onBook={onBook} />}
+      {isKolkataHome && <WhyConsultAvishekSection />}
       <section className="services-section section-pad">
         <div className="center-heading"><p className="eyebrow">Our astrology services</p><h2>Services<br /><em>we provide.</em></h2></div>
         <div className="services-grid services-grid-complete">{homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}</div>
@@ -322,6 +323,30 @@ function LocationPage({ location, goTo, onBook }) { return <HomePage location={l
 function ServiceAreasSection({ goTo }) { return <section className="service-areas-section section-pad"><div className="center-heading"><p className="eyebrow">Astrology guidance across the city</p><h2>Our service areas<br /><em>in Kolkata.</em></h2></div><div className="service-areas-grid">{locationPages.map((location) => <button key={location.slug} onClick={() => goTo(`/astrologer-in-${location.slug}`)}>Astrologer in {location.name}<span>↗</span></button>)}</div></section> }
 function AboutServicesSection({ goTo }) { return <section className="services-section section-pad"><div className="center-heading"><p className="eyebrow">Our astrology services</p><h2>Services<br /><em>we provide.</em></h2></div><div className="services-grid services-grid-complete">{homepageServices.map((service) => <article className="service-card" key={service.slug} onClick={() => goTo(servicePath(service))} role="link" tabIndex="0"><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><span className="card-arrow">↗</span></article>)}</div><button className="gold-button centered-button" onClick={() => goTo('/services')}>Explore all services <span>↗</span></button></section> }
 function LocationSeoSection({ location, onBook }) { return <section className="local-seo-section section-pad"><div className="local-seo-heading"><p className="eyebrow">Astrology guidance near you</p><h2>Best astrologer in {location} for your future</h2></div><div className="local-seo-content location-seo-copy"><p>Looking for an <strong>astrologer in {location}</strong>? Sree Avishek Sastri offers personalized astrology consultations based on your birth details, questions, and life circumstances. Get thoughtful guidance for marriage, relationships, career, business, education, and important personal decisions.</p><p>An experienced <strong>astrologer in {location}</strong> can interpret your Kundli and explain planetary influences in a clear, practical way. Consult online or arrange a reading from anywhere in Kolkata.</p><button className="line-button" onClick={onBook}>Speak with Sree Avishek <span>↗</span></button></div></section> }
+function WhyConsultAvishekSection() {
+  const qualities = [
+    ['Personalised attention', 'An opportunity to discuss your specific questions rather than receive only general predictions.'],
+    ['Clear explanations', 'Astrological interpretations explained in language that is easy to understand.'],
+    ['Respectful communication', 'A consultation environment where your concerns are heard without judgement.'],
+    ['Traditional astrological insight', 'Guidance based on the astrological methods used during the consultation.'],
+    ['Practical perspective', 'Discussions that encourage thoughtful decision-making alongside astrological interpretation.'],
+    ['Convenient consultation options', 'Information about in-person or online consultations, depending on current availability.'],
+  ]
+
+  return <section className="local-seo-section section-pad why-consult-section" aria-labelledby="why-consult-title">
+    <div className="local-seo-heading">
+      <h2 id="why-consult-title">Why Consult Avishek Sastri for Astrology Guidance in Kolkata?</h2>
+    </div>
+    <div className="local-seo-content why-consult-content">
+      <p>Finding the right astrologer involves more than choosing someone based on popularity. A useful consultation should give you enough time to explain your concerns and understand the astrological perspective being offered.</p>
+      <p>People considering Avishek Sastri for astrology consultation can look for the following qualities:</p>
+      <ul className="why-consult-qualities">
+        {qualities.map(([title, description]) => <li key={title}><strong>{title}:</strong> {description}</li>)}
+      </ul>
+      <p>When comparing a <strong>Trusted Astrologer in Kolkata</strong>, a <strong>Professional Astrologer in Kolkata</strong> or an <strong>Experienced Astrologer in Kolkata</strong>, consider the practitioner's verified background, transparency and communication style instead of relying on promotional claims alone.</p>
+    </div>
+  </section>
+}
 function MeetYourAstrologer() {
   return <section className="local-seo-section trusted-astrology-section section-pad">
     <div className="trusted-astrology-heading">

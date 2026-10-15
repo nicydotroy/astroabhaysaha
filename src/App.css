@@ -314,3 +314,9 @@
 .trusted-astrology-grid article > * { position: relative; z-index: 1; }
 @keyframes astrologerReveal { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) { .trusted-astrology-heading h2 { animation: none; }.trusted-astrology-years, .trusted-astrology-grid article, .trusted-astrology-grid article::before { transition: none; }.trusted-astrology-grid article:hover, .trusted-astrology-years:hover { transform: none; } }
+.why-consult-section .local-seo-heading { max-width: 950px; }
+.why-consult-content { max-width: 920px; margin-top: 34px; }
+.why-consult-qualities { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 34px; list-style: none; padding: 0; margin: 24px 0; }
+.why-consult-qualities li { padding: 0 0 15px; border-bottom: 1px solid rgba(192,163,119,.25); color: var(--beige); font-size: 14px; line-height: 1.75; }
+.why-consult-qualities strong { color: var(--gold); font-weight: 500; }
+@media (max-width: 600px) { .why-consult-qualities { grid-template-columns: 1fr; gap: 14px; } }
