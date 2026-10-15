@@ -577,11 +577,13 @@ function ServicesPage({ path, goTo, onBook }) {
             ? 'Astrology Services in Kolkata'
             : selectedService?.label
 
-  return <PageIntro
+  return <>
+  <PageIntro
     eyebrow={isHoroscopePage ? 'Trusted horoscope guidance in Kolkata' : isNumerologistPage ? 'Numerology guidance in Kolkata' : isPalmReaderPage ? 'Personalized palm reading in Kolkata' : isKundaliPage ? 'Kundali matching specialist in Kolkata' : isBlackMagicPage ? 'Grounded spiritual guidance' : isServicesOverview ? 'Astrology services in Kolkata' : selectedService ? `${selectedService.label} consultation` : 'Readings for your next chapter'}
     title={isHoroscopePage ? <>Horoscope Consultation<br /><em>in Kolkata.</em></> : isNumerologistPage ? <>Numerologist in Kolkata<br /><em>for life clarity.</em></> : isPalmReaderPage ? <>Best Palm Reader in Kolkata</> : isKundaliPage ? <>Kundali Matching specialist in Kolkata</> : isBlackMagicPage ? <>Black Magic Guidance<br /><em>in Kolkata.</em></> : isServicesOverview ? <>Astrology Services in Kolkata<br /><em>for every life question.</em></> : selectedService ? <>{pageTitle}<br /><em>with clarity.</em></> : <>The stars offer<br /><em>perspective.</em></>}
     heroVisual={isHoroscopePage ? <HoroscopeChartVisual /> : isNumerologistPage ? <NumerologyNumberStudy /> : isPalmReaderPage ? <PalmistryHeroVisual /> : isKundaliPage ? <KundaliHeroVisual /> : isBlackMagicPage ? <BlackMagicHeroVisual /> : null}
     afterHero={isHoroscopePage ? <><HoroscopeGuidanceSection /><HoroscopeConsultationDetails /></> : isBlackMagicPage ? <BlackMagicIntroSection /> : null}
+    renderContent={!isBlackMagicPage}
   >
     {isKundaliPage && <section className="kundali-intro-copy section-pad">
       <div className="kundali-intro-shell">
@@ -609,7 +611,6 @@ function ServicesPage({ path, goTo, onBook }) {
     {isPalmReaderPage && <div className="service-intro-copy palm-reader-intro"><div className="palm-reader-intro-header"><span className="palm-reader-kicker">Traditional hand analysis</span><h2>Palm Reader in Kolkata for better guidance</h2></div><div className="palm-reader-layout"><div className="palm-reader-copy"><p>Palmistry, also known as palm reading or chiromancy, is a traditional practice in which the lines, shapes and features of the hands are interpreted to explore different aspects of an individual's life and personality. If you are looking for a <strong>palm reader in Kolkata</strong>, a personalized palmistry consultation can help you understand the traditional meanings associated with the features of your palms.</p><p>Unlike a general reading, a personal palmistry consultation focuses on the individual's hands and the specific questions they want to discuss. Depending on the approach followed, a palm reader may examine major palm lines, mounts, finger shapes, hand structure and other visible features.</p><p className="palm-reader-note">A palm reading consultation is shaped around your questions and personal circumstances. It offers a thoughtful perspective for reflection, not a guaranteed prediction of future events.</p></div><aside className="palm-reader-feature-panel"><span>What may be explored</span><ul><li>Major palm lines</li><li>Finger shapes</li><li>Hand structure</li><li>Mounts and visible features</li></ul></aside></div></div>}
     {isServicesOverview && <div className="service-intro-copy"><p>Explore trusted <strong>astrology services in Kolkata</strong> for love, marriage, career, business, spiritual guidance, and personal growth.</p><p>Whether you need an astrologer, numerologist, palmist, horoscope consultation, or Kundali matching, every session is designed to offer clarity and practical direction.</p></div>}
     {isHoroscopePage && <HoroscopeConsultationContent goTo={goTo} />}
-    {isBlackMagicPage && <HomepageServicesSection goTo={goTo} />}
     {(isPalmReaderPage || isNumerologistPage || isKundaliPage) && (
       <>
         <div className="center-heading"><p className="eyebrow">Our astrology services</p><h2>{isNumerologistPage ? <>Our <em>Services.</em></> : isKundaliPage ? <>Explore more<br /><em>matchmaking services.</em></> : <>Services<br /><em>we provide.</em></>}</h2></div>
@@ -620,6 +621,8 @@ function ServicesPage({ path, goTo, onBook }) {
     )}
     {!isHoroscopePage && !isPalmReaderPage && !isNumerologistPage && !isKundaliPage && !isBlackMagicPage && <div className="full-services-grid">{serviceCards.map((service, index) => <article className="service-card service-card-large" key={service.title}><span className="service-number">0{index + 1}</span><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p><button className="line-button" onClick={onBook}>Book this reading <span>↗</span></button></article>)}</div>}
   </PageIntro>
+  {isBlackMagicPage && <HomepageServicesSection goTo={goTo} />}
+  </>
 }
 
 function HoroscopeConsultationContent({ goTo }) {
@@ -753,13 +756,13 @@ function HoroscopeAdditionalSections() {
     </article>
   </div>
 }
-function PageIntro({ eyebrow, title, children, heroVisual, afterHero }) {
+function PageIntro({ eyebrow, title, children, heroVisual, afterHero, renderContent = true }) {
   const heading = <div className={`page-heading${heroVisual ? ' page-heading-with-visual' : ''}`}>{heroVisual ? <div className="page-heading-copy"><p className="eyebrow">{eyebrow}</p><h1>{title}</h1></div> : <><p className="eyebrow">{eyebrow}</p><h1>{title}</h1></>}{heroVisual}</div>
 
   if (afterHero) return <>
     <section className="page-intro page-intro-hero-only section-pad">{heading}</section>
     {afterHero}
-    <section className="page-intro page-intro-content section-pad">{children}</section>
+    {renderContent && <section className="page-intro page-intro-content section-pad">{children}</section>}
   </>
 
   return <section className="page-intro section-pad">{heading}{children}</section>
