@@ -591,7 +591,38 @@ function NumerologyConsultationProcess() {
     <p className="numerology-process-close">This approach keeps the consultation focused on your individual circumstances rather than providing a generic number prediction.</p>
   </section>
 }
-function LocalSeoSection({ onBook }) { return <section className="local-seo-section section-pad"><div className="local-seo-heading"><p className="eyebrow">Astrology guidance in the city of joy</p><h2>Best astrologer in Kolkata for your future</h2></div><div className="local-seo-main"><div className="local-seo-image" role="img" aria-label="Avishek Sastri astrologer photo"><img src={bestAstrologerInKolkata} alt="Best astrologer in Kolkata" /></div><div className="local-seo-content"><p>Finding the right astrologer can help you understand your birth chart, planetary influences, and important phases of life with greater clarity. If you are looking for the <strong>best astrologer in Kolkata</strong>, choose an astrology professional who takes time to understand your concerns and provides a personalized interpretation based on your birth details. Whether you need guidance about marriage, relationships, career, business, finances, or personal decisions, a detailed astrology consultation can provide a structured perspective.</p><p>An experienced <strong>astrologer in Kolkata</strong> can analyze your date, time, and place of birth to prepare and interpret your Kundli. Vedic astrology considers planetary positions, houses, zodiac signs, and other astrological factors to understand different areas of life. A consultation should focus on your individual chart rather than providing generic predictions.</p><button className="line-button" onClick={onBook}>Speak with Avishek <span>↗</span></button></div></div><div className="local-seo-faq"><article><h3>Online Astrology Consultation</h3><p>You do not always need to visit an astrologer's office for guidance. An <strong>online astrologer in Kolkata</strong> can provide consultations through phone calls, video consultations, or other online communication methods. Online sessions can be convenient for people with busy schedules or those living outside central Kolkata.</p><p>If you have searched for an <strong>astrologer near me</strong>, you can consider both local and online consultation options based on your requirements. A <strong>Kolkata astrologer</strong> offering online services can also connect with clients from different parts of the city and beyond.</p></article><article><h3>Personalized Astrology Guidance in Kolkata</h3><p>Many people search for a <strong>famous astrologer in Kolkata</strong> or a <strong>top astrologer in Kolkata</strong> when they want personalized guidance for important life questions. Similarly, those looking for a <strong>renowned astrologer in Kolkata</strong> often want someone with knowledge of traditional astrology and experience in interpreting different types of Kundli.</p><p>A <strong>professional astrologer in Kolkata</strong> can offer consultations for a range of concerns, including marriage compatibility, love and relationships, career growth, business decisions, financial planning, family matters, and future trends. The purpose of an astrology consultation is to help you understand the astrological factors connected with your questions and make decisions with greater awareness.</p></article></div></section> }
+function LocalSeoSection({ onBook }) {
+  return <section className="local-seo-section section-pad">
+    <div className="local-seo-heading">
+      <p className="eyebrow">Astrology guidance in the city of joy</p>
+      <h2>Best astrologer in Kolkata for your future</h2>
+    </div>
+    <div className="local-seo-main">
+      <div className="local-seo-image" role="img" aria-label="Avishek Sastri astrologer photo">
+        <img src={bestAstrologerInKolkata} alt="Best astrologer in Kolkata" />
+      </div>
+      <div className="local-seo-content">
+        <p>Astrologer Avishek Sastri believes that an astrology consultation should be a meaningful conversation rather than just a prediction about the future. Every individual has different experiences, responsibilities, and challenges. Understanding these differences is an important part of offering relevant guidance.</p>
+        <p>Over the past five years, he has developed experience in discussing personal concerns through an astrological perspective.</p>
+        <p>His goal is to help people explore their questions, understand traditional astrological interpretations, and consider their next steps with greater confidence.</p>
+        <p>Whether you have questions about marriage, love relationships, career decisions, or horoscope analysis, a consultation can provide an opportunity to discuss your concerns in a structured and supportive setting.</p>
+        <button className="line-button" onClick={onBook}>Speak with Avishek <span>↗</span></button>
+      </div>
+    </div>
+    <div className="local-seo-faq">
+      <article>
+        <h3>Online Astrology Consultation</h3>
+        <p>You do not always need to visit an astrologer's office for guidance. An <strong>online astrologer in Kolkata</strong> can provide consultations through phone calls, video consultations, or other online communication methods. Online sessions can be convenient for people with busy schedules or those living outside central Kolkata.</p>
+        <p>If you have searched for an <strong>astrologer near me</strong>, you can consider both local and online consultation options based on your requirements. A <strong>Kolkata astrologer</strong> offering online services can also connect with clients from different parts of the city and beyond.</p>
+      </article>
+      <article>
+        <h3>Personalized Astrology Guidance in Kolkata</h3>
+        <p>Many people search for a <strong>famous astrologer in Kolkata</strong> or a <strong>top astrologer in Kolkata</strong> when they want personalized guidance for important life questions. Similarly, those looking for a <strong>renowned astrologer in Kolkata</strong> often want someone with knowledge of traditional astrology and experience in interpreting different types of Kundli.</p>
+        <p>A <strong>professional astrologer in Kolkata</strong> can offer consultations for a range of concerns, including marriage compatibility, love and relationships, career growth, business decisions, financial planning, family matters, and future trends. The purpose of an astrology consultation is to help you understand the astrological factors connected with your questions and make decisions with greater awareness.</p>
+      </article>
+    </div>
+  </section>
+}
 function AboutPage({ goTo }) { return <PageIntro eyebrow="The person behind the chart" title={<>A quiet space for<br /><em>big questions.</em></>}><div className="about-layout"><div className="portrait-card portrait-large"><div className="portrait-image"><img src={bestAstrologerInKolkata} alt="Sree Avishek Sastri" /></div><div className="portrait-glow" /></div><div className="about-copy"><p>Hi, I’m Sree Avishek. I believe astrology is most powerful when it brings you back to yourself.</p><p>My work blends the depth of Vedic tradition with a warm, practical approach. Every reading is a conversation, not a performance. We look at what is happening, why it may be happening now, and what you can do with the clarity you find.</p><div className="signature">Sree Avishek <span>✦</span></div><button className="line-button" onClick={() => goTo('/services')}>See how we can work together <span>→</span></button></div></div></PageIntro> }
 function ServicesPage({ path, goTo, onBook }) {
   const selectedService = serviceMenuItems.find((service) => path === servicePath(service) || path.endsWith(`/${service.slug}`))
