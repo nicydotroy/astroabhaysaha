@@ -29,56 +29,19 @@ const locations = [
 ]
 
 const pages = [
-  {
-    route: '/numerologist-in-kolkata',
-    title: 'Numerologist in Kolkata | Personalized Numerology Consultation',
-    description: 'Looking for a numerologist in Kolkata? Get personalized numerology guidance based on your name, date of birth and specific life concerns.',
-  },
-  {
-    route: '/palm-reader-in-kolkata',
-    title: 'Best palm reader in Kolkata | Avishek Sastri',
-    description: 'Looking for the best palm reader in Kolkata? Get a personalized palm reading to understand palm lines, strengths, relationships, career questions, and life direction.',
-  },
-  ...locations.map(([slug, location]) => ({
-    route: `/astrologer-in-${slug}`,
-    title: `Best Astrologer in ${location} | Avishek Sastri`,
-    description: `Find the best astrologer in ${location} for personalized Kundli, marriage, career and relationship guidance. Book an astrology consultation with an experienced astrologer.`,
-  })),
-  {
-    route: '/kundali-matching-in-kolkata',
-    title: 'Kundali Matching Specialist in Kolkata | Avishek Sastri',
-    description: 'Looking for a Kundali matching specialist in Kolkata? Consult Avishek Sastri for personalized horoscope matching and marriage compatibility insights. Book today!',
-  },
-  {
-    route: '/horoscope-consultation-in-kolkata',
-    title: 'Horoscope Consultation in Kolkata | Avishek Sastri',
-    description: 'Get trusted horoscope consultation in Kolkata for personalized guidance on career, love, marriage, finance, and important life decisions based on your horoscope.',
-  },
-  {
-    route: '/black-magic-in-kolkata',
-    title: 'Black Magic in Kolkata | Astro Avishek Sastri',
-    description: 'Looking for black magic guidance in Kolkata? Consult an experienced astrologer for spiritual guidance, Vedic astrology insights and personalized solutions.',
-  },
+  { route: '/numerologist-in-kolkata' },
+  { route: '/palm-reader-in-kolkata' },
+  ...locations.map(([slug]) => ({ route: `/astrologer-in-${slug}` })),
+  { route: '/kundali-matching-in-kolkata' },
+  { route: '/horoscope-consultation-in-kolkata' },
+  { route: '/black-magic-in-kolkata' },
 ]
 
-function escapeAttribute(value) {
-  return value.replaceAll('&', '&amp;').replaceAll('"', '&quot;')
-}
-
-function renderPage({ route, title, description }) {
+function renderPage({ route }) {
   const canonical = `${domain}${route}`
-  const heading = title.split(' | ')[0]
-  const fallback = `<main><h1>${heading}</h1><p>${description}</p><p>Contact Avishek Sastri to book a personalized astrology consultation based on your birth details and questions.</p></main>`
   return source
-    .replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
-    .replace(/<meta name="description" content=".*?"\s*\/>/, `<meta name="description" content="${escapeAttribute(description)}" />`)
     .replace(/<link rel="canonical" href=".*?"\s*\/>/, `<link rel="canonical" href="${canonical}" />`)
-    .replace(/<meta property="og:title" content=".*?"\s*\/>/, `<meta property="og:title" content="${escapeAttribute(title)}" />`)
-    .replace(/<meta property="og:description" content=".*?"\s*\/>/, `<meta property="og:description" content="${escapeAttribute(description)}" />`)
     .replace(/<meta property="og:url" content=".*?"\s*\/>/, `<meta property="og:url" content="${canonical}" />`)
-    .replace(/<meta name="twitter:title" content=".*?"\s*\/>/, `<meta name="twitter:title" content="${escapeAttribute(title)}" />`)
-    .replace(/<meta name="twitter:description" content=".*?"\s*\/>/, `<meta name="twitter:description" content="${escapeAttribute(description)}" />`)
-    .replace(/<noscript>[\s\S]*?<\/noscript>/, `<noscript>${fallback}</noscript>`)
     .replace(/"@id":".*?#business"/, `"@id":"${canonical}#business"`)
     .replace(/"url":".*?"/, `"url":"${canonical}"`)
 }
@@ -107,4 +70,4 @@ const sitemap = [
 fs.writeFileSync(path.join(root, 'public', 'sitemap.xml'), sitemap)
 fs.writeFileSync(path.join(dist, 'sitemap.xml'), sitemap)
 
-console.log(`Generated ${pages.length} static SEO pages and a sitemap with ${sitemapRoutes.length} canonical URLs.`)
+console.log(`Generated ${pages.length} static route pages and a sitemap with ${sitemapRoutes.length} canonical URLs.`)
